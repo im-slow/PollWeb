@@ -27,7 +27,7 @@ public interface Question {
     
     String getCode();
     
-    String getText();
+    String getQuestionText();
     
     String getNote();
     
@@ -35,16 +35,28 @@ public interface Question {
     
     boolean getMandatory();
     
+    int getPositionNumber();
+    
+    String getMinimum();
+    
+    String getMaximum();
+    
     void setKey(int key);
     
     void setCode(String code);
     
-    void setText(String text);
+    void setQuestionText(String text);
     
     void setNote(String note);
     
     void setQuestionType(QuestionType type);
     
     void setMandatory(boolean mandatory);
+    
+    void setPositionNumber(int position);
+    
+    void setMinimum(String min);
+    
+    void setMaximum(String max);
     
 }

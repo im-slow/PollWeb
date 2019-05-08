@@ -22,7 +22,9 @@ public class PollImpl implements Poll {
     private String closeText;
     private List<Question> questions;
     private User responsible;
-    private boolean openPoll;
+    private boolean open;
+    private boolean state;
+    private String url;
 
     public PollImpl() {        
         key = 0;
@@ -31,7 +33,8 @@ public class PollImpl implements Poll {
         closeText = "";
         questions = null;
         responsible = null;
-        openPoll = true;
+        open = true;
+        state = true;
     }
 
     @Override
@@ -66,7 +69,17 @@ public class PollImpl implements Poll {
     
     @Override
     public boolean getOpenPoll() {
-        return openPoll;
+        return open;
+    }
+    
+    @Override
+    public boolean getStatePool() {
+        return state;
+    }
+
+    @Override
+    public String getURLPool() {
+        return url;
     }
     
     @Override
@@ -100,8 +113,18 @@ public class PollImpl implements Poll {
     }
     
     @Override
-    public void setOpenPoll(boolean openPoll) {
-        this.openPoll = openPoll;
+    public void setOpenPoll(boolean open) {
+        this.open = open;
+    }
+
+    @Override
+    public void setStatePool(boolean state) {
+        this.state = state;
+    }
+
+    @Override
+    public void setURLPool(String url) {
+        this.url = url;
     }
     
 }

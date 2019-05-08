@@ -13,17 +13,10 @@ public interface Answer {
     
     int getKey();
     
-    String getResult();
-    
-    String getMin();
-    
-    String getMax();
+    String getAnswer();
     
     void setKey(int key);
 
-    void setResult(String result);
+    void setAnswer(String answer);
     
-    void setMin(String min);
-    
-    void setMax(String max);
 }

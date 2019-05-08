@@ -14,15 +14,11 @@ import it.univaq.iw.pollweb.data.model.Answer;
 public class AnswerImpl implements Answer {
 
     private int key;
-    private String result;
-    private String min;
-    private String max;  
+    private String answer; 
         
     public AnswerImpl() {        
         key = 0;
-        result = "";
-        min = "";
-        max = "";
+        answer = "";
     }
     @Override
     public int getKey() {
@@ -30,18 +26,8 @@ public class AnswerImpl implements Answer {
     }
 
     @Override
-    public String getResult() {
-        return result;
-    }
-
-    @Override
-    public String getMin() {
-        return min;
-    }
-
-    @Override
-    public String getMax() {
-        return max;
+    public String getAnswer() {
+        return answer;
     }
 
     @Override
@@ -50,18 +36,8 @@ public class AnswerImpl implements Answer {
     }
 
     @Override
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    @Override
-    public void setMin(String min) {
-        this.min = min;
-    }
-
-    @Override
-    public void setMax(String max) {
-        this.max = max;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
     
 }

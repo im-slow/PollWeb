@@ -19,6 +19,10 @@ public class QuestionImpl implements Question {
     private String note;
     private boolean mandatory;
     private QuestionType type;
+    private int position;
+    private String min;
+    private String max;
+    
     
     public QuestionImpl() {        
         key = 0;
@@ -27,6 +31,9 @@ public class QuestionImpl implements Question {
         note = "";
         mandatory = false;
         type = null;
+        position = 0;
+        min = "";
+        max = "";
     }
     
     @Override
@@ -40,7 +47,7 @@ public class QuestionImpl implements Question {
     }
             
     @Override
-    public String getText(){
+    public String getQuestionText(){
         return text;
     }    
     
@@ -60,6 +67,21 @@ public class QuestionImpl implements Question {
     }
     
     @Override
+    public int getPositionNumber() {
+        return position;
+    }
+
+    @Override
+    public String getMinimum() {
+        return min;
+    }
+
+    @Override
+    public String getMaximum() {
+        return max;
+    }
+    
+    @Override
     public void setKey(int key) {
         this.key = key;
     }
@@ -70,7 +92,7 @@ public class QuestionImpl implements Question {
     }
             
     @Override
-    public void setText(String text){
+    public void setQuestionText(String text){
         this.text = text;
     }    
     
@@ -88,4 +110,20 @@ public class QuestionImpl implements Question {
     public void setMandatory(boolean mandatory){
         this.mandatory = mandatory;
     }
+
+    @Override
+    public void setPositionNumber(int position) {
+        this.min = min;
+    }
+    
+    @Override
+    public void setMinimum(String min) {
+        this.min = min;
+    }
+
+    @Override
+    public void setMaximum(String max) {
+        this.max = max;
+    }
+    
 }
