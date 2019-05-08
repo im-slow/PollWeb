@@ -5,6 +5,7 @@
  */
 package it.univaq.iw.pollweb.data.impl;
 
+import it.univaq.iw.pollweb.data.model.Answer;
 import it.univaq.iw.pollweb.data.model.Question;
 
 /**
@@ -22,6 +23,7 @@ public class QuestionImpl implements Question {
     private int position;
     private String min;
     private String max;
+    private Answer answers;
     
     
     public QuestionImpl() {        
@@ -34,6 +36,7 @@ public class QuestionImpl implements Question {
         position = 0;
         min = "";
         max = "";
+        answers = null;
     }
     
     @Override
@@ -82,6 +85,11 @@ public class QuestionImpl implements Question {
     }
     
     @Override
+    public Answer getAnswers(){
+        return answers;
+    }
+    
+    @Override
     public void setKey(int key) {
         this.key = key;
     }
@@ -124,6 +132,11 @@ public class QuestionImpl implements Question {
     @Override
     public void setMaximum(String max) {
         this.max = max;
+    }
+    
+    @Override
+    public void setAnswers(Answer answers){
+        this.answers = answers;
     }
     
 }

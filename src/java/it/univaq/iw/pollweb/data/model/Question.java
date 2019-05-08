@@ -41,6 +41,8 @@ public interface Question {
     
     String getMaximum();
     
+    Answer getAnswers();
+    
     void setKey(int key);
     
     void setCode(String code);
@@ -58,5 +60,7 @@ public interface Question {
     void setMinimum(String min);
     
     void setMaximum(String max);
+    
+    void setAnswers(Answer answers);
     
 }
