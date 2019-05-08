@@ -1,0 +1,108 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package it.univaq.iw.pollweb.data.impl;
+
+import it.univaq.iw.pollweb.data.model.Poll;
+import it.univaq.iw.pollweb.data.model.Question;
+import it.univaq.iw.pollweb.data.model.User;
+import java.util.List;
+
+/**
+ *
+ * @author andy4
+ */
+public class PollImpl implements Poll {
+
+    private int key;
+    private String title;
+    private String openText;
+    private String closeText;
+    private List<Question> questions;
+    private User responsible;
+    private boolean openPoll;
+
+    public PollImpl() {        
+        key = 0;
+        title = "";
+        openText = "";
+        closeText = "";
+        questions = null;
+        responsible = null;
+        openPoll = true;
+    }
+
+    @Override
+    public int getKey() {
+        return key;
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
+    
+    @Override
+    public String getOpenText() {
+        return openText;
+    }
+    
+    @Override
+    public String getCloseText() {
+        return closeText;
+    }
+    
+    @Override
+    public List<Question> getQuestions() {
+        return questions;
+    } 
+    
+    @Override
+    public User getResponsible() {
+        return responsible;
+    }
+    
+    @Override
+    public boolean getOpenPoll() {
+        return openPoll;
+    }
+    
+    @Override
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    @Override
+    public void setOpenText(String openText) {
+        this.openText = openText;
+    }
+    
+    @Override
+    public void setCloseText(String closeText) {
+        this.closeText = closeText;
+    }
+    
+    @Override
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    } 
+    
+    @Override
+    public void setResponsible(User responsible) {
+        this.responsible = responsible;
+    }
+    
+    @Override
+    public void setOpenPoll(boolean openPoll) {
+        this.openPoll = openPoll;
+    }
+    
+}
+

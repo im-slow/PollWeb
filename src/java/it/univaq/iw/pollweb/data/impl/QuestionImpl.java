@@ -1,0 +1,91 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package it.univaq.iw.pollweb.data.impl;
+
+import it.univaq.iw.pollweb.data.model.Question;
+
+/**
+ *
+ * @author andy4
+ */
+public class QuestionImpl implements Question {
+
+    private int key;
+    private String code;
+    private String text;
+    private String note;
+    private boolean mandatory;
+    private QuestionType type;
+    
+    public QuestionImpl() {        
+        key = 0;
+        code = "";
+        text = "";
+        note = "";
+        mandatory = false;
+        type = null;
+    }
+    
+    @Override
+    public int getKey() {
+        return key;
+    }
+
+    @Override
+    public String getCode(){
+        return code;
+    }
+            
+    @Override
+    public String getText(){
+        return text;
+    }    
+    
+    @Override
+    public String getNote(){
+        return note;
+    }
+    
+    @Override
+    public QuestionType getQuestionType(){
+        return type;
+    }
+    
+    @Override
+    public boolean getMandatory(){
+        return mandatory;
+    }
+    
+    @Override
+    public void setKey(int key) {
+        this.key = key;
+    }
+    
+    @Override
+    public void setCode(String code){
+        this.code = code;
+    }
+            
+    @Override
+    public void setText(String text){
+        this.text = text;
+    }    
+    
+    @Override
+    public void setNote(String note){
+        this.note = note;
+    }
+    
+    @Override
+    public void setQuestionType(QuestionType type){
+        this.type = type;
+    }
+    
+    @Override
+    public void setMandatory(boolean mandatory){
+        this.mandatory = mandatory;
+    }
+}
