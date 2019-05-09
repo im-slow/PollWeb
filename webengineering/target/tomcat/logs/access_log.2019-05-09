@@ -1,5 +1,0 @@
-0:0:0:0:0:0:0:1 - - [09/May/2019:16:39:19 +0200] "GET /webengineering HTTP/1.1" 302 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [09/May/2019:16:39:19 +0200] "GET /webengineering/ HTTP/1.1" 200 49 http-bio-8080-exec-2 82
-0:0:0:0:0:0:0:1 - - [09/May/2019:16:39:19 +0200] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
-0:0:0:0:0:0:0:1 - - [09/May/2019:16:41:51 +0200] "GET /webengineering HTTP/1.1" 302 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [09/May/2019:16:41:51 +0200] "GET /webengineering/ HTTP/1.1" 200 49 http-bio-8080-exec-2 44
