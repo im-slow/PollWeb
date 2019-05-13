@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package it.univaq.iw.pollweb.data.dao;
 
 import it.univaq.iw.pollweb.data.model.Poll;
@@ -14,6 +15,7 @@ import java.util.List;
  *
  * @author andy4
  */
+
 public interface PollDAO {
     
     Poll createPoll();
