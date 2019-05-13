@@ -47,4 +47,12 @@ public class UserProxy extends UserImpl{
         this.dirty = true;
     }
     
+    public void setDirty(boolean dirty) {
+        this.dirty = dirty;
+    }
+
+    public boolean isDirty() {
+        return dirty;
+    }
+    
 }

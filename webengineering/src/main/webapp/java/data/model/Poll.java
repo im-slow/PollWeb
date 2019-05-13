@@ -27,9 +27,9 @@ public interface Poll {
     
     boolean getOpenPoll();
     
-    boolean getStatePool();
+    boolean getStatePoll();
     
-    String getURLPool();
+    String getURLPoll();
     
     void setKey(int key);
 
@@ -45,9 +45,9 @@ public interface Poll {
     
     void setOpenPoll(boolean openPoll);
     
-    void setStatePool(boolean statePoll);
+    void setStatePoll(boolean statePoll);
     
-    void setURLPool(String url);
+    void setURLPoll(String url);
     
 }
 

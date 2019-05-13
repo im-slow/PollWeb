@@ -6,11 +6,39 @@
 package java.data.proxy;
 
 import java.data.impl.AnswerImpl;
+import java.framework.data.DataLayer;
 
 /**
  *
  * @author andy4
  */
 public class AnswerProxy extends AnswerImpl{
+    protected boolean dirty;
+    protected DataLayer dataLayer;
     
+    public AnswerProxy(DataLayer d) {
+        super();
+        this.dataLayer = d;
+        this.dirty = false;
+    }
+    
+    @Override
+    public void setKey(int key) {
+        super.setKey(key);
+        this.dirty = true;
+    }
+    
+    @Override
+    public void setAnswer(String answer){
+        super.setAnswer(answer);
+        this.dirty = true;
+    }
+    
+    public void setDirty(boolean dirty) {
+        this.dirty = dirty;
+    }
+
+    public boolean isDirty() {
+        return dirty;
+    }
 }

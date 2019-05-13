@@ -5,7 +5,7 @@
  */
 package java.data.impl;
 
-import it.univaq.iw.pollweb.data.model.Answer;
+import java.data.model.Answer;
 
 /**
  *
