@@ -14,21 +14,17 @@ public interface User {
     int getKey();
 
     String getName();
-
-    String getSurname();
     
     String getEmail();
     
-    String getRole();
+    String getPassword();
     
     void setKey(int key);
 
     void setName(String name);
-
-    void setSurname(String surname);
     
     void setEmail(String email);
     
-    void setRole(String role);
+    void setPassword(String password);
     
 }

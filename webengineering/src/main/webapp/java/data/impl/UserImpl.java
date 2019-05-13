@@ -5,7 +5,7 @@
  */
 package java.data.impl;
 
-import it.univaq.iw.pollweb.data.model.User;
+import java.data.model.User;
 import java.util.List;
 
 /**
@@ -15,16 +15,14 @@ import java.util.List;
 public class UserImpl implements User {
     private int key;
     private String name;
-    private String surname;
     private String email;
-    private String role;
+    private String password;
 
     public UserImpl() {        
         key = 0;
         name = "";
-        surname = "";
         email = "";
-        role = "User";
+        password = "";
     }
 
     @Override
@@ -38,18 +36,13 @@ public class UserImpl implements User {
     }
 
     @Override
-    public String getSurname() {
-        return surname;
-    }
-
-    @Override
     public String getEmail() {
         return email;
     }
 
     @Override
-    public String getRole() {
-        return role;
+    public String getPassword() {
+        return password;
     }
     
     @Override
@@ -63,11 +56,6 @@ public class UserImpl implements User {
     }
 
     @Override
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    @Override
     public void setEmail(String email) {
         /*
         if(!(users.contains(email))){
@@ -76,17 +64,11 @@ public class UserImpl implements User {
             System.out.println("this email already exists!");
         }
         */
+        this.email = email;
     }
 
     @Override
-    public void setRole(String role) {
-        /*
-        if(AuthUser=="Admin"){ 
-           this.role = role;
-        } else {
-           System.out.println("Warning! You don't have access")
-        }
-        */
-        this.role = role;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

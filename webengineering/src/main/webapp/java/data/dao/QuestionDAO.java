@@ -5,10 +5,23 @@
  */
 package java.data.dao;
 
+import java.data.model.Question;
+import java.framework.data.DataException;
+import java.sql.ResultSet;
+import java.util.List;
+
 /**
  *
  * @author andy4
  */
-public class QuestionDAO {
+public interface QuestionDAO {
+    
+    Question createQuestion();
+
+    Question createQuestion(ResultSet rs) throws DataException;
+
+    Question getQuestion(int question_key) throws DataException;
+
+    List<Question> getQuestion() throws DataException;
     
 }
