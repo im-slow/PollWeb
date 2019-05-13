@@ -1,5 +1,5 @@
 
-package it.univaq.f4i.iw.framework.data;
+package java.framework.data;
 
 /**
  *

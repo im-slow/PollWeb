@@ -1,0 +1,93 @@
+.navbar {
+  margin-bottom: 0;
+  background-color: #6c5ce7;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.navbar-brand {
+	color: white;
+}
+
+a {
+	color: white;
+}
+
+a:hover{
+	color: #c6c0c0;
+}
+
+.navbar-brand:hover {
+	color: #c6c0c0;
+	border-radius: 0px;
+	background-color: transparent;
+}
+
+body {
+  background: #eae8e8; /* colore sfondo */
+  color: #6c5ce7; /*colore sfondo 2 */
+  font-family: 'Montserrat', sans-serif;
+}
+h1,
+h2 {
+  font-weight: bold;
+}
+p {
+  font-size: 16px;
+  color: grey; /* testo */
+}
+
+.jumbotron {
+  background: #6c5ce7; /* colore sfondo */
+  color: white;
+  text-align: center;
+  border-radius: 0;
+}
+.jumbotron p {
+  color: white;
+  font-size: 26px;
+}
+
+.btn {
+  border-color: white;
+  color: white;
+}
+
+.btn:hover {
+  color: #6c5ce7; /* colore bottone quando si passa sopra(colore sfondo) */
+  background-color: white;
+  border-color: white;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: transparent;
+  border-color: white;
+  margin-bottom: 5px;
+}
+
+.btn-primary:hover {
+  color: #6c5ce7; /* colore bottone quando si passa sopra(colore sfondo) */
+  background-color: white;
+  border-color: white;
+}
+
+.btn-poll {
+  color: black;
+}
+
+.dropdown-menu li a {
+  padding: 10px;
+}
+
+.dropdown-item:hover{
+  color: #6c5ce7;
+  background-color: white;
+  border-radius: 0px;
+}
+
+.pb-40 {
+  padding-bottom: 40px;
+}

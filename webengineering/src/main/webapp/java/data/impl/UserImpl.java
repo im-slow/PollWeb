@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.univaq.iw.pollweb.data.impl;
+package java.data.impl;
 
 import it.univaq.iw.pollweb.data.model.User;
 import java.util.List;
