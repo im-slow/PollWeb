@@ -22,5 +22,5 @@ public interface UserDAO {
 
     User getUser(int user_key) throws DataException;
 
-    List<User> getUser() throws DataException;
+    List<User> getUsers() throws DataException;
 }
