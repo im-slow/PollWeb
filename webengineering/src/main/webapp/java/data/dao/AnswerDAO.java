@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.univaq.iw.pollweb.data.dao;
+package java.data.dao;
 
-import it.univaq.iw.pollweb.data.model.Answer;
-import it.univaq.iw.pollweb.data.model.Poll;
-import it.univaq.iw.pollweb.framework.data.DataException;
+import java.data.model.Answer;
+import java.data.model.Poll;
+import java.framework.data.DataException;
 import java.sql.ResultSet;
 import java.util.List;
 

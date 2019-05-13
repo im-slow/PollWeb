@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.univaq.iw.pollweb.data.impl;
+package java.data.impl;
 
-import it.univaq.iw.pollweb.data.model.Poll;
-import it.univaq.iw.pollweb.data.model.Question;
-import it.univaq.iw.pollweb.data.model.User;
+import java.data.model.Poll;
+import java.data.model.Question;
+import java.data.model.User;
 import java.util.List;
 
 /**
@@ -73,12 +73,12 @@ public class PollImpl implements Poll {
     }
     
     @Override
-    public boolean getStatePool() {
+    public boolean getStatePoll() {
         return state;
     }
 
     @Override
-    public String getURLPool() {
+    public String getURLPoll() {
         return url;
     }
     
@@ -118,12 +118,12 @@ public class PollImpl implements Poll {
     }
 
     @Override
-    public void setStatePool(boolean state) {
+    public void setStatePoll(boolean state) {
         this.state = state;
     }
 
     @Override
-    public void setURLPool(String url) {
+    public void setURLPoll(String url) {
         this.url = url;
     }
     

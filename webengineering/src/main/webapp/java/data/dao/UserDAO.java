@@ -3,12 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.univaq.iw.pollweb.data.dao;
+package java.data.dao;
+
+import java.data.model.User;
+import java.framework.data.DataException;
+import java.sql.ResultSet;
+import java.util.List;
 
 /**
  *
  * @author andy4
  */
-public class UserDAO {
+public interface UserDAO {
     
+    User createUser();
+
+    User createUser(ResultSet rs) throws DataException;
+
+    User getUser(int user_key) throws DataException;
+
+    List<User> getUsers() throws DataException;
 }
