@@ -1,5 +1,7 @@
 package test;
 
+import freemarker.core.HTMLOutputFormat;
+import freemarker.template.Configuration;
 import main.webapp.HTMLHelpers;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -16,6 +18,10 @@ public class Salutami extends javax.servlet.http.HttpServlet {
     private final SimpleDateFormat sdf = new SimpleDateFormat();
 
     protected void action_saluta_anonimo(HttpServletResponse response, HttpServletRequest request) throws IOException {
+        Configuration cfg = new Configuration(Configuration.VERSION_2_3_20);
+        cfg.setDefaultEncoding("UTF-8");
+        cfg.setOutputEncoding("UTF-8");
+        cfg.setOutputFormat(HTMLOutputFormat.INSTANCE); //Necessario per fare Sanitazer dell'HTML e evitare CrossSite Script
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
