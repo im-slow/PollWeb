@@ -1,4 +1,4 @@
-package main.webapp.servlet;
+package test;
 
 import main.webapp.HTMLHelpers;
 import javax.servlet.ServletConfig;

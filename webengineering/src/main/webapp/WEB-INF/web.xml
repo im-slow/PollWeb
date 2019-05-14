@@ -6,7 +6,7 @@
     <servlet>
         <description>Questa java.servlet implementa la funzione Y</description>
         <servlet-name>Salutami</servlet-name>
-        <servlet-class>main.webapp.servlet.Salutami</servlet-class>
+        <servlet-class>test.Salutami</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Salutami</servlet-name>

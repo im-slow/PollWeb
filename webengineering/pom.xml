@@ -29,7 +29,8 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
+      <version>LATEST</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat</groupId>
@@ -61,9 +62,18 @@
           <groupId>org.apache.tomcat.maven</groupId>
           <artifactId>tomcat7-maven-plugin</artifactId>
           <version>2.2</version>
+          <executions>
+            <execution>
+              <id>tomcat-run</id>
+              <goals>
+                <goal>exec-war-only</goal>
+              </goals>
+              <phase>package</phase>
+            </execution>
+          </executions>
           <configuration>
             <url>http://localhost:8080/manager/text</url>
-            <server>tomcat8</server>
+            <server>tomcat7</server>
             <username>admin</username>
             <password>Angelo1297</password>
           </configuration>
