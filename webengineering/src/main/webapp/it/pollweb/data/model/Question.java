@@ -37,6 +37,8 @@ public interface Question {
     String getMinimum();
     
     String getMaximum();
+
+    String getOption();
     
     Answer getAnswers();
     
@@ -57,7 +59,9 @@ public interface Question {
     void setMinimum(String min);
     
     void setMaximum(String max);
-    
+
+    void setOption(String option);
+
     void setAnswers(Answer answers);
     
 }

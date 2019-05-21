@@ -9,6 +9,9 @@ import it.pollweb.data.model.Poll;
 import it.pollweb.data.framework.data.DAO;
 import it.pollweb.data.framework.data.DataException;
 import it.pollweb.data.framework.data.DataLayer;
+import it.pollweb.data.proxy.AnswerProxy;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -18,13 +21,16 @@ import java.util.List;
  */
 public class AnswerDAO_MySQL extends DAO implements AnswerDAO{
 
+    private PreparedStatement sInstance, sInstanceByID, sInstanceByUser;
+    private PreparedStatement iInstance, uInstance, dInstance;
+
     public AnswerDAO_MySQL(DataLayer d) {
         super(d);
     }
 
     @Override
-    public Answer createAnswer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public AnswerProxy createAnswer() {
+        return new AnswerProxy(getDataLayer());
     }
 
     @Override

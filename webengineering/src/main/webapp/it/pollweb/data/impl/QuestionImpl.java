@@ -23,6 +23,7 @@ public class QuestionImpl implements Question {
     private int position;
     private String min;
     private String max;
+    private String option;
     private Answer answers;
     
     
@@ -36,6 +37,7 @@ public class QuestionImpl implements Question {
         position = 0;
         min = "";
         max = "";
+        option = "";
         answers = null;
     }
     
@@ -83,7 +85,12 @@ public class QuestionImpl implements Question {
     public String getMaximum() {
         return max;
     }
-    
+
+    @Override
+    public String getOption() {
+        return option;
+    };
+
     @Override
     public Answer getAnswers(){
         return answers;
@@ -132,6 +139,11 @@ public class QuestionImpl implements Question {
     @Override
     public void setMaximum(String max) {
         this.max = max;
+    }
+
+    @Override
+    public void setOption(String option){
+        this.option = option;
     }
     
     @Override

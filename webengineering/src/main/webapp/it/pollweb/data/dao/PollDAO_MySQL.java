@@ -9,6 +9,8 @@ import it.pollweb.data.model.Poll;
 import it.pollweb.data.framework.data.DAO;
 import it.pollweb.data.framework.data.DataException;
 import it.pollweb.data.framework.data.DataLayer;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -17,6 +19,9 @@ import java.util.List;
  * @author andy4
  */
 public class PollDAO_MySQL extends DAO implements PollDAO{
+
+    private PreparedStatement sInstance, sInstanceByID, sInstanceByUser;
+    private PreparedStatement iInstance, uInstance, dInstance;
 
     public PollDAO_MySQL(DataLayer d) {
         super(d);

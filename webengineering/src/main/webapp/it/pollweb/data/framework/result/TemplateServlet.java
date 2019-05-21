@@ -2,6 +2,11 @@ package it.pollweb.data.framework.result;
 
 import freemarker.core.HTMLOutputFormat;
 import freemarker.template.*;
+import it.pollweb.data.dao.PollWebDataLayer;
+import it.pollweb.data.dao.UserDAO;
+import it.pollweb.data.dao.UserDAO_MySQL;
+import it.pollweb.data.framework.data.DataException;
+import it.pollweb.data.framework.data.DataLayer;
 import it.pollweb.data.impl.UserImpl;
 import it.pollweb.data.model.User;
 
@@ -53,10 +58,24 @@ public class TemplateServlet extends HttpServlet {
         //impostiamo il tipo di output: in questo modo freemarker abiliterà il necessario escaping
         //set the output format, so that freemarker will enable the correspondoing escaping
         cfg.setOutputFormat(HTMLOutputFormat.INSTANCE);
+
+        /*
         User u = new UserImpl();
         u.setName("pippo");
         u.setEmail("pippo@gmail.com");
         u.setPassword("12345678");
+        */
+
+        User u = null;
+        try {
+            u = ((PollWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(1);
+        } catch (DataException e) {
+            e.printStackTrace();
+            System.out.println("il metodo é sbagliato");
+        }
+
+
+
         Map<String, Object> datamodel = new HashMap<String, Object>();
         datamodel.put("utente", u);
 

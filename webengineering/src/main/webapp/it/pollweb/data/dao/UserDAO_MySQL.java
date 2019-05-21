@@ -36,15 +36,15 @@ public class UserDAO_MySQL extends DAO implements UserDAO{
         try {
             super.init();
 
-            sUserByID = connection.prepareStatement("SELECT * FROM user WHERE ID=?");
-            sUserByEmail = connection.prepareStatement("SELECT * FROM user WHERE ID=?");
-            sUsers = connection.prepareStatement("SELECT ID FROM user");
+            sUserByID = connection.prepareStatement("SELECT * FROM utente WHERE ID=?");
+            sUserByEmail = connection.prepareStatement("SELECT * FROM utente WHERE email=?");
+            sUsers = connection.prepareStatement("SELECT ID FROM utente");
        
-            iUser = connection.prepareStatement("INSERT INTO user (nome,email,pwd) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            uUser = connection.prepareStatement("UPDATE user SET nome=?,email=?,pwd=? WHERE ID=?");
-            dUser = connection.prepareStatement("DELETE FROM user WHERE ID=?");
+            iUser = connection.prepareStatement("INSERT INTO utente (nome,email,pwd) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            uUser = connection.prepareStatement("UPDATE utente SET nome=?,email=?,pwd=? WHERE ID=?");
+            dUser = connection.prepareStatement("DELETE FROM utente WHERE ID=?");
 
-            uUserRole = connection.prepareStatement("UPDATE appartiene SET IDuser=?,IDgruppo=? WHERE IDuser=?"); // ????
+            uUserRole = connection.prepareStatement("UPDATE appartiene SET IDutente=?,IDgruppo=? WHERE IDutente=?"); // ????
         } catch (SQLException ex) {
             throw new DataException("Error initializing newspaper data layer", ex);
          }
