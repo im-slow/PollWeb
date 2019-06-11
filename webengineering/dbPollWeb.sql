@@ -64,11 +64,11 @@ create table answer(
 #associazione(n,m) utente <--> sondaggio
 create table signIn(
 	IDuser integer unsigned not null,
-    IDpool integer unsigned not null,
+    IDpoll integer unsigned not null,
     userStatus boolean not null,
-    primary key(IDuser, IDpool),
+    primary key(IDuser, IDpoll),
     constraint signIn_user foreign key (IDuser) references utente(ID) on update cascade on delete cascade,
-    constraint signIn_pool foreign key (IDpool) references pool(ID) on update cascade on delete cascade
+    constraint signIn_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
 );
 
 #associazione(n,m) servizio <---> gruppo

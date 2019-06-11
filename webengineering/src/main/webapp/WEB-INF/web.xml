@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>TemplateServlet</servlet-name>
-        <servlet-class>it.pollweb.data.framework.result.TemplateServlet</servlet-class>
+        <servlet-class>framework.result.TemplateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TemplateServlet</servlet-name>

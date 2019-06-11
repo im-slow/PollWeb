@@ -1,5 +1,5 @@
 
-package it.pollweb.data.framework.data;
+package framework.data;
 
 /**
  *

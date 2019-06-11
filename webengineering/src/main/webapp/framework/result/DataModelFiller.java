@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.pollweb.data.framework.result;
+package framework.result;
 
 import java.util.Map;
 

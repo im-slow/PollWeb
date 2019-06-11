@@ -1,4 +1,4 @@
-package it.pollweb.data.framework.security;
+package framework.security;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
 package it.pollweb.data.dao;
 
-import it.pollweb.data.framework.data.DataException;
-import it.pollweb.data.framework.data.DataLayer;
+import framework.data.DataException;
+import framework.data.DataLayer;
 import it.pollweb.data.model.*;
 
 import javax.sql.DataSource;

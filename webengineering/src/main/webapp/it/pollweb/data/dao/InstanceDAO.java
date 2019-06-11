@@ -1,12 +1,9 @@
 package it.pollweb.data.dao;
 
-import it.pollweb.data.framework.data.DataException;
-import it.pollweb.data.model.Answer;
+import framework.data.DataException;
 import it.pollweb.data.model.Instance;
-import it.pollweb.data.model.Poll;
 
 import java.sql.ResultSet;
-import java.util.List;
 
 public interface InstanceDAO {
 

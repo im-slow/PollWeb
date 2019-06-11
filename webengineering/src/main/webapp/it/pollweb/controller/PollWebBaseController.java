@@ -1,7 +1,7 @@
 package it.pollweb.controller;
 
 import it.pollweb.data.dao.PollWebDataLayer;
-import it.pollweb.data.framework.result.FailureResult;
+import framework.result.FailureResult;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;

@@ -6,7 +6,7 @@
 package it.pollweb.data.proxy;
 
 import it.pollweb.data.impl.AnswerImpl;
-import it.pollweb.data.framework.data.DataLayer;
+import framework.data.DataLayer;
 
 /**
  *

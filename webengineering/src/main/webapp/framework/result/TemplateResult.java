@@ -1,4 +1,4 @@
-package it.pollweb.data.framework.result;
+package framework.result;
 
 import freemarker.core.HTMLOutputFormat;
 import freemarker.core.JSONOutputFormat;
