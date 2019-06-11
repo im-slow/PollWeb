@@ -1,12 +1,12 @@
 package it.pollweb.controller;
 
 import it.pollweb.data.dao.PollWebDataLayer;
-import it.pollweb.data.framework.data.DataException;
-import it.pollweb.data.framework.result.FailureResult;
-import it.pollweb.data.framework.result.SplitSlashesFmkExt;
-import it.pollweb.data.framework.result.TemplateManagerException;
-import it.pollweb.data.framework.result.TemplateResult;
-import it.pollweb.data.framework.security.SecurityLayer;
+import framework.data.DataException;
+import framework.result.FailureResult;
+import framework.result.SplitSlashesFmkExt;
+import framework.result.TemplateManagerException;
+import framework.result.TemplateResult;
+import framework.security.SecurityLayer;
 import it.pollweb.data.model.User;
 
 import javax.servlet.ServletException;

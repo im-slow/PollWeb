@@ -1,4 +1,4 @@
-package it.pollweb.data.framework.data;
+package framework.data;
 
 import java.sql.Connection;
 import java.sql.SQLException;

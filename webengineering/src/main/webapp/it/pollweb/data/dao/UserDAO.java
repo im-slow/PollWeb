@@ -6,7 +6,7 @@
 package it.pollweb.data.dao;
 
 import it.pollweb.data.model.User;
-import it.pollweb.data.framework.data.DataException;
+import framework.data.DataException;
 import java.sql.ResultSet;
 import java.util.List;
 

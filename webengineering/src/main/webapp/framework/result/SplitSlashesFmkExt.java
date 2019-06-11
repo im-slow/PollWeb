@@ -1,9 +1,9 @@
-package it.pollweb.data.framework.result;
+package framework.result;
 
 import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;
 
-import it.pollweb.data.framework.security.SecurityLayer;
+import framework.security.SecurityLayer;
 import java.util.List;
 
 public class SplitSlashesFmkExt implements TemplateMethodModelEx {

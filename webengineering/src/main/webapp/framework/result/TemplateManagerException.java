@@ -1,4 +1,4 @@
-package it.pollweb.data.framework.result;
+package framework.result;
 
 public class TemplateManagerException extends Exception {
 

@@ -1,13 +1,9 @@
-package it.pollweb.data.framework.result;
+package framework.result;
 
 import freemarker.core.HTMLOutputFormat;
 import freemarker.template.*;
 import it.pollweb.data.dao.PollWebDataLayer;
-import it.pollweb.data.dao.UserDAO;
-import it.pollweb.data.dao.UserDAO_MySQL;
-import it.pollweb.data.framework.data.DataException;
-import it.pollweb.data.framework.data.DataLayer;
-import it.pollweb.data.impl.UserImpl;
+import framework.data.DataException;
 import it.pollweb.data.model.User;
 
 import java.io.IOException;

@@ -53,18 +53,6 @@ create table question(
     constraint question_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
 );
 
-#le risposte alle domande fanno riferimento a questa istanza, 
-#in modo da essere associate all'utente che ha compilato un dato sondaggio
-create table instance(
-	ID integer unsigned not null primary key auto_increment,
-	userStatus boolean not null,
-    submission timestamp,
-	IDutente integer unsigned not null,
-    IDpoll integer unsigned not null,
-    constraint instance_utente foreign key (IDutente) references utente(ID) on update cascade on delete cascade,
-    constraint instance_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
-);
-
 #risposte
 create table answer(
 	ID integer unsigned not null primary key auto_increment,
@@ -73,16 +61,17 @@ create table answer(
     constraint answer_question foreign key (IDquestion) references question(ID) on update cascade on delete cascade
 );
 
-#associazione (n,m) risposta<-->instanza
-create table submittedBy(
-	IDanswer integer unsigned not null,
-    IDinstance integer unsigned not null,
-    primary key(IDanswer, IDinstance),
-    constraint instance_answer foreign key (IDanswer) references answer(ID) on update cascade on delete cascade,
-	constraint answer_instance foreign key (IDinstance) references instance(ID) on update cascade on delete cascade
+#associazione(n,m) utente <--> sondaggio
+create table signIn(
+	IDuser integer unsigned not null,
+    IDpoll integer unsigned not null,
+    userStatus boolean not null,
+    primary key(IDuser, IDpoll),
+    constraint signIn_user foreign key (IDuser) references utente(ID) on update cascade on delete cascade,
+    constraint signIn_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
 );
 
-#associazione (n,m) servizio <---> gruppo
+#associazione(n,m) servizio <---> gruppo
 create table utilizza(
 	IDservizio integer unsigned not null,
     IDgruppo integer unsigned not null,
@@ -91,7 +80,7 @@ create table utilizza(
     constraint utilizza_gruppo foreign key (IDgruppo) references gruppo(ID) on update cascade on delete cascade
 );
 
-#associazione (n,m) utente <---> gruppo
+#associazione(n,m) utente <---> gruppo
 create table appartiene(
 	IDutente integer unsigned not null,
     IDgruppo integer unsigned not null,
@@ -99,3 +88,4 @@ create table appartiene(
     constraint appartiene_utente foreign key (IDutente) references utente(ID) on update cascade on delete cascade,
     constraint appartiene_gruppo foreign key (IDgruppo) references gruppo(ID) on update cascade on delete cascade
 );
+

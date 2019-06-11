@@ -7,9 +7,9 @@ package it.pollweb.data.dao;
 
 import it.pollweb.data.model.User;
 import it.pollweb.data.proxy.UserProxy;
-import it.pollweb.data.framework.data.DAO;
-import it.pollweb.data.framework.data.DataException;
-import it.pollweb.data.framework.data.DataLayer;
+import framework.data.DAO;
+import framework.data.DataException;
+import framework.data.DataLayer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

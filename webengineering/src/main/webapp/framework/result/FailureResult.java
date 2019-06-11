@@ -1,4 +1,4 @@
-package it.pollweb.data.framework.result;
+package framework.result;
 
 import java.io.IOException;
 import java.util.logging.Level;
