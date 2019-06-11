@@ -37,7 +37,7 @@
     </context-param>
     <context-param>
         <param-name>view.data.author</param-name>
-        <param-value>Giuseppe Della Penna</param-value>
+        <param-value>half-ABAC</param-value>
     </context-param>
     <context-param>
         <param-name>view.data.homepage_url</param-name>
