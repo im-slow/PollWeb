@@ -4,12 +4,66 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <description>Questa java.servlet implementa la funzione Y</description>
-        <servlet-name>Salutami</servlet-name>
-        <servlet-class>test.Salutami</servlet-class>
+        <servlet-name>TemplateServlet</servlet-name>
+        <servlet-class>it.pollweb.data.framework.result.TemplateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Salutami</servlet-name>
-        <url-pattern>/salutami</url-pattern>
+        <servlet-name>TemplateServlet</servlet-name>
+        <url-pattern>/TemplateServlet</url-pattern>
     </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>TemplateServlet</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <param-name>view.outline_template</param-name>
+        <param-value>outline.ftl.html</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view.date_format</param-name>
+        <param-value>dd/MM/yyyy hh:mm:ss</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view.debug</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view.template_directory</param-name>
+        <param-value>templates</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view.data.author</param-name>
+        <param-value>half-ABAC</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view.data.homepage_url</param-name>
+        <param-value>homepage</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view.encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view.error_template</param-name>
+        <param-value>error.ftl.html</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>User</servlet-name>
+        <servlet-class>it.pollweb.controller.MakeUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>User</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+    <resource-ref>
+        <res-ref-name>jdbc/webdb2</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+
 </web-app>

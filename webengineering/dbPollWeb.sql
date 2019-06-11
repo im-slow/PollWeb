@@ -61,7 +61,7 @@ create table answer(
     constraint answer_question foreign key (IDquestion) references question(ID) on update cascade on delete cascade
 );
 
-#utente <--> sondaggio
+#associazione(n,m) utente <--> sondaggio
 create table signIn(
 	IDuser integer unsigned not null,
     IDpool integer unsigned not null,
@@ -71,4 +71,21 @@ create table signIn(
     constraint signIn_pool foreign key (IDpool) references pool(ID) on update cascade on delete cascade
 );
 
+#associazione(n,m) servizio <---> gruppo
+create table utilizza(
+	IDservizio integer unsigned not null,
+    IDgruppo integer unsigned not null,
+    primary key(IDservizio, IDgruppo),
+    constraint utilizza_servizio foreign key (IDservizio) references servizio(ID) on update cascade on delete cascade,
+    constraint utilizza_gruppo foreign key (IDgruppo) references gruppo(ID) on update cascade on delete cascade
+);
+
+#associazione(n,m) utente <---> gruppo
+create table appartiene(
+	IDutente integer unsigned not null,
+    IDgruppo integer unsigned not null,
+    primary key(IDutente, IDgruppo),
+    constraint appartiene_utente foreign key (IDutente) references utente(ID) on update cascade on delete cascade,
+    constraint appartiene_gruppo foreign key (IDgruppo) references gruppo(ID) on update cascade on delete cascade
+);
 
