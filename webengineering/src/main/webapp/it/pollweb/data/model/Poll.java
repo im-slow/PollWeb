@@ -15,6 +15,8 @@ public interface Poll {
 
     int getKey();
 
+    int getIDNum();
+
     String getTitle();
     
     String getOpenText();
@@ -32,6 +34,8 @@ public interface Poll {
     String getURLPoll();
     
     void setKey(int key);
+
+    void setIDNum(int idNum);
 
     void setTitle(String title);
     

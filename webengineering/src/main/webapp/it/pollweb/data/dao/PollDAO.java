@@ -7,8 +7,9 @@
 package it.pollweb.data.dao;
 
 
-import it.pollweb.data.model.Poll;
 import framework.data.DataException;
+import it.pollweb.data.model.Poll;
+
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public interface PollDAO {
     Poll createPoll(ResultSet rs) throws DataException;
 
     Poll getPoll(int poll_key) throws DataException;
+
+    Poll getPoll(String email) throws DataException;
 
     List<Poll> getPoll() throws DataException;
 

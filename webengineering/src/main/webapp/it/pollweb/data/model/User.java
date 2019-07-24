@@ -5,6 +5,8 @@
  */
 package it.pollweb.data.model;
 
+import java.util.List;
+
 /**
  *
  * @author andy4
@@ -18,6 +20,10 @@ public interface User {
     String getEmail();
     
     String getPassword();
+
+    List<Instance> getInstances();
+
+    List<Group> getGroups();
     
     void setKey(int key);
 
@@ -26,5 +32,9 @@ public interface User {
     void setEmail(String email);
     
     void setPassword(String password);
+
+    void setInstances(List<Instance> instances);
+
+    void setGroups(List<Group> groups);
     
 }

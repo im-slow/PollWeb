@@ -8,6 +8,8 @@ package it.pollweb.data.impl;
 import it.pollweb.data.model.Answer;
 import it.pollweb.data.model.Question;
 
+import java.util.List;
+
 /**
  *
  * @author andy4
@@ -24,7 +26,7 @@ public class QuestionImpl implements Question {
     private String min;
     private String max;
     private String option;
-    private Answer answers;
+    private List<Answer> answers;
     
     
     public QuestionImpl() {        
@@ -92,7 +94,7 @@ public class QuestionImpl implements Question {
     };
 
     @Override
-    public Answer getAnswers(){
+    public List<Answer> getAnswers(){
         return answers;
     }
     
@@ -147,7 +149,7 @@ public class QuestionImpl implements Question {
     }
     
     @Override
-    public void setAnswers(Answer answers){
+    public void setAnswers(List<Answer> answers){
         this.answers = answers;
     }
     

@@ -109,9 +109,9 @@ public class UserDAO_MySQL extends DAO implements UserDAO{
             while (rs.next()) {
                 result.add(getUser(rs.getInt("ID")));
             }
+            return result;
         } catch (SQLException ex){
-            throw new DataException("Unable to load users", ex);    
+            throw new DataException("Unable to load users", ex);
         }
-        return null;
     }    
 }

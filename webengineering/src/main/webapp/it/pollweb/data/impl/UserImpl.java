@@ -5,7 +5,11 @@
  */
 package it.pollweb.data.impl;
 
+import it.pollweb.data.model.Group;
+import it.pollweb.data.model.Instance;
 import it.pollweb.data.model.User;
+
+import java.util.List;
 
 /**
  *
@@ -16,12 +20,16 @@ public class UserImpl implements User {
     private String name;
     private String email;
     private String password;
+    private List<Instance> instances;
+    private List<Group> groups;
 
     public UserImpl() {        
         key = 0;
         name = "";
         email = "";
         password = "";
+        instances = null;
+        groups = null;
     }
 
     @Override
@@ -43,7 +51,15 @@ public class UserImpl implements User {
     public String getPassword() {
         return password;
     }
-    
+
+    @Override
+    public List<Instance> getInstances(){
+        return instances;
+    }
+
+    @Override
+    public List<Group> getGroups() { return groups; }
+
     @Override
     public void setKey(int key) {
         this.key = key;
@@ -70,4 +86,11 @@ public class UserImpl implements User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public void setInstances(List<Instance> instances) { this.instances = instances; }
+
+    @Override
+    public void setGroups(List<Group> groups) { this.groups = groups; }
+
 }
