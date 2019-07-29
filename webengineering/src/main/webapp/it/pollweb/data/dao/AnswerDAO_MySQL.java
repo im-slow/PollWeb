@@ -74,8 +74,10 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO{
         return new AnswerProxy(getDataLayer());
     }
 
+
     @Override
     public AnswerProxy createAnswer(ResultSet rs) throws DataException {
+        /*
         try{
             AnswerProxy a = createAnswer();
             a.setKey(rs.getInt("ID"));
@@ -85,7 +87,10 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO{
             throw new DataException("Unable to create poll object form ResultSet", ex);
             return null;
         }
+        */
+        return null;
     }
+
 
     @Override
     public Answer getAnswer(int answer_key) throws DataException {
@@ -104,6 +109,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO{
 
     @Override
     public List<Answer> getAnswers() throws DataException {
+        /*
         List<Answer> result = new ArrayList<Answer>();
         try (ResultSet rs = sAnswers.executeQuery()) {
             while(rs.next()) {
@@ -114,7 +120,10 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO{
             throw new DataException("Unable to load poll by email", ex);
             return null;
         }
+        */
+        return null;
     }
+
 
     @Override
     public List<Answer> getAnswers(Poll poll) throws DataException {

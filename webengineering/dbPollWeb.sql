@@ -75,16 +75,6 @@ create table answer(
     constraint answer_question foreign key (IDquestion) references question(ID) on update cascade on delete cascade
 );
 
-#associazione(n,m) utente <--> sondaggio
-create table signIn(
-	IDuser integer unsigned not null,
-    IDpoll integer unsigned not null,
-    userStatus boolean not null,
-    primary key(IDuser, IDpoll),
-    constraint signIn_user foreign key (IDuser) references utente(ID) on update cascade on delete cascade,
-    constraint signIn_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
-);
-
 #associazione (n,m) risposta<-->instanza
 create table submittedBy(
 	IDanswer integer unsigned not null,

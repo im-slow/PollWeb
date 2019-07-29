@@ -87,7 +87,11 @@ public class QuestionProxy extends QuestionImpl {
         super.setAnswers(answers);
         this.dirty = true;
     }
-    
+
+    public void setPollKey(int poll_key) {
+        this.poll_key = poll_key;
+    }
+
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }

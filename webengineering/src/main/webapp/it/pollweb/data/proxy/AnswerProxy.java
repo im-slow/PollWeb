@@ -35,7 +35,11 @@ public class AnswerProxy extends AnswerImpl{
         super.setAnswer(answer);
         this.dirty = true;
     }
-    
+
+    public void setQuestionKey(int question_key){
+        this.question_key = question_key;
+    }
+
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }

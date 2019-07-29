@@ -7,6 +7,7 @@ package it.pollweb.data.proxy;
 
 import framework.data.DataException;
 import framework.data.DataLayer;
+import it.pollweb.data.dao.QuestionDAO;
 import it.pollweb.data.dao.UserDAO;
 import it.pollweb.data.impl.PollImpl;
 import it.pollweb.data.model.Question;
@@ -59,7 +60,19 @@ public class PollProxy extends PollImpl {
         //version will be still attached
         return super.getResponsible();
     }
-    
+
+    @Override
+    public List<Question> getQuestions() {
+        if(super.getQuestions() == null) {
+            try {
+                super.setQuestions(((QuestionDAO) dataLayer.getDAO(Question.class)).getQuestionsByPoll(this.getKey()));
+            } catch (DataException ex) {
+                Logger.getLogger(QuestionProxy.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return super.getQuestions();
+    }
+
     @Override
     public void setTitle(String title){
         super.setTitle(title);

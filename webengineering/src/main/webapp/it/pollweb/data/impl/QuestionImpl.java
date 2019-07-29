@@ -52,11 +52,9 @@ public class QuestionImpl implements Question {
     public String getCode(){
         return code;
     }
-            
+
     @Override
-    public String getQuestionText(){
-        return text;
-    }    
+    public String getQuestionText() { return text; }
     
     @Override
     public String getNote(){
