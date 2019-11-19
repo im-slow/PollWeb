@@ -38,6 +38,18 @@ public class InstanceProxy extends InstanceImpl {
         this.dirty = true;
     }
 
+    /*
+    @Override
+    public void setUserKey(int user_key){
+        this.user_key = user_key;
+    }
+
+    @Override
+    public void setPollKey(int poll_key){
+        this.poll_key = poll_key;
+    }
+    */
+
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }

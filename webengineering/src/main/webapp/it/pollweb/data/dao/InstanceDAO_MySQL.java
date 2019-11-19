@@ -63,16 +63,15 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO {
 
     @Override
     public InstanceProxy createInstance(ResultSet rs) throws DataException {
-        /*
         try{
-
             InstanceProxy i = createInstance();
             i.setKey(rs.getInt("ID"));
-            i.setAnswer(rs.getString("answer"));
+            i.setUserStatus(rs.getBoolean("userStatus"));
+            i.setSubmission(rs.getDate("submission"));
+
         } catch (SQLException ex) {
             throw new DataException("Unable to create poll object form ResultSet", ex);
         }
-        */
         return null;
     }
 
