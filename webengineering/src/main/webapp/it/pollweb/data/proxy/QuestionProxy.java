@@ -9,6 +9,8 @@ import framework.data.DataLayer;
 import it.pollweb.data.impl.QuestionImpl;
 import it.pollweb.data.model.Answer;
 
+import java.util.List;
+
 /**
  *
  * @author andy4
@@ -16,11 +18,14 @@ import it.pollweb.data.model.Answer;
 public class QuestionProxy extends QuestionImpl {
     protected boolean dirty;
     protected DataLayer dataLayer;
+    protected int poll_key;
     
     public QuestionProxy(DataLayer d) {
         super();
         this.dataLayer = d;
         this.dirty = false;
+        this.poll_key = 0;
+
     }
     
     @Override
@@ -78,11 +83,15 @@ public class QuestionProxy extends QuestionImpl {
     }
     
     @Override
-    public void setAnswers(Answer answers){
+    public void setAnswers(List<Answer> answers){
         super.setAnswers(answers);
         this.dirty = true;
     }
-    
+
+    public void setPollKey(int poll_key) {
+        this.poll_key = poll_key;
+    }
+
     public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }

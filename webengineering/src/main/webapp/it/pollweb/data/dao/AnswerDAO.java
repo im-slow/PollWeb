@@ -21,14 +21,12 @@ public interface AnswerDAO {
 
     Answer createAnswer(ResultSet rs) throws DataException;
 
-    Answer getAnswer(int answer_key) throws DataException;
+    Answer getAnswerByID(int answer_key) throws DataException;
 
     List<Answer> getAnswers() throws DataException;
     
-    List<Answer> getAnswers(Poll poll) throws DataException;
+    List<Answer> getAnswersByQuestion(int question_key) throws DataException;
 
     void storeAnswer(Answer answer) throws DataException;
-    
-    void deleteAnswer(Answer answer) throws DataException;
     
 }

@@ -1,6 +1,6 @@
 drop database if exists dbPollWeb;
-create database dbPollWeb;
-use dbPollWeb;
+create database dbpollweb;
+use dbpollweb;
 
 #servizi
 create table servizio(
@@ -20,6 +20,7 @@ create table gruppo(
 create table utente(
 	ID integer unsigned not null primary key auto_increment,
     nome varchar(32) not null unique,
+    cognome varchar(32) not null unique,
     email varchar(255) not null,
     pwd varchar(255) not null
 );
@@ -27,12 +28,13 @@ create table utente(
 #sondaggio
 create table poll(
 	ID integer unsigned not null primary key auto_increment,
+    idNum integer not null unique,
     title varchar(32) not null unique,
     openText varchar(255) not null unique,
     closeText varchar(255) not null unique,
-    openPool boolean not null unique,
-    statePool boolean not null unique,
-    URLPool varchar(255) not null,
+    openPoll boolean not null unique,
+    statePoll boolean not null unique,
+    URLPoll varchar(255) not null,
     IDuser integer unsigned not null,
     constraint poll_user foreign key (IDuser) references utente(ID) on update cascade on delete cascade
 );
@@ -73,6 +75,7 @@ create table answer(
     constraint answer_question foreign key (IDquestion) references question(ID) on update cascade on delete cascade
 );
 
+<<<<<<< HEAD
 #associazione(n,m) utente <--> sondaggio
 create table signIn(
 	IDuser integer unsigned not null,
@@ -82,6 +85,8 @@ create table signIn(
     constraint signIn_user foreign key (IDuser) references utente(ID) on update cascade on delete cascade,
     constraint signIn_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
 );
+=======
+>>>>>>> 65a9f8965790630e5f97d0c868d890b2e9d8ba98
 #associazione (n,m) risposta<-->instanza
 create table submittedBy(
 	IDanswer integer unsigned not null,

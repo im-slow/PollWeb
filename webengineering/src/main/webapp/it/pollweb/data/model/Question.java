@@ -5,6 +5,8 @@
  */
 package it.pollweb.data.model;
 
+import java.util.List;
+
 /**
  *
  * @author andy4
@@ -40,7 +42,7 @@ public interface Question {
 
     String getOption();
     
-    Answer getAnswers();
+    List<Answer> getAnswers();
     
     void setKey(int key);
     
@@ -62,6 +64,6 @@ public interface Question {
 
     void setOption(String option);
 
-    void setAnswers(Answer answers);
+    void setAnswers(List<Answer> answers);
     
 }

@@ -18,6 +18,7 @@ import java.util.List;
 public class PollImpl implements Poll {
 
     private int key;
+    private int idNum;
     private String title;
     private String openText;
     private String closeText;
@@ -29,6 +30,7 @@ public class PollImpl implements Poll {
 
     public PollImpl() {        
         key = 0;
+        idNum = 0;
         title = "";
         openText = "";
         closeText = "";
@@ -36,11 +38,17 @@ public class PollImpl implements Poll {
         responsible = null;
         open = true;
         state = true;
+        url = "";
     }
 
     @Override
     public int getKey() {
         return key;
+    }
+
+    @Override
+    public int getIDNum() {
+        return idNum;
     }
 
     @Override
@@ -86,6 +94,11 @@ public class PollImpl implements Poll {
     @Override
     public void setKey(int key) {
         this.key = key;
+    }
+
+    @Override
+    public void setIDNum(int idNum) {
+        this.idNum = idNum;
     }
 
     @Override
