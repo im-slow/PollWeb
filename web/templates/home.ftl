@@ -16,7 +16,7 @@
         <div class="section-content">
             <div class="title-wrap mb-5">
                 <h2 class="section-title">Sondaggi <b>popolari</b></h2>
-                <p class="section-sub-title">Qui sono presenti i sondaggi più seguiti</p>
+                <p class="section-sub-title">Qui sono presenti i sondaggi  seguiti</p>
             </div>
             <div class="row">
                 <!-- Blog -->

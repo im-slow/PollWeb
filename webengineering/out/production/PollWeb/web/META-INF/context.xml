@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/Newspaper_Example_DAO">
-  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="10" maxIdle="5" maxWait="10000" name="jdbc/webdb2" password="Narcosnoyz1297" type="javax.sql.DataSource" url="jdbc:mysql://localhost/dbpollweb?serverTimezone=UTC" username="root"/>
-</Context>
