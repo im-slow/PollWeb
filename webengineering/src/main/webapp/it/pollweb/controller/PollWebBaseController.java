@@ -2,7 +2,6 @@ package it.pollweb.controller;
 
 import it.pollweb.data.dao.PollWebDataLayer;
 import framework.result.FailureResult;
-
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 public abstract class PollWebBaseController extends HttpServlet {
 
-    @Resource(name = "jdbc/webdb2")
+    @Resource(name = "jdbc/dbPollWeb")
     private DataSource ds;
 
     protected abstract void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException;

@@ -35,7 +35,7 @@ public class MakeUser extends PollWebBaseController {
                 //aggiungiamo al template un wrapper che ci permette di chiamare la funzione stripSlashes
                 //add to the template a wrapper object that allows to call the stripslashes function
                 request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-                res.activate("article.ftl.html", request, response);
+                res.activate("index.ftl.html", request, response);
             } else {
                 request.setAttribute("message", "Unable to load user");
                 action_error(request, response);

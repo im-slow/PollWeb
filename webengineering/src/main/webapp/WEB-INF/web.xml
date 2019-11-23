@@ -21,7 +21,7 @@
     </welcome-file-list>
     <context-param>
         <param-name>view.outline_template</param-name>
-        <param-value>outline.ftl.html</param-value>
+        <param-value>index.ftl.html</param-value>
     </context-param>
     <context-param>
         <param-name>view.date_format</param-name>
@@ -60,7 +60,7 @@
         <url-pattern>/user</url-pattern>
     </servlet-mapping>
     <resource-ref>
-        <res-ref-name>jdbc/webdb2</res-ref-name>
+        <res-ref-name>jdbc/dbPollWeb</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>

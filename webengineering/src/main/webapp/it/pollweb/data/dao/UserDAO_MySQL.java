@@ -21,7 +21,8 @@ import java.util.List;
  *
  * @author andy4
  */
-public class UserDAO_MySQL extends DAO implements UserDAO{
+
+public class UserDAO_MySQL extends DAO implements UserDAO {
     
     private PreparedStatement sUsers, sUserByID, sUserByEmail;
     private PreparedStatement iUser, uUser, dUser;
@@ -77,9 +78,9 @@ public class UserDAO_MySQL extends DAO implements UserDAO{
         try {
             UserProxy a = createUser();
             a.setKey(rs.getInt("ID"));
-            a.setName(rs.getString("name"));
+            a.setName(rs.getString("nome"));
             a.setEmail(rs.getString("email"));
-            a.setPassword(rs.getString("password"));
+            a.setPassword(rs.getString("pwd"));
             return a;
         } catch (SQLException ex) {
             throw new DataException("Unable to create author object form ResultSet", ex);
