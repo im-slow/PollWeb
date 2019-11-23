@@ -6,10 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19d0611b-b603-4a19-bf55-7d5c20d1fc6c" name="Default Changelist" comment="">
+    <list default="true" id="19d0611b-b603-4a19-bf55-7d5c20d1fc6c" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/home.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/home.ftl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,6 +195,14 @@
       <workItem from="1574532838763" duration="1999000" />
       <workItem from="1574534876871" duration="129000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1574535707575</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574535707575</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -227,5 +234,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/webengineering" />
     </ignored-roots>
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
