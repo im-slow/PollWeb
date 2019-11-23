@@ -1,8 +1,4 @@
 /webengineering/target/
-<<<<<<< HEAD
-/.webengineering/idea
-./webengineering/out
-=======
 /.idea
 webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml
 webengineering/.idea/dataSources.xml
@@ -150,39 +146,5 @@ webengineering/out/production/Web Engineering/poolweb/framework/result/TemplateR
 webengineering/out/production/Web Engineering/poolweb/framework/security/SecurityLayer.class
 webengineering/Web Engineering.iml
 webengineering/web/META-INF/context.xml
-webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml
-webengineering/.idea/libraries/lib.xml
-webengineering/.idea/libraries/lib1.xml
-webengineering/.idea/vcs.xml
-webengineering/.idea/workspace.xml
-webengineering/Web Engineering.iml
-webengineering/web/META-INF/context.xml
-webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml
-webengineering/.idea/libraries/lib.xml
-webengineering/.idea/libraries/lib1.xml
-webengineering/.idea/vcs.xml
-webengineering/.idea/workspace.xml
-webengineering/Web Engineering.iml
-webengineering/web/META-INF/context.xml
-webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml
-webengineering/.idea/libraries/lib.xml
-webengineering/.idea/libraries/lib1.xml
-webengineering/.idea/vcs.xml
-webengineering/.idea/workspace.xml
-webengineering/Web Engineering.iml
-webengineering/web/META-INF/context.xml
 *.xml
 *.iml
-webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml
-webengineering/.idea/libraries/lib.xml
-webengineering/.idea/libraries/lib1.xml
-webengineering/.idea/vcs.xml
-webengineering/.idea/workspace.xml
-webengineering/Web Engineering.iml
-webengineering/web/META-INF/context.xml
-webengineering/web/META-INF/context.xml
-webengineering/Web Engineering.iml
-webengineering/.idea/workspace.xml
-webengineering/.idea/vcs.xml
-webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml
->>>>>>> f38a7dcb7bf4edf80f908beaee2cb5aa67803899

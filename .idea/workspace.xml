@@ -1,102 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PollWeb:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="19d0611b-b603-4a19-bf55-7d5c20d1fc6c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/PollWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PollWeb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/pollweb__exploded.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webengineering/.idea/artifacts/Web_Engineering_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webengineering/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/META-INF/context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/controller/GetUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/controller/PoolWebBaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/dao/PollDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/dao/PollDAO_MySQL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/dao/PoolWebDataLayer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/dao/UserDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/dao/UserDAO_MySQL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/impl/PollImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/impl/UserImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/model/Poll.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/proxy/PollProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/data/proxy/UserProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/data/DAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/data/DataException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/data/DataLayer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/result/DataModelFiller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/result/FailureResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/result/SplitSlashesFmkExt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/result/StreamResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/result/TemplateManagerException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/result/TemplateResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/classes/poolweb/framework/security/SecurityLayer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/lib/freemarker.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/css/style.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/icons/animat-checkmark.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/icons/animat-customize.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/icons/animat-responsive.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/app-chat-mockup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/app-profile-mockup.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/appstore-btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/blog-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/blog-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/blog-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/blog-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/client-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/client-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/client-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/client-4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/client-5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/client-6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/hero-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/hero-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/hero.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/iphone-x-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/iphone-x-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/photo-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/playstore-btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/img/survey4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/js/app.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/bootstrap/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/bootstrap/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/bootstrap/popper.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/countTo/jquery.countTo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/isotope/isotope.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/jQueryValidation/jquery.validate.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/lightcase/lightcase.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/lightcase/lightcase.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/owlcarousel/owl.carousel.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/owlcarousel/owl.carousel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/select2/select2.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/select2/select2.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/style/vendor/waypoints/waypoint.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/article.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/compose_list.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/compose_single.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/error.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/home.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/issue.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/issue_list.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/outline.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/write_list.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/out/artifacts/Web_Engineering_war_exploded/templates/write_single.ftl.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/web/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webengineering/web/META-INF/context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webengineering/web/templates/home.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/webengineering/web/templates/home.ftl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,17 +46,29 @@
     <option name="frameworksView" value="false" />
     <option name="showModules" value="false" />
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="ProjectId" id="1U1fEuri1PTMYbb4IrXw9I5RDEo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="pollweb" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563971474339" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="nodejs.protractor.protractor_package" value="" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -177,25 +106,25 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="Tomcat 8.5.38" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.38" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 8.5.38" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.38" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="pollweb: exploded">
+        <artifact name="PollWeb:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_progetto" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_PollWeb_3" />
       </server-settings>
+      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
+      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="60184" />
+        <option name="DEBUG_PORT" value="64337" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -245,7 +174,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="pollweb: exploded" />
+          <artifact name="PollWeb:war exploded" />
         </option>
       </method>
     </configuration>
@@ -267,6 +196,8 @@
       <workItem from="1563972184303" duration="274000" />
       <workItem from="1574528915436" duration="405000" />
       <workItem from="1574529361353" duration="374000" />
+      <workItem from="1574532720667" duration="52000" />
+      <workItem from="1574532838763" duration="1565000" />
     </task>
     <servers />
   </component>
@@ -294,5 +225,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/webengineering" />
+    </ignored-roots>
   </component>
 </project>
