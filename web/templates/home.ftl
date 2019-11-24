@@ -28,7 +28,7 @@
                             <div class="col-md-4 blog-item-wrapper">
                                 <div class="blog-item">
                                     <div class="blog-img">
-                                        <a href="single.html"><img src="../style/img/download.png" alt=""></a>
+                                        <a href="single.html"><img src="../style/img/card-image.png" alt=""></a>
                                     </div>
                                     <div class="blog-text">
                                         <div class="blog-tag">

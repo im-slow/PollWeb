@@ -1,18 +1,13 @@
 package poolweb.controller;
 
-import poolweb.data.dao.PoolWebDataLayer;
-import poolweb.data.model.Poll;
-import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class CreatePoll extends PoolWebBaseController  {
     @Override
