@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">
-                                <a class="btn btn-block btn-secondary btn-red" href="#">Crea Sondaggio</a>
+                                <a class="btn btn-block btn-secondary btn-red" href="/aggiungi-domande">Crea Sondaggio</a>
                             </div>
                         </div>
                     </form>

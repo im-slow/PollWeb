@@ -52,6 +52,11 @@
         <servlet-class>poolweb.controller.CreatePoll</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Domande</servlet-name>
+        <servlet-class>poolweb.controller.CreateQuestions</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -60,6 +65,11 @@
     <servlet-mapping>
         <servlet-name>Crea</servlet-name>
         <url-pattern>/creasondaggio</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Domande</servlet-name>
+        <url-pattern>/aggiungi-domande</url-pattern>
     </servlet-mapping>
 
     <resource-ref>
