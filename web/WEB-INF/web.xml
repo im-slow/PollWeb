@@ -48,13 +48,18 @@
     </servlet>
 
     <servlet>
-        <servlet-name>Crea</servlet-name>
+        <servlet-name>CreatePoll</servlet-name>
         <servlet-class>poolweb.controller.CreatePoll</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>Domande</servlet-name>
+        <servlet-name>CreateQuestions</servlet-name>
         <servlet-class>poolweb.controller.CreateQuestions</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Accedi</servlet-name>
+        <servlet-class>poolweb.controller.LogIn</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -63,15 +68,19 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>Crea</servlet-name>
+        <servlet-name>CreatePoll</servlet-name>
         <url-pattern>/creasondaggio</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>Domande</servlet-name>
-        <url-pattern>/aggiungi-domande</url-pattern>
+        <servlet-name>CreateQuestions</servlet-name>
+        <url-pattern>/aggiungidomande</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>Accedi</servlet-name>
+        <url-pattern>/accedi</url-pattern>
+    </servlet-mapping>
 
     <resource-ref>
         <res-ref-name>jdbc/webdb2</res-ref-name>

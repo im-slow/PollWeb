@@ -70,7 +70,7 @@
               <!-- Section Title -->
               <div class="title-wrap">
                   <h2 class="section-title">
-                      Who love to <b> work</b> with us
+                      Chi <b> collabora </b> con noi
                   </h2>
               </div>
               <!-- End of Section Title -->
