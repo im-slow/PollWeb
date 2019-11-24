@@ -28,7 +28,7 @@
                             <div class="col-md-4 blog-item-wrapper">
                                 <div class="blog-item">
                                     <div class="blog-img">
-                                        <a href="single.html"><img src="../style/img/blog-1.jpg" alt=""></a>
+                                        <a href="single.html"><img src="../style/img/download.png" alt=""></a>
                                     </div>
                                     <div class="blog-text">
                                         <div class="blog-tag">
@@ -75,3 +75,41 @@
         </div>
     </div>
 </section>
+<!-- Counter Section -->
+<section id="gtco-counter" class="overlay bg-fixed">
+    <div class="container">
+        <div class="section-content">
+            <div class="row">
+                <!-- Counter Item -->
+                <div class="col-md-3 col-sm-6 counter-item">
+                    <i class="lnr lnr-users"></i>
+                    <span class="number" data-from="0" data-to="34" data-refresh-interval="100">412</span>
+                    <h4>Utenti</h4>
+                </div>
+                <!-- End of Counter Item -->
+                <!-- Counter Item -->
+                <div class="col-md-3 col-sm-6 counter-item">
+                    <i class="lnr lnr-briefcase"></i>
+                    <span class="number" data-from="0" data-to="32" data-refresh-interval="100">516</span>
+                    <h4>Sondaggi</h4>
+                </div>
+                <!-- End of Counter Item -->
+                <!-- Counter Item -->
+                <div class="col-md-3 col-sm-6 counter-item">
+                    <i class="lnr lnr-heart"></i>
+                    <span class="number" data-from="0" data-to="38" data-refresh-interval="100">10292</span>
+                    <h4>Risposte ai Sondaggi</h4>
+                </div>
+                <!-- End of Counter Item -->
+                <!-- Counter Item -->
+                <div class="col-md-3 col-sm-6 counter-item">
+                    <i class="lnr lnr-rocket"></i>
+                    <span class="number" data-from="0" data-to="29" data-refresh-interval="100">90</span>
+                    <h4>Teresa</h4>
+                </div>
+                <!-- End of Counter Item -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Counter Section -->
