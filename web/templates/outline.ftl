@@ -44,10 +44,10 @@
         <div class="collapse navbar-collapse" id="navbar-nav-header">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#who-we-are">Accedi</a>
+                    <a class="nav-link" href="/accedi">Accedi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contatti</a>
