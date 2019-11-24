@@ -190,7 +190,8 @@ a {
 .btn-red {
   background-color: #FC665F !important;
   color: #fff !important;
-  border: none !important; }
+  border: none !important;
+}
 
 #gtco-header-navbar {
   position: absolute;
@@ -457,6 +458,11 @@ footer {
 .blog-content .img.float-right {
   margin: 15px 0 15px 15px; }
 
+.pd-h {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 @media (min-width: 768px) and (max-width: 1200px) {
   .boxed-page {
     margin-right: 30px;
@@ -473,6 +479,10 @@ footer {
     background-color: #fff; } }
 
 @media (max-width: 767px) {
+  .pd-h {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
   .boxed-page {
     margin: 4rem 15px; }
   .not-on-top #gtco-header-navbar {

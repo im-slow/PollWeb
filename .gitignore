@@ -1,4 +1,5 @@
 /target
 /.idea
 /out/artifacts/
-#/web/META-INF/
+/web/META-INF/
+/out/*
