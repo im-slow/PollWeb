@@ -5,7 +5,7 @@
             <br>Pubblici o privati, a seconda delle tue esigenze.
         </p>
         <div class="col-md-12 form-btn text-center nopadding">
-            <a class="btn btn-block btn-secondary btn-red" href="#">Crea Sondaggio</a>
+            <a class="btn btn-block btn-secondary btn-red" href="/creasondaggio">Crea Sondaggio</a>
         </div>
     </div>
 </div>

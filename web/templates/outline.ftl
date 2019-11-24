@@ -3,7 +3,7 @@
 	Moon by GetTemplates.co
 	URL: https://gettemplates.co
 -->
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -60,10 +60,9 @@
 
 <section id="gtco-counter" class="overlay bg-fixed">
 
-<div>
 <#include content_tpl>
-</div>
 
+</section>
 
   <section id="gtco-client" class="bg-white">
       <div class="container">
@@ -154,7 +153,8 @@
 
           </div>
       </div>
-  </footer>	</div>
+  </footer>
+</div>
 
   </div>
   	<!-- External JS -->
