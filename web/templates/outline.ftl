@@ -3,7 +3,7 @@
 	Moon by GetTemplates.co
 	URL: https://gettemplates.co
 -->
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -158,6 +158,11 @@
 
   </div>
   	<!-- External JS -->
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
   	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
   	<script src="../style/vendor/bootstrap/popper.min.js"></script>
   	<script src="../style/vendor/bootstrap/bootstrap.min.js"></script>
@@ -166,7 +171,11 @@
   	<script src="../style/vendor/isotope/isotope.min.js"></script>
   	<script src="../style/vendor/lightcase/lightcase.js"></script>
   	<script src="../style/vendor/waypoints/waypoint.min.js"></script>
-  	<script src="../style/vendor/countTo/jquery.countTo.js"></script>
+  	<script src="../../style/vendor/countTo/jquery.countTo.js"></script>
+    <script src="../style/vendor/collapsiblediv/jquery.collapsible.js"></script>
+    <script src="../style/js/questions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="sweetalert2.all.min.js"></script>
 
   	<!-- Main JS -->
   	<script src="../style/js/app.min.js "></script>
