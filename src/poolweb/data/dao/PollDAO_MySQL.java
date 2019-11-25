@@ -53,21 +53,6 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     }
 
     @Override
-    public List<Poll> getAllPoll(int userID) throws DataException {
-        List<Poll> result = new ArrayList<>();
-        try {
-            try (ResultSet rs = allPoll.executeQuery()) {
-                while (rs.next()) {
-                    result.add(getPollByUserID(rs.getInt(userID)));
-                }
-            }
-        } catch (SQLException ex) {
-            //
-        }
-        return result;
-    }
-
-    @Override
     public Poll getPollByID(int ID) throws DataException {
         try {
             pollByID.setInt(1, ID);
@@ -83,18 +68,19 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     }
 
     @Override
-    public Poll getPollByUserID(int userID) throws DataException {
+    public List<Poll> getPollByUserID(int userID) throws DataException {
+        List<Poll> result = new ArrayList<>();
         try {
             pollByUserID.setInt(1, userID);
             try (ResultSet rs = pollByUserID.executeQuery()) {
-                if (rs.next()) {
-                    return createPoll(rs);
+                while (rs.next()) {
+                    result.add(createPoll(rs));
                 }
             }
         } catch (SQLException ex) {
             throw new DataException("Unable to load poll by UserID", ex);
         }
-        return null;
+        return result;
     }
 
     @Override

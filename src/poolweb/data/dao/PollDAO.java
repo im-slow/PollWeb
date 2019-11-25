@@ -12,11 +12,9 @@ public interface PollDAO {
 
     public List<Poll> getAllPoll() throws DataException;
 
-    public List<Poll> getAllPoll(int userID) throws DataException;
-
     public Poll getPollByID(int ID) throws DataException;
 
-    public Poll getPollByUserID(int userID) throws DataException;
+    public List<Poll> getPollByUserID(int userID) throws DataException;
 
     public Poll createPoll(ResultSet rs) throws DataException;
 

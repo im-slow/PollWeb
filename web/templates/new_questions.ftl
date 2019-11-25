@@ -20,7 +20,7 @@
                           <a href="#" class="text-orange font-weight-bold remove-question-js"><h3> - </h3></a>
                         </div>
                     </div>
-                    <div class="card-body border-bottom">
+                    <div class="card-body border-bottom border-left border-right">
                         <div class="col-md-12">
                             <label>Inserici la domanda</label>
                             <div class="col-md-12 form-input">

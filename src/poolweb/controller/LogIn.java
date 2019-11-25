@@ -24,10 +24,10 @@ import static poolweb.framework.security.SecurityLayer.createSession;
 public class LogIn extends PoolWebBaseController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-
         try {
-            if (checkSession(request)!=null){
-                action_update(request, response);
+            HttpSession s = checkSession(request);
+            if (s!=null){
+                action_update(request, response, s);
             } else if((request.getParameter("email")!=null)&&(request.getParameter("password")!=null)) {
                 action_write(request, response, request.getParameter("email"), request.getParameter("password"));
             } else {
@@ -72,20 +72,26 @@ public class LogIn extends PoolWebBaseController {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(email, password);
-            String username = newUser.getName();
-            int id = newUser.getID();
-            createSession(request, username, id);
-            request.setAttribute("page_title", "Profilo");
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getAllPoll(newUser.getID());
-            request.setAttribute("newUser", newUser);
-            if (usersPoll != null) {
-                request.setAttribute("usersPoll", usersPoll);
+            if (newUser!= null) {
+                createSession(request, newUser.getName(), newUser.getID());
+                request.setAttribute("page_title", "Profilo");
+                request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+                List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByUserID(newUser.getID());
+                request.setAttribute("newUser", newUser);
+                request.setAttribute("userPoll", usersPoll);
                 res.activate("profile.ftl", request, response);
             } else {
-                request.setAttribute("message", "Nessun Sondaggio disponibile");
-                action_error(request, response);
+                request.setAttribute("page_title", "Accedi");
+                request.setAttribute("login_error", "Username o password errati");
+                res.activate("login.ftl", request, response);
             }
+//            if (usersPoll != null) {
+//                request.setAttribute("usersPoll", usersPoll);
+//                res.activate("profile.ftl", request, response);
+//            } else {
+//                request.setAttribute("message", "Nessun Sondaggio disponibile");
+//                action_error(request, response);
+//            }
             res.activate("profile.ftl", request, response);
 
         } catch (DataException e) {
@@ -93,24 +99,19 @@ public class LogIn extends PoolWebBaseController {
         }
     }
 
-    private void action_update(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, TemplateManagerException {
+    private void action_update(HttpServletRequest request, HttpServletResponse response, HttpSession s) throws IOException, ServletException, TemplateManagerException {
         try {
-            HttpSession s = checkSession(request);
-            System.out.println(s.getAttribute("userid"));
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
-            String username = newUser.getName();
-            int id = newUser.getID();
+            User currentuser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
             request.setAttribute("page_title", "Profilo");
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getAllPoll(newUser.getID());
-            request.setAttribute("newUser", newUser);
+            List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByUserID(currentuser.getID());
+            request.setAttribute("newUser", currentuser);
             if (usersPoll != null) {
-                request.setAttribute("usersPoll", usersPoll);
-                res.activate("profile.ftl", request, response);
+                request.setAttribute("userPoll", usersPoll);
             } else {
-                request.setAttribute("message", "Nessun Sondaggio disponibile");
+                request.setAttribute("message", "Error during User loading");
                 action_error(request, response);
             }
             res.activate("profile.ftl", request, response);

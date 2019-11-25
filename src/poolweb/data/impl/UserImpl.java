@@ -9,7 +9,6 @@ public class UserImpl implements User {
     private String email;
 
     public UserImpl() {
-        ID = 1;
         name = "";
         email = "";
     }
@@ -19,7 +18,7 @@ public class UserImpl implements User {
 
     @Override
     public void setID(int ID) {
-
+        this.ID = ID;
     }
 
     @Override

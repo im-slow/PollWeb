@@ -51,6 +51,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
         UserProxy a = new UserProxy(getDataLayer());
         try {
             a.setName(rs.getString("nome"));
+            a.setID(rs.getInt("ID"));
             a.setEmail(rs.getString("email"));
         } catch (Exception e) {
             e.printStackTrace();

@@ -26,15 +26,16 @@
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Inserisci Password">
                                 </div>
                             </div>
+                            <#if login_error??>
+                                <div class="col-md-12 alert alert-danger">
+                                    ${login_error}
+                                </div>
+                            </#if>
                             <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">
                                 <input type="submit" value="Accedi" class="btn btn-block btn-secondary btn-red" href="#" />
                             </div>
                         </div>
                     </form>
-                    <div id="form-message-warning"></div>
-                    <div id="form-message-success">
-                        Il tuo sondaggio è stato creato, grazie!
-                    </div>
                 </div>
                 <!-- End of Contact Form Holder -->
             </div>
