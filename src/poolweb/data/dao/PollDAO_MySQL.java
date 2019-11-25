@@ -15,9 +15,11 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
 
     private final String SELECT_ALL_POLLID = "SELECT ID as IDPOLL FROM poll LIMIT 3";
     private final String SELECT_POLL_BY_ID = "SELECT * FROM poll WHERE ID = ?";
+    private final String SELECT_POLL_BY_USER_ID = "SELECT * FROM poll WHERE IDuser = ?";
 
     private PreparedStatement allPoll;
     private PreparedStatement pollByID;
+    private PreparedStatement pollByUserID;
 
     public PollDAO_MySQL(DataLayer d) {
         super(d);
@@ -29,6 +31,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             super.init();
             allPoll = connection.prepareStatement(SELECT_ALL_POLLID);
             pollByID = connection.prepareStatement(SELECT_POLL_BY_ID);
+            pollByUserID = connection.prepareStatement(SELECT_POLL_BY_USER_ID);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -50,6 +53,21 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     }
 
     @Override
+    public List<Poll> getAllPoll(int userID) throws DataException {
+        List<Poll> result = new ArrayList<>();
+        try {
+            try (ResultSet rs = allPoll.executeQuery()) {
+                while (rs.next()) {
+                    result.add(getPollByUserID(rs.getInt(userID)));
+                }
+            }
+        } catch (SQLException ex) {
+            //
+        }
+        return result;
+    }
+
+    @Override
     public Poll getPollByID(int ID) throws DataException {
         try {
             pollByID.setInt(1, ID);
@@ -60,6 +78,21 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             }
         } catch (SQLException ex) {
             throw new DataException("Unable to load poll by ID", ex);
+        }
+        return null;
+    }
+
+    @Override
+    public Poll getPollByUserID(int userID) throws DataException {
+        try {
+            pollByUserID.setInt(1, userID);
+            try (ResultSet rs = pollByUserID.executeQuery()) {
+                if (rs.next()) {
+                    return createPoll(rs);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataException("Unable to load poll by UserID", ex);
         }
         return null;
     }

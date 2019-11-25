@@ -16,9 +16,11 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
 
     private final String SELECT_ALL_USER = "SELECT id FROM utente";
     private final String SELECT_USER_BY_ID = "SELECT * FROM utente WHERE id = ?";
+    private final String SELECT_USER_BY_NAME_AND_PASSWORD ="SELECT * FROM utente where nome = ? AND email = ?";
 
     private PreparedStatement allUser;
     private PreparedStatement userByID;
+    private PreparedStatement userByLogin;
 
     public UserDAO_MySQL(DataLayer d) { super(d);}
 
@@ -28,6 +30,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
             super.init();
             allUser = connection.prepareStatement(SELECT_ALL_USER);
             userByID = connection.prepareStatement(SELECT_USER_BY_ID);
+            userByLogin = connection.prepareStatement(SELECT_USER_BY_NAME_AND_PASSWORD);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -60,6 +63,22 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
         try {
             userByID.setInt(1, ID);
             try (ResultSet rs = userByID.executeQuery()) {
+                if (rs.next()) {
+                    return createUser(rs);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataException("Unable to load User by ID", ex);
+        }
+        return null;
+    }
+
+    @Override
+    public User getUser(String name, String password) throws DataException {
+        try {
+            userByLogin.setString(1, name);
+            userByLogin.setString(2, password);
+            try (ResultSet rs = userByLogin.executeQuery()) {
                 if (rs.next()) {
                     return createUser(rs);
                 }
