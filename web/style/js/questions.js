@@ -1,7 +1,13 @@
+//Make clone of the first div
+var basicAnswer;
+
+$(document).ready(function () {
+    basicAnswer = $('#card-header-js').clone();
+});
+
 //Add new Question
-$(document).on('click', '#another-question-js', function () {
-    const clone = $('#card-header-js').clone();
-    $('#new-question-js').append(clone);
+$(document).on('click', '#another-question-js', () => {
+    $('#new-question-js').append(basicAnswer.clone()).hide().fadeIn(1000);
     listChild();
 });
 
@@ -18,27 +24,34 @@ $(document).on('click', '.remove-question-js', function (e) {
         element++;
     });
     if (element > 1) {
-        Swal.fire({
+        swal({
             title: 'Sei sicuro di voler rimuovere la domanda?',
             text: 'Non sarai in grado di recuperarla successivamente!',
             icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Elimina',
-            cancelButtonText: 'Annulla'
-        }).then((result) => {
-            if (result.value) {
+            buttons: ['Annulla', 'Elimina']
+        }).then((willDelete) => {
+            if (willDelete) {
                 $(this).parent().parent().parent().remove();
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                listChild();
+            } else {
                 console.log('Dismissed');
             }
         });
     }
-    listChild();
+});
+
+//Keep the answer name on focus
+$(document).on('change', '.question-input-js', function () {
+    $(this).parent().parent().parent().parent().find('.question-name-js').html($(this).val());
 });
 
 function listChild() {
     let counter = 0;
     $('#new-question-js > div').each(function () {
         $(this).find('#number-js').html(++counter);
+        var namequestion = $(this).find('.question-input-js').val();
+        if (namequestion !== '') {
+            $(this).find('.question-name-js').html(namequestion);
+        }
     });
 }

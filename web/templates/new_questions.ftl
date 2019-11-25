@@ -16,15 +16,15 @@
                     <div class="card-header border-bottom border-top border-left border-right">
                         <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5">
                           <h6 id="number-js" class="text-orange font-weight-bold">1</h6>
-                          <h6>Nuova domanda</h6>
-                          <a href="#" type="button" class="text-orange font-weight-bold remove-question-js">-</a>
+                          <h6 class="question-name-js">Nuova domanda</h6>
+                          <a href="#" class="text-orange font-weight-bold remove-question-js"><h3> - </h3></a>
                         </div>
                     </div>
-                    <div class="card-body border-bottom border-right border-left">
+                    <div class="card-body border-bottom">
                         <div class="col-md-12">
                             <label>Inserici la domanda</label>
                             <div class="col-md-12 form-input">
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Inserisci qui la domanda">
+                                <input id="prova" type="text" class="form-control question-input-js" id="subject" name="subject" placeholder="Inserisci qui la domanda">
                             </div>
                         </div>
                         <div class="col-md-12">

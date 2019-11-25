@@ -173,9 +173,8 @@
   	<script src="../style/vendor/waypoints/waypoint.min.js"></script>
   	<script src="../../style/vendor/countTo/jquery.countTo.js"></script>
     <script src="../style/vendor/collapsiblediv/jquery.collapsible.js"></script>
-    <script src="../style/js/questions.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="sweetalert2.all.min.js"></script>
+    <script src="../style/js/questions.js"></script
+    ><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   	<!-- Main JS -->
   	<script src="../style/js/app.min.js "></script>
