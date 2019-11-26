@@ -1,13 +1,21 @@
 //Make clone of the first div
 var basicAnswer;
+var basicQuestion;
 
+
+//Question
 $(document).ready(function () {
-    basicAnswer = $('#card-header-js').clone();
+    basicQuestion = $('#card-header-js').clone();
+});
+
+//Answer option
+$(document).ready(function () {
+    basicAnswer = $('#answer-js').clone();
 });
 
 //Add new Question
 $(document).on('click', '#another-question-js', () => {
-    $('#new-question-js').append(basicAnswer.clone()).hide().fadeIn(1000);
+    $('#new-question-js').append(basicQuestion.clone()).hide().fadeIn(1000);
     listChild();
 });
 
@@ -60,3 +68,9 @@ function listChild() {
         }
     });
 }
+
+//add new Single choise or multiple choise answer
+$(document).on('click', '#new-answer-js', () => {
+    $('#append-answer-js').append(basicAnswer.clone()).hide().fadeIn(1000);
+    listChild();
+});

@@ -21,6 +21,7 @@
                             <label>Inserici la domanda</label>
                             <div class="col-md-12 form-input">
                                 <input id="prova" type="text" class="form-control question-input-js" id="subject" name="subject" placeholder="Inserisci qui la domanda">
+                                <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -29,35 +30,40 @@
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Inserisci informazioni adizionali della domanda">
                             </div>
                         </div>
+
                         <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap">
                             <div>
                                 <label>Domanda obbligatoria: </label>
-                                <div class="form-check form-check-inline pl-5">
-                                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                  <label class="form-check-label pl-2" for="exampleRadios1">
+                            </div>
+                            <div class="form-check form-check-inline pl-5">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
                                     SI
-                                  </label>
-                                </div>
-                                <div class="form-check form-check-inline pl-5">
-                                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                  <label class="form-check-label pl-2" for="exampleRadios2">
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline pl-5">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
                                     NO
-                                  </label>
-                                </div>
+                                </label>
                             </div>
-                            <div class="btn-group p-t-5">
-                                <button type="button" class="btn btn-red dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Scelta singola</a>
-                                    <a class="dropdown-item" href="#">Scelta multipla</a>
-                                    <a class="dropdown-item" href="#">Testo Aperto</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div>
+                            <input class="form-control form-control-sm mr-3" placeholder="min">
+                            <input class="form-control form-control-sm" placeholder="max">
                          </div>
+
+                        <div class="btn-group p-t-5">
+                            <button type="button" class="btn btn-red dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Scelta singola</a>
+                                <a class="dropdown-item" href="#">Scelta multipla</a>
+                                <a class="dropdown-item" href="#">Testo Lungo</a>
+                                <a class="dropdown-item" href="#">Testo Breve</a>
+                                <a class="dropdown-item" href="#">Data</a>
+                                <a class="dropdown-item" href="#">Numero</a>
+                            </div>
+                        </div>
                      </div>
                 </div>
             </div>
