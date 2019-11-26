@@ -74,7 +74,7 @@
                   </h2>
               </div>
               <!-- End of Section Title -->
-              <div class="row ">
+              <div class="row">
                   <div class="col-md-2">
                       <!-- Client Item -->
                       <div class="client-item">
