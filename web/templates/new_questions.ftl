@@ -11,9 +11,9 @@
             <div id="card-header-js" class="price-box card col-md-8 offset-md-2 m-t-4">
                 <div class="card-header border-bottom border-top border-left border-right">
                     <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5">
-                        <h6 id="number-js" class="text-orange font-weight-bold">1</h6>
+                        <h6 id="number-js" class="text-orange font-weight-bold mr-2">1</h6>
                         <h6 class="question-name-js">Nuova domanda</h6>
-                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js"><h3> - </h3></a>
+                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js ml-2"><h3> - </h3></a>
                     </div>
                 </div>
                 <div class="card-body border-bottom border-left border-right">
@@ -61,7 +61,9 @@
                                 <div class="form-group">
                                     <div class="d-flex flex-row align-items-center justify-content-center append-answer-js">
                                         <input id="answer-js" type="text" class="form-control mt-4" placeholder="Inserisci domanda">
-                                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js mt-4"><h3 class="form-control color-primary px-4"> + </h3></a>
+                                        <div class="btn btn-light">
+                                            <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js mt-4"> + </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
