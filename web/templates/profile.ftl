@@ -3,7 +3,7 @@
         <div class="section-content">
             <!-- Section Title -->
             <div class="title-wrap">
-                <h2 class="section-title">Benvenuto, ${newUser.name}</h2>
+                <h2 class="section-title">Benvenuto, ${user.name}</h2>
                 <p class="section-sub-title">Controlla i tuoi sondaggi</p>
             </div>
             <!-- End of Section Title -->
@@ -37,9 +37,6 @@
                                         </div>
                                         <div class="blog-desc">
                                             <p>${pollDB.opentext}</p>
-                                        </div>
-                                        <div class="blog-author">
-                                            <p>by "${pollDB.user.name}"</p>
                                         </div>
                                         <div class="blog-share-wrapper">
                                             <a class="blog-share" href="google.com">

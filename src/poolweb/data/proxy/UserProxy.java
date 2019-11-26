@@ -27,6 +27,14 @@ public class UserProxy extends UserImpl {
         this.dirty = true;
     }
 
+    @Override
+    public void setPassword(String password) {
+        super.setPassword(password);
+        this.dirty = true;
+    }
+
+
+
     //Proxy methods
     public void setDirty(boolean dirty) {
         this.dirty = dirty;

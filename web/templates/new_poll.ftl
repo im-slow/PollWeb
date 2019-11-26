@@ -48,8 +48,10 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">
-                                <a class="btn btn-block btn-secondary btn-red" href="/aggiungidomande">Crea Sondaggio</a>
+                            <div class="col-md-12">
+                                <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">
+                                    <a class="btn btn-block btn-secondary btn-red" href="/aggiungidomande">Crea Sondaggio</a>
+                                </div>
                             </div>
                         </div>
                     </form>

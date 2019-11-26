@@ -7,10 +7,12 @@ public class UserImpl implements User {
     private int ID;
     private String name;
     private String email;
+    private String password;
 
     public UserImpl() {
         name = "";
         email = "";
+        password = null;
     }
 
     @Override
@@ -37,5 +39,15 @@ public class UserImpl implements User {
     @Override
     public void setEmail(String mail) {
         this.email = mail;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

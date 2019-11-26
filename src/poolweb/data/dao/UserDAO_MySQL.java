@@ -16,7 +16,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
 
     private final String SELECT_ALL_USER = "SELECT id FROM utente";
     private final String SELECT_USER_BY_ID = "SELECT * FROM utente WHERE id = ?";
-    private final String SELECT_USER_BY_NAME_AND_PASSWORD ="SELECT * FROM utente where nome = ? AND email = ?";
+    private final String SELECT_USER_BY_NAME_AND_PASSWORD ="SELECT * FROM utente where nome = ? AND pwd = ?";
 
     private PreparedStatement allUser;
     private PreparedStatement userByID;
@@ -53,6 +53,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
             a.setName(rs.getString("nome"));
             a.setID(rs.getInt("ID"));
             a.setEmail(rs.getString("email"));
+            a.setPassword(rs.getString("pwd"));
         } catch (Exception e) {
             e.printStackTrace();
         }

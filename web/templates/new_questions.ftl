@@ -5,10 +5,6 @@
             <div class="col justify-content-center align-items-center title-wrap mb-3">
                 <h2 class="section-title">Inserisci le domande per il nuovo sondaggio</h2>
                 <p class="section-sub-title">Riempi i campi per creare nuove domande.<br>premi + per aggiungerne nuove</p>
-                <div class="d-flex flex-row justify-content-center align-items-center text-center py-2">
-                    <p class="mr-2"><b>Aggiungi Domanda</b></p>
-                    <a id="another-question-js" class="btn btn-secondary btn-red" href="#"> + </a>
-                </div>
             </div>
             <!-- End of Section Title -->
             <div id="new-question-js">
@@ -17,7 +13,7 @@
                         <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5">
                           <h6 id="number-js" class="text-orange font-weight-bold">1</h6>
                           <h6 class="question-name-js">Nuova domanda</h6>
-                          <a href="#" class="text-orange font-weight-bold remove-question-js"><h3> - </h3></a>
+                          <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js"><h3> - </h3></a>
                         </div>
                     </div>
                     <div class="card-body border-bottom border-left border-right">
@@ -64,6 +60,9 @@
                          </div>
                      </div>
                 </div>
+            </div>
+            <div class="d-flex flex-row justify-content-end align-items-center py-5 offset-md-2 m-t-4 col-md-8">
+                <a id="another-question-js" class="btn btn-secondary rounded-pill btn-red a-click"><b>Aggiungi Domanda</b></a>
             </div>
         </div>
 </section>

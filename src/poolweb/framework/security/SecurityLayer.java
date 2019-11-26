@@ -1,6 +1,8 @@
 package poolweb.framework.security;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -94,6 +96,18 @@ public class SecurityLayer {
         if (s != null) {
             s.invalidate();
         }
+    }
+
+    public String HashingMaps(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes());
+        byte[] b = md.digest();
+        StringBuffer sb = new StringBuffer();
+        for (byte b1 : b) {
+            sb.append(Integer.toHexString(b1 & 0xfff).toString());
+        }
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     //--------- DATA SECURITY ------------

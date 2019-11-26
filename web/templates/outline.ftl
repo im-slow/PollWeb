@@ -47,7 +47,7 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/accedi">Accedi</a>
+                    <a class="nav-link" href="/accedi">Profilo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contatti</a>
@@ -78,42 +78,42 @@
                   <div class="col-md-2">
                       <!-- Client Item -->
                       <div class="client-item">
-                          <img class="img-responsive" src="img/client-1.png" alt=" ">
+                          <img class="img-responsive" src="../style/img/client-1.png" alt=" ">
                       </div>
                       <!-- End of Client Item  -->
                   </div>
                   <div class="col-md-2">
                       <!-- Client Item -->
                       <div class="client-item">
-                          <img class="img-responsive" src="img/client-2.png" alt=" ">
+                          <img class="img-responsive" src="../style/img/client-2.png" alt=" ">
                       </div>
                       <!-- End of Client Item -->
                   </div>
                   <div class="col-md-2">
                       <!-- Client Item  -->
                       <div class="client-item">
-                          <img class="img-responsive" src="img/client-3.png" alt=" ">
+                          <img class="img-responsive" src="../style/img/client-3.png" alt=" ">
                       </div>
                       <!-- End of Client Item -->
                   </div>
                   <div class="col-md-2">
                       <!-- Client Item  -->
                       <div class="client-item">
-                          <img class="img-responsive" src="img/client-4.png" alt=" ">
+                          <img class="img-responsive" src="../style/img/client-4.png" alt=" ">
                       </div>
                       <!-- End of Client Item  -->
                   </div>
                   <div class="col-md-2">
                       <!-- Client Item  -->
                       <div class="client-item">
-                          <img class="img-responsive" src="img/client-5.png" alt=" ">
+                          <img class="img-responsive" src="../style/img/client-5.png" alt=" ">
                       </div>
                       <!-- End of Client Item  -->
                   </div>
                   <div class="col-md-2">
                       <!-- Client Item  -->
                       <div class="client-item">
-                          <img class="img-responsive" src="img/client-6.png" alt=" ">
+                          <img class="img-responsive" src="../style/img/client-6.png" alt=" ">
                       </div>
                       <!-- End of Client Item -->
                   </div>

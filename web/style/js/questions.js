@@ -42,7 +42,12 @@ $(document).on('click', '.remove-question-js', function (e) {
 
 //Keep the answer name on focus
 $(document).on('change', '.question-input-js', function () {
-    $(this).parent().parent().parent().parent().find('.question-name-js').html($(this).val());
+    const node = $(this).parent().parent().parent().parent().find('.question-name-js');
+    if ($(this).val() === '') {
+        node.html('Nuova Domanda');
+    } else {
+       node.html($(this).val());
+    }
 });
 
 function listChild() {
