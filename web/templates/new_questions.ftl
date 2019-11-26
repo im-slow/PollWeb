@@ -31,24 +31,21 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap">
-                            <div>
-                                <label>Domanda obbligatoria: </label>
+                        <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap mt-5">
+                            <div class="justify-content-center align-items-center">
+                                <label>Obbligatoria: </label>
                             </div>
-                            <div class="form-check form-check-inline pl-5">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                    SI
-                                </label>
+                            <div class="form-check form-check-inline pl-3">
+                                <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                             </div>
-                            <div class="form-check form-check-inline pl-5">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                <label class="form-check-label" for="exampleRadios2">
-                                    NO
-                                </label>
-                            </div>
-                            <input class="form-control form-control-sm mr-3" placeholder="min">
-                            <input class="form-control form-control-sm" placeholder="max">
+<#--                            <div class="form-check form-check-inline pl-5">-->
+<#--                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">-->
+<#--                                <label class="form-check-label" for="exampleRadios2">-->
+<#--                                    NO-->
+<#--                                </label>-->
+<#--                            </div>-->
+                            <input class="form-control form-control-sm mr-3 form-contro-maxmin" placeholder="min">
+                            <input class="form-control form-control-sm form-contro-maxmin" placeholder="max">
                          </div>
 
                         <div class="btn-group p-t-5">
