@@ -8,10 +8,13 @@ import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
+import poolweb.framework.security.SecurityLayer;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
@@ -90,7 +93,7 @@ public class LogIn extends PoolWebBaseController {
 //            }
 //            res.activate("profile.ftl", request, response);
 
-        } catch (DataException e) {
+        } catch (DataException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }

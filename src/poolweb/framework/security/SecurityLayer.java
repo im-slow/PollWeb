@@ -98,7 +98,7 @@ public class SecurityLayer {
         }
     }
 
-    public String HashingMaps(String password) throws NoSuchAlgorithmException {
+    public static String HashingMaps(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
         byte[] b = md.digest();

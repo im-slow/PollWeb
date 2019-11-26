@@ -51,10 +51,19 @@
                             </div>
                             <!-- End of Blog Item -->
                         </#list>
-                    <#else>
-                        <p>Non sono presenti sondaggi nel database</p>
-                    </#if>
-
+                        <#else>
+                            <p>Non sono presenti sondaggi nel database</p>
+                        </#if>
+                    <div class="col-md-4 blog-item-wrapper d-flex flex-column">
+                        <div class="blog-item d-flex flex-column justify-content-center align-items-center flex-grow-1">
+                            <a class="navbar-brand d-flex align-items-center" style="font-size: 50px !important;" href="/creasondaggio">
+                                <span class="lnr lnr-plus-circle"></span>
+                            </a>
+                            <div class="blog-desc">
+                                <p>Crea sondaggio</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

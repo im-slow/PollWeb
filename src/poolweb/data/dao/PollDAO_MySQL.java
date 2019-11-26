@@ -15,7 +15,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
 
     private final String SELECT_ALL_POLLID = "SELECT ID as IDPOLL FROM poll LIMIT 3";
     private final String SELECT_POLL_BY_ID = "SELECT * FROM poll WHERE ID = ?";
-    private final String SELECT_POLL_BY_USER_ID = "SELECT * FROM poll WHERE IDuser = ?";
+    private final String SELECT_POLL_BY_USER_ID = "SELECT * FROM poll WHERE IDuser = ? LIMIT 5";
 
     private PreparedStatement allPoll;
     private PreparedStatement pollByID;
