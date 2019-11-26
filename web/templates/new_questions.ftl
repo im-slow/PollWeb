@@ -32,33 +32,35 @@
                         </div>
 
                         <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap mt-5">
-                            <div class="justify-content-center align-items-center">
-                                <label>Obbligatoria: </label>
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <div class="justify-content-center align-items-center">
+                                    <label>Obbligatoria: </label>
+                                </div>
+                                <div class="form-check form-check-inline pl-3">
+                                    <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline pl-3">
-                                <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                            <div class="btn-group p-t-5">
+                                <button type="button" class="btn btn-red dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tipologia
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Scelta singola</a>
+                                    <a class="dropdown-item" href="#">Scelta multipla</a>
+                                    <a class="dropdown-item" href="#">Testo Lungo</a>
+                                    <a class="dropdown-item" href="#">Testo Breve</a>
+                                    <a class="dropdown-item" href="#">Data</a>
+                                    <a class="dropdown-item" href="#">Numero</a>
+                                </div>
                             </div>
-<#--                            <div class="form-check form-check-inline pl-5">-->
-<#--                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">-->
-<#--                                <label class="form-check-label" for="exampleRadios2">-->
-<#--                                    NO-->
-<#--                                </label>-->
-<#--                            </div>-->
-                            <input class="form-control form-control-sm mr-3 form-contro-maxmin" placeholder="min">
-                            <input class="form-control form-control-sm form-contro-maxmin" placeholder="max">
                          </div>
-
-                        <div class="btn-group p-t-5">
-                            <button type="button" class="btn btn-red dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Scelta singola</a>
-                                <a class="dropdown-item" href="#">Scelta multipla</a>
-                                <a class="dropdown-item" href="#">Testo Lungo</a>
-                                <a class="dropdown-item" href="#">Testo Breve</a>
-                                <a class="dropdown-item" href="#">Data</a>
-                                <a class="dropdown-item" href="#">Numero</a>
+                        <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap">
+                            <div class="justify-content-center align-items-center mr-5">
+                                <label>Seleziona Min/Max: </label>
+                            </div>
+                            <div class="d-flex flex-row align-items-center justify-content-center">
+                                <input class="form-control form-control-sm mr-3 form-contro-maxmin" placeholder="min">
+                                <input class="form-control form-control-sm form-contro-maxmin" placeholder="max">
                             </div>
                         </div>
                      </div>
