@@ -105,7 +105,7 @@
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-rocket"></i>
                     <span class="number" data-from="0" data-to="29" data-refresh-interval="100">90</span>
-                    <h4>Teresa</h4>
+                    <h4>VALORI</h4>
                 </div>
                 <!-- End of Counter Item -->
             </div>

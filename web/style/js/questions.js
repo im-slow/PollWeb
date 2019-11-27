@@ -1,4 +1,3 @@
-//Make clone of the first div
 var basicAnswer;
 var basicQuestion;
 
@@ -15,20 +14,21 @@ $(document).ready(function () {
 
 //Add new Question
 $(document).on('click', '#another-question-js', () => {
-    $('#new-question-js').append(basicQuestion.clone()).hide().fadeIn(1000);
+    $('.accordion').append(basicQuestion.clone()).hide().fadeIn(1000);
     listChild();
 });
 
 //Toogle Effect
-$(document).on('click', '.card-header', function (e) {
-    $(this).parent().find('.card-body').slideToggle();
-});
+// $(document).on('click', '.card-header', function (e) {
+//     $('.card-body-js:visible').slideToggle();
+//     $(this).parent().find('.card-body-js').slideToggle();
+// });
 
 //Remove Questions
 $(document).on('click', '.remove-question-js', function (e) {
     e.stopPropagation();
     let element = 0;
-    $('#new-question-js > div').each(function () {
+    $('#accordion > div').each(function () {
         element++;
     });
     if (element > 1) {
@@ -54,14 +54,19 @@ $(document).on('change', '.question-input-js', function () {
     if ($(this).val() === '') {
         node.html('Nuova Domanda');
     } else {
-       node.html($(this).val());
+        node.html($(this).val());
     }
 });
 
 function listChild() {
     let counter = 0;
-    $('#new-question-js > div').each(function () {
-        $(this).find('#number-js').html(++counter);
+    $('.accordion > div').each(function () {
+        $(this).find('.card-header').attr('id', `heading${++counter}`);
+        $(this).find('.question-name-js').attr('data-target', `#collapse${counter}`);
+        $(this).find('.question-name-js').attr('aria-controls', `collapse${counter}`);
+        $(this).find('.card-body-js').attr('aria-labelledby', `heading${counter}`);
+        $(this).find('.card-body-js').attr('id', `collapse${counter}`);
+        $(this).find('#number-js').html(counter);
         var namequestion = $(this).find('.question-input-js').val();
         if (namequestion !== '') {
             $(this).find('.question-name-js').html(namequestion);
