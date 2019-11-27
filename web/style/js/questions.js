@@ -72,5 +72,4 @@ function listChild() {
 //add new Single choise or multiple choise answer
 $(document).on('click', '#new-answer-js', () => {
     $('#append-answer-js').append(basicAnswer.clone()).hide().fadeIn(1000);
-    listChild();
 });

@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="border-top pt-5 mx-5"></div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 pb-5">
                         <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2">
                             <input class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *">
                             <input class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *">
@@ -57,11 +57,11 @@
                     </div>
                     <div class="container-fluid">
                         <form>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="d-flex flex-row align-items-center justify-content-center append-answer-js">
-                                        <input id="answer-js" type="text" class="form-control mt-4" placeholder="Inserisci domanda">
-                                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js mt-4"><h3 class="form-control color-primary px-4"> + </h3></a>
+                            <div id="append-answer-js" class="col-sm-12">
+                                <div id="answer-js" class="form-group">
+                                    <div class="d-flex flex-row align-items-center justify-content-center">
+                                        <input type="text" class="form-control" placeholder="Inserisci domanda">
+                                        <a href="javascript:void(0)" id="new-answer-js" class="text-orange font-weight-bold a-click"><h3 class="form-control color-primary px-4"> + </h3></a>
                                     </div>
                                 </div>
                             </div>
