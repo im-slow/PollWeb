@@ -13,11 +13,11 @@
                 <!-- Contact Form Holder -->
                 <div class="flex-column justify-content-center pd-h">
                     <form method="post" name="contact-us" action="">
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-md-12 nopadding">
-                                <label>Username/Email</label>
+                                <label for="exampleInputEmail1">Username/Email</label>
                                 <div class="col-md-12 form-input nopadding">
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Inserisci email">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Inserisci email">
                                 </div>
                             </div>
                             <div class="col-md-12 nopadding">
