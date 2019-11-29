@@ -3,7 +3,8 @@
 	Moon by GetTemplates.co
 	URL: https://gettemplates.co
 -->
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -26,9 +27,10 @@
     <link rel="stylesheet" href="../style/css/style.min.css">
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css" rel="stylesheet">
-
     <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body data-spy="scroll" data-target="#navbar-nav-header" class="static-layout">
@@ -158,15 +160,14 @@
 
   </div>
   	<!-- External JS -->
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous">
-    </script>
-  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<#--    <script-->
+<#--        src="https://code.jquery.com/jquery-3.4.1.js"-->
+<#--        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="-->
+<#--        crossorigin="anonymous">-->
+<#--    </script>-->
+
   	<script src="../style/vendor/bootstrap/popper.min.js"></script>
   	<script src="../style/vendor/bootstrap/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../style/css/custom.css">
   	<script src="../style/vendor/select2/select2.min.js "></script>
   	<script src="../style/vendor/owlcarousel/owl.carousel.min.js"></script>
   	<script src="../style/vendor/isotope/isotope.min.js"></script>
@@ -174,10 +175,10 @@
   	<script src="../style/vendor/waypoints/waypoint.min.js"></script>
   	<script src="../../style/vendor/countTo/jquery.countTo.js"></script>
     <script src="../style/js/questions.js"></script
-    ><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   	<!-- Main JS -->
-  	<script src="../style/js/app.min.js"></script>
+
+    <script src="../style/js/app.min.js"></script>
   	<#--<script src="//localhost:35729/livereload.js"></script>-->
   </body>
   </html>
