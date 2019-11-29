@@ -70,7 +70,7 @@ public class LogIn extends PoolWebBaseController {
         try {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(email, HashingMaps(password));
+            User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(email, password);
             if (newUser!= null) {
                 createSession(request, newUser.getName(), newUser.getID());
                 request.setAttribute("page_title", "Profilo");
@@ -93,7 +93,7 @@ public class LogIn extends PoolWebBaseController {
 //            }
 //            res.activate("profile.ftl", request, response);
 
-        } catch (DataException | NoSuchAlgorithmException e) {
+        } catch (DataException e) {
             e.printStackTrace();
         }
     }

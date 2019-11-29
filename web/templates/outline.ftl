@@ -174,9 +174,11 @@
   	<script src="../style/vendor/lightcase/lightcase.js"></script>
   	<script src="../style/vendor/waypoints/waypoint.min.js"></script>
   	<script src="../../style/vendor/countTo/jquery.countTo.js"></script>
-    <script src="../style/js/questions.js"></script
+    <script src="../style/js/questions.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style/css/custom.css">
 
-  	<!-- Main JS -->
+
+    <!-- Main JS -->
 
     <script src="../style/js/app.min.js"></script>
   	<#--<script src="//localhost:35729/livereload.js"></script>-->
