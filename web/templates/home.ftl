@@ -28,7 +28,11 @@
                             <div class="col-md-4 blog-item-wrapper">
                                 <div class="blog-item">
                                     <div class="blog-img">
-                                        <a href="single.html"><img src="../style/img/card-image.png" alt=""></a>
+                                        <#if (pollDB.pollstatus)>
+                                            <a href="/rispondisondaggio"><img src="../style/img/card-image.png" alt=""></a>
+                                        <#else>
+                                            <a href="#"><img src="../style/img/card-image.png" alt=""></a>
+                                        </#if>
                                     </div>
                                     <div class="blog-text">
                                         <div class="blog-tag">
@@ -67,7 +71,11 @@
                         <#else>
                         <p>Non sono presenti sondaggi nel database</p>
                         </#if>
-
+                    </div>
+                    <div class="col-md-12 form-btn text-center nopadding">
+                        <div class="d-flex justify-content-center align-items-center pt-5">
+                            <a class="btn btn-block btn-secondary btn-red col-md-4" href="/tuttisondaggi">Mostra Tutti</a>
+                        </div>
                     </div>
                 </div>
                 <!-- End of Blog -->
@@ -83,7 +91,7 @@
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-users"></i>
-                    <span class="number" data-from="0" data-to="34" data-refresh-interval="100">412</span>
+                    <span class="number" data-from="0" data-to="34" data-refresh-interval="100"></span>
                     <h4>Utenti</h4>
                 </div>
                 <!-- End of Counter Item -->

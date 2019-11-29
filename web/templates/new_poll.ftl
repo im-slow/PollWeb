@@ -24,7 +24,7 @@
                             <div class="col-md-12">
                                 <label>Testo di apertura</label>
                                 <div class="col-md-12 form-input">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Descrizione sondaggio">
+                                    <textarea type="text" class="form-control noresize" name="subject" placeholder="Descrizione sondaggio" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">

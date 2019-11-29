@@ -12,6 +12,8 @@ public interface PollDAO {
 
     public List<Poll> getAllPoll() throws DataException;
 
+    public List<Poll> getPopoularPoll() throws DataException;
+
     public Poll getPollByID(int ID) throws DataException;
 
     public List<Poll> getPollByUserID(int userID) throws DataException;

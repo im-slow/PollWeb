@@ -50,7 +50,7 @@
                     </div>
                     <div class="border-top pt-5 mx-5"></div>
                     <div class="col-md-12">
-                        <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2">
+                        <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
                             <input class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *">
                             <input class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *">
                         </div>
@@ -58,23 +58,30 @@
                     <div class="container-fluid">
                         <form>
                             <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="d-flex flex-row align-items-center justify-content-center append-answer-js">
-                                        <input id="answer-js" type="text" class="form-control mt-4" placeholder="Inserisci domanda">
-                                        <div class="btn btn-light">
-                                            <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js mt-4"> + </a>
-                                        </div>
+                                <div id="append-answer-js" class="form-group">
+                                    <div class="d-flex flex-row align-items-center justify-content-center">
+                                        <input id="answer-js" type="text" class="form-control" placeholder="Inserisci domanda">
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="d-flex flex-row justify-content-end align-items-center pr-3 mr-3">
-                        <div class="justify-content-center align-items-center">
-                            <label>Obbligatoria: </label>
+                    <div class="col-sm-12 d-flex flex-row align-items-center">
+                        <div class="col-sm-6 d-flex flex-row align-items-center">
+                            <div class="">
+                                <label>Obbligatoria: </label>
+                            </div>
+                            <div class="form-check form-check-inline pl-4">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline pl-3">
-                            <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <div class="col-sm-6 d-flex flex-row align-items-end justify-content-end">
+                            <div id="answer-js" class="">
+                                <a id="new-answer-js" href="javascript:void(0)" class="text-orange font-weight-bold a-click"><h3> + </h3></a>
+                            </div>
                         </div>
                     </div>
                 </div>

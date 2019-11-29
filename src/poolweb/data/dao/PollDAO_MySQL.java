@@ -13,11 +13,13 @@ import java.util.List;
 
 public class PollDAO_MySQL extends DAO implements PollDAO {
 
-    private final String SELECT_ALL_POLLID = "SELECT ID as IDPOLL FROM poll LIMIT 3";
+    private final String SELECT_ALL_POLLID = "SELECT ID as IDPOLL FROM poll";
+    private final String SELECT_POPOULAR_POLLID = "SELECT ID as IDPOLL FROM poll LIMIT 3";
     private final String SELECT_POLL_BY_ID = "SELECT * FROM poll WHERE ID = ?";
     private final String SELECT_POLL_BY_USER_ID = "SELECT * FROM poll WHERE IDuser = ? LIMIT 5";
 
     private PreparedStatement allPoll;
+    private PreparedStatement popoularPoll;
     private PreparedStatement pollByID;
     private PreparedStatement pollByUserID;
 
@@ -29,6 +31,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     public void init() throws DataException {
         try {
             super.init();
+            popoularPoll = connection.prepareStatement(SELECT_POPOULAR_POLLID);
             allPoll = connection.prepareStatement(SELECT_ALL_POLLID);
             pollByID = connection.prepareStatement(SELECT_POLL_BY_ID);
             pollByUserID = connection.prepareStatement(SELECT_POLL_BY_USER_ID);
@@ -50,6 +53,21 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
            //
        }
        return result;
+    }
+
+    @Override
+    public List<Poll> getPopoularPoll() throws DataException {
+        List<Poll> result = new ArrayList<>();
+        try {
+            try (ResultSet rs = popoularPoll.executeQuery()) {
+                while (rs.next()) {
+                    result.add(getPollByID(rs.getInt("IDPOLL")));
+                }
+            }
+        } catch (SQLException ex) {
+            //
+        }
+        return result;
     }
 
     @Override

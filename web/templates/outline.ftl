@@ -166,6 +166,7 @@
   	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
   	<script src="../style/vendor/bootstrap/popper.min.js"></script>
   	<script src="../style/vendor/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style/css/custom.css">
   	<script src="../style/vendor/select2/select2.min.js "></script>
   	<script src="../style/vendor/owlcarousel/owl.carousel.min.js"></script>
   	<script src="../style/vendor/isotope/isotope.min.js"></script>
@@ -176,7 +177,7 @@
     ><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   	<!-- Main JS -->
-  	<script src="../style/js/app.min.js "></script>
+  	<script src="../style/js/app.min.js"></script>
   	<#--<script src="//localhost:35729/livereload.js"></script>-->
   </body>
   </html>

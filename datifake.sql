@@ -23,3 +23,14 @@ INSERT INTO `dbpollweb`.`submittedby` (`IDanswer`, `IDinstance`) VALUES ('3', '3
 INSERT INTO `dbpollweb`.`submittedby` (`IDanswer`, `IDinstance`) VALUES ('4', '4');
 
 #UPDATE `dbpollweb`.`question` SET `positionNumber`='2' AND positionNumber='1' WHERE `ID`='1' AND ;
+#tanti sondaggi
+INSERT INTO `dbpollweb`.`poll` (`ID`, `idNum`, `title`, `openText`, `closeText`, `openPoll`, `statePoll`, `URLPoll`, `IDuser`) VALUES ('4', '12346', 'Prova', 'questo è un sondaggio', 'chiusura', '1', '1', 'url4', '2');
+INSERT INTO `dbpollweb`.`poll` (`ID`, `idNum`, `title`, `openText`, `closeText`, `openPoll`, `statePoll`, `URLPoll`, `IDuser`) VALUES ('5', '24342', 'Bellissima', 'Lorem ipsum', 'sondaggio completato', '1', '1', 'url5', '2');
+INSERT INTO `dbpollweb`.`poll` (`ID`, `idNum`, `title`, `openText`, `closeText`, `openPoll`, `statePoll`, `URLPoll`, `IDuser`) VALUES ('6', '253526', 'I', 'ma le mettiamo le', 'grazie per la partecipazione', '1', '1', 'url6', '2');
+INSERT INTO `dbpollweb`.`poll` (`ID`, `idNum`, `title`, `openText`, `closeText`, `openPoll`, `statePoll`, `URLPoll`, `IDuser`) VALUES ('7', '26262', 'Sondaggi', 'maiuscole', 'sempre un piacere', '1', '1', 'url7', '2');
+INSERT INTO `dbpollweb`.`poll` (`ID`, `idNum`, `title`, `openText`, `closeText`, `openPoll`, `statePoll`, `URLPoll`, `IDuser`) VALUES ('8', '42', 'Sono', 'alla prima', 'bela ciao', '1', '0', 'url8', '3');
+INSERT INTO `dbpollweb`.`poll` (`ID`, `idNum`, `title`, `openText`, `closeText`, `openPoll`, `statePoll`, `URLPoll`, `IDuser`) VALUES ('9', '2345', '9', 'lettera. ci metto tanto così la card diventa più grande lorem ipsum?!', 'una matina', '0', '0', 'url9', '3');
+UPDATE `dbpollweb`.`poll` SET `URLPoll`='url1' WHERE `ID`='1';
+UPDATE `dbpollweb`.`poll` SET `URLPoll`='url2' WHERE `ID`='2';
+UPDATE `dbpollweb`.`poll` SET `URLPoll`='url3' WHERE `ID`='3';
+

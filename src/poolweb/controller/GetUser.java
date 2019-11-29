@@ -30,7 +30,7 @@ public class GetUser extends PoolWebBaseController {
 
     private void action_user(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
-            List<Poll> poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getAllPoll();
+            List<Poll> poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPopoularPoll();
             if (poll != null) {
                 request.setAttribute("poll", poll);
                 request.setAttribute("page_title", "Home"); //Titolo da iniettare nel template con freeMarker
