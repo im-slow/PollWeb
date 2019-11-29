@@ -30,6 +30,7 @@
     <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body data-spy="scroll" data-target="#navbar-nav-header" class="static-layout">
@@ -174,7 +175,6 @@
   	<script src="../style/vendor/waypoints/waypoint.min.js"></script>
   	<script src="../../style/vendor/countTo/jquery.countTo.js"></script>
     <script src="../style/js/questions.js"></script
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   	<!-- Main JS -->
 

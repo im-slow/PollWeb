@@ -10,9 +10,9 @@
         <div id="accordionExample" class="accordion">
             <div id="card-header-js" class="price-box card col-md-8 offset-md-2 m-t-4">
                 <div class="card-header border-bottom border-top border-left border-right" id="heading1">
-                    <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5">
+                    <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5 collpase-header-js" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
                         <h6 id="number-js" class="text-orange font-weight-bold mr-2">1</h6>
-                        <h6 class="question-name-js" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Nuova domanda</h6>
+                        <h6 class="question-name-js">Nuova domanda</h6>
                         <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js ml-2"><h3> - </h3></a>
                     </div>
                 </div>

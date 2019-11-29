@@ -18,17 +18,11 @@ $(document).on('click', '#another-question-js', () => {
     listChild();
 });
 
-//Toogle Effect
-// $(document).on('click', '.card-header', function (e) {
-//     $('.card-body-js:visible').slideToggle();
-//     $(this).parent().find('.card-body-js').slideToggle();
-// });
-
 //Remove Questions
 $(document).on('click', '.remove-question-js', function (e) {
     e.stopPropagation();
     let element = 0;
-    $('#accordion > div').each(function () {
+    $('.accordion > div').each(function () {
         element++;
     });
     if (element > 1) {
@@ -58,19 +52,17 @@ $(document).on('change', '.question-input-js', function () {
     }
 });
 
+//List and enable Boostrap Collapse Accordion
 function listChild() {
     let counter = 0;
     $('.accordion > div').each(function () {
         $(this).find('.card-header').attr('id', `heading${++counter}`);
-        $(this).find('.question-name-js').attr('data-target', `#collapse${counter}`);
-        $(this).find('.question-name-js').attr('aria-controls', `collapse${counter}`);
+        $(this).find('.collpase-header-js').attr('data-target', `#collapse${counter}`);
+        $(this).find('.collpase-header-js').attr('aria-controls', `collapse${counter}`);
         $(this).find('.card-body-js').attr('aria-labelledby', `heading${counter}`);
+        $(this).find('.card-body-js').removeClass('show');
         $(this).find('.card-body-js').attr('id', `collapse${counter}`);
         $(this).find('#number-js').html(counter);
-        var namequestion = $(this).find('.question-input-js').val();
-        if (namequestion !== '') {
-            $(this).find('.question-name-js').html(namequestion);
-        }
     });
 }
 

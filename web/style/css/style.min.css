@@ -476,6 +476,22 @@ footer {
   padding-right: 10%;
 }
 
+.swal-title {
+  font-family: 'Work Sans', sans-serif;
+}
+
+.swal-modal {
+  border-radius: 0px !important;
+}
+
+.swal-text {
+  font-family: 'Work Sans', sans-serif;
+}
+
+.swal-button {
+  font-family: 'Work Sans', sans-serif;
+}
+
 @media (min-width: 768px) and (max-width: 1200px) {
   .pd-h {
     padding-left: 5%;
