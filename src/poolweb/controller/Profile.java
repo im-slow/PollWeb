@@ -1,0 +1,63 @@
+package poolweb.controller;
+
+import poolweb.data.dao.PoolWebDataLayer;
+import poolweb.data.model.Poll;
+import poolweb.data.model.User;
+import poolweb.framework.data.DataException;
+import poolweb.framework.result.FailureResult;
+import poolweb.framework.result.SplitSlashesFmkExt;
+import poolweb.framework.result.TemplateManagerException;
+import poolweb.framework.result.TemplateResult;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+import javax.servlet.http.HttpSession;
+import static poolweb.framework.security.SecurityLayer.*;
+
+public class Profile extends PoolWebBaseController {
+    @Override
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try {
+            HttpSession s = checkSession(request);
+            if (s!= null) {
+                action_poll(request, response, s);
+            } else {
+                response.sendRedirect("/accedi");
+            }
+        } catch (IOException ioexc) {
+            ioexc.printStackTrace();
+        }
+    }
+
+    private void action_poll(HttpServletRequest request, HttpServletResponse response, HttpSession s) throws IOException, ServletException {
+        try {
+            TemplateResult res = new TemplateResult(getServletContext());
+            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+            User currentuser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
+            request.setAttribute("page_title", "Profilo");
+            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+            List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByUserID(currentuser.getID());
+            request.setAttribute("user", currentuser);
+            if (usersPoll != null) {
+                request.setAttribute("userPoll", usersPoll);
+            } else {
+                request.setAttribute("message", "Error during User loading");
+                action_error(request, response);
+            }
+            res.activate("profile.ftl", request, response);
+        } catch (DataException | TemplateManagerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Necessario per gestire le return di errori
+    private void action_error(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getAttribute("exception") != null) {
+            (new FailureResult(getServletContext())).activate((Exception) request.getAttribute("exception"), request, response);
+        } else {
+            (new FailureResult(getServletContext())).activate((String) request.getAttribute("message"), request, response);
+        }
+    }
+}

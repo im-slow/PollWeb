@@ -196,6 +196,13 @@ a {
   border-radius: 10px;
 }
 
+.btn-grey {
+  background-color: #CED4DA !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px;
+}
+
 #gtco-header-navbar {
   position: absolute;
   top: 0;
@@ -478,6 +485,7 @@ footer {
 
 .swal-title {
   font-family: 'Work Sans', sans-serif;
+  font-weight: 300!important;
 }
 
 .swal-modal {
