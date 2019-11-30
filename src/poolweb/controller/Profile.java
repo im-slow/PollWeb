@@ -22,7 +22,7 @@ public class Profile extends PoolWebBaseController {
         try {
             HttpSession s = checkSession(request);
             if (s!= null) {
-                action_poll(request, response, s);
+                action_user(request, response, s);
             } else {
                 response.sendRedirect("/accedi");
             }
@@ -31,7 +31,7 @@ public class Profile extends PoolWebBaseController {
         }
     }
 
-    private void action_poll(HttpServletRequest request, HttpServletResponse response, HttpSession s) throws IOException, ServletException {
+    private void action_user(HttpServletRequest request, HttpServletResponse response, HttpSession s) throws IOException, ServletException {
         try {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());

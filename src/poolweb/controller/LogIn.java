@@ -1,7 +1,6 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
-import poolweb.data.model.Poll;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import static poolweb.framework.security.SecurityLayer.*;
