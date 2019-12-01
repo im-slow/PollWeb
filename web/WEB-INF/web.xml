@@ -63,6 +63,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>Profilo</servlet-name>
+        <servlet-class>poolweb.controller.Profile</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>Rispondi</servlet-name>
         <servlet-class>poolweb.controller.CreateAnswer</servlet-class>
     </servlet>
@@ -90,6 +95,11 @@
     <servlet-mapping>
         <servlet-name>Accedi</servlet-name>
         <url-pattern>/accedi</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Profilo</servlet-name>
+        <url-pattern>/profilo</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

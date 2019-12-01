@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 //Add new Question
 $(document).on('click', '#another-question-js', () => {
-    $('.accordion').append(basicQuestion.clone()).hide().fadeIn(1000);
+    $('.accordion').append(basicQuestion.clone()).hide().fadeIn(600);
     listChild();
 });
 
@@ -68,5 +68,5 @@ function listChild() {
 
 //add new Single choise or multiple choise answer
 $(document).on('click', '#new-answer-js', () => {
-    $('#append-answer-js').append(basicAnswer.clone()).hide().fadeIn(1000);
+    $('#append-answer-js').append(basicAnswer.clone()).hide().fadeIn(600);
 });

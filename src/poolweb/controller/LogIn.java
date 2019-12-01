@@ -1,21 +1,17 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
-import poolweb.data.model.Poll;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
-import poolweb.framework.security.SecurityLayer;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import static poolweb.framework.security.SecurityLayer.*;
@@ -70,54 +66,22 @@ public class LogIn extends PoolWebBaseController {
         try {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(email, password);
+            User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(email, HashingMaps(password));
             if (newUser!= null) {
                 createSession(request, newUser.getName(), newUser.getID());
-                request.setAttribute("page_title", "Profilo");
-                request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-                List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByUserID(newUser.getID());
-                request.setAttribute("user", newUser);
-                request.setAttribute("userPoll", usersPoll);
-                res.activate("profile.ftl", request, response);
+                response.sendRedirect("/profilo");
             } else {
                 request.setAttribute("page_title", "Accedi");
                 request.setAttribute("login_error", "Username o password errati");
                 res.activate("login.ftl", request, response);
             }
-//            if (usersPoll != null) {
-//                request.setAttribute("usersPoll", usersPoll);
-//                res.activate("profile.ftl", request, response);
-//            } else {
-//                request.setAttribute("message", "Nessun Sondaggio disponibile");
-//                action_error(request, response);
-//            }
-//            res.activate("profile.ftl", request, response);
-
-        } catch (DataException e) {
+        } catch (DataException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }
 
     private void action_update(HttpServletRequest request, HttpServletResponse response, HttpSession s) throws IOException, ServletException, TemplateManagerException {
-        try {
-            TemplateResult res = new TemplateResult(getServletContext());
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            User currentuser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
-            request.setAttribute("page_title", "Profilo");
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByUserID(currentuser.getID());
-            request.setAttribute("user", currentuser);
-            if (usersPoll != null) {
-                request.setAttribute("userPoll", usersPoll);
-            } else {
-                request.setAttribute("message", "Error during User loading");
-                action_error(request, response);
-            }
-            res.activate("profile.ftl", request, response);
-
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+        response.sendRedirect("/profilo");
     }
 
     //Necessario per gestire le return di errori

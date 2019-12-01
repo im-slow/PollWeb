@@ -25,8 +25,8 @@
                         <!-- Blog Item -->
                         <#if (poll?size>0)>
                             <#list poll as pollDB>
-                            <div class="col-md-4 blog-item-wrapper">
-                                <div class="blog-item">
+                            <div class="col-md-4 blog-item-wrapper d-flex flex-column">
+                                <div class="blog-item d-flex flex-column flex-grow-1">
                                     <div class="blog-img">
                                         <#if (pollDB.pollstatus)>
                                             <a href="/rispondisondaggio"><img src="../style/img/card-image.png" alt=""></a>

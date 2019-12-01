@@ -50,8 +50,11 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">
-                                    <a class="btn btn-block btn-secondary btn-red" href="/aggiungidomande">Crea Sondaggio</a>
+                                    <a  class="btn btn-block btn-secondary btn-red" href="/aggiungidomande">Crea Sondaggio</a>
                                 </div>
+<#--                                <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">-->
+<#--                                    <input type="submit" value="Crea Sondaggio" class="btn btn-block btn-secondary btn-red" href="/aggiungidomande" />-->
+<#--                                </div>-->
                             </div>
                         </div>
                     </form>

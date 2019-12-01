@@ -15,8 +15,8 @@
                     <!-- Blog Item -->
                     <#if (userPoll?size>0)>
                         <#list userPoll as pollDB>
-                            <div class="col-md-4 blog-item-wrapper">
-                                <div class="blog-item">
+                            <div class="col-md-4 blog-item-wrapper d-flex flex-column">
+                                <div class="blog-item d-flex flex-column flex-grow-1">
                                     <div class="blog-img">
                                         <a href="single.html"><img src="../style/img/card-image.png" alt=""></a>
                                     </div>
