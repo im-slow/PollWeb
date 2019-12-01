@@ -69,7 +69,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
         List<Question> result = new ArrayList<>();
         try {
             questionByIDpoll.setInt(1, IDpoll);
-            try (ResultSet rs = questionByID.executeQuery()) {
+            try (ResultSet rs = questionByIDpoll.executeQuery()) {
                 while (rs.next()) {
                     result.add(createQuestion(rs));
                 }

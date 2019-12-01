@@ -113,6 +113,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             a.setID(rs.getInt("id"));
             a.setTitle(rs.getString("title"));
             a.setOpentext(rs.getString("openText"));
+            a.setClosetext(rs.getString("closeText"));
             a.setPollstatus(rs.getBoolean("statePoll"));
             a.setAuthorKey(rs.getInt("IDuser"));
             return a;
