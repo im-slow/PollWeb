@@ -14,6 +14,7 @@ public class QuestionImpl implements Question {
     private int position;
     private String min;
     private String max;
+    private String qAnswer;
     private Poll poll;
 
 
@@ -26,6 +27,7 @@ public class QuestionImpl implements Question {
         position = 0;
         min = "";
         max = "";
+        qAnswer = "";
         poll = null;
     }
 
@@ -72,6 +74,11 @@ public class QuestionImpl implements Question {
     @Override
     public String getMaximum() {
         return max;
+    }
+
+    @Override
+    public String getQAnswer() {
+        return qAnswer;
     }
 
     @Override
@@ -122,6 +129,11 @@ public class QuestionImpl implements Question {
     @Override
     public void setMaximum(String max) {
         this.max = max;
+    }
+
+    @Override
+    public void setQAnswer(String qAnswer) {
+        this.qAnswer = qAnswer;
     }
 
     @Override

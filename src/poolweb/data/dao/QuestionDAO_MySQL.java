@@ -113,6 +113,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             a.setQuestionType(Question.QuestionType.valueOf(rs.getString("questionType")));
             a.setMinimum(rs.getString("minimum"));
             a.setMinimum(rs.getString("maximum"));
+            a.setQAnswer(rs.getString("qAnswer"));
             a.setPollKey(rs.getInt("IDpoll"));
             return a;
         } catch (SQLException ex) {

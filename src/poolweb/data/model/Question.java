@@ -29,6 +29,8 @@ public interface Question {
 
     String getMaximum();
 
+    String getQAnswer();
+
     Poll getPoll();
 
     void setID(int ID);
@@ -48,6 +50,8 @@ public interface Question {
     void setMinimum(String min);
 
     void setMaximum(String max);
+
+    void setQAnswer(String qAnswer);
 
     void setPoll(Poll poll);
 

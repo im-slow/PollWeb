@@ -50,6 +50,7 @@ create table question(
     questionType enum('SHORTTEXT','LONGTEXT','NUMBER','DATE','SINGLECHOISE','MULTIPLECHOISE'),
     minimum varchar(32),
     maximum varchar(32),
+    qAnswer varchar(255),
     IDpoll integer unsigned not null,
     constraint question_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
 );
