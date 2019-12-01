@@ -40,6 +40,8 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
     public void destroy() throws DataException {
         try {
             allUser.close();
+            userByID.close();
+            userByLogin.close();
         } catch (SQLException ex){
             //
         }

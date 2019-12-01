@@ -29,12 +29,12 @@ create table utente(
 create table poll(
 	ID integer unsigned not null primary key auto_increment,
     idNum integer not null unique,
-    title varchar(32) not null unique,
-    openText varchar(255) not null unique,
-    closeText varchar(255) not null unique,
-    openPoll boolean not null unique,
-    statePoll boolean not null unique,
-    URLPoll varchar(255) not null,
+    title varchar(32) not null,
+    openText varchar(255) not null,
+    closeText varchar(255) not null,
+    openPoll boolean not null,
+    statePoll boolean not null,
+    URLPoll varchar(255) not null unique,
     IDuser integer unsigned not null,
     constraint poll_user foreign key (IDuser) references utente(ID) on update cascade on delete cascade
 );
@@ -50,7 +50,6 @@ create table question(
     questionType enum('SHORTTEXT','LONGTEXT','NUMBER','DATE','SINGLECHOISE','MULTIPLECHOISE'),
     minimum varchar(32),
     maximum varchar(32),
-    questionOption varchar(255),
     IDpoll integer unsigned not null,
     constraint question_poll foreign key (IDpoll) references poll(ID) on update cascade on delete cascade
 );
