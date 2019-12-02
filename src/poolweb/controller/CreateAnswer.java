@@ -8,6 +8,7 @@ import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
+import poolweb.util.ParserAnswer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +33,12 @@ public class CreateAnswer extends PoolWebBaseController {
         try {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            Poll poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(parseInt(request.getParameter("id")));
+            Poll poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(1); // parseInt(request.getParameter("id")));
             request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
+
+            //request.setAttribute("answers", );
             request.setAttribute("question", question);
             request.setAttribute("poll", poll);
             if (true) {
