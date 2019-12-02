@@ -1,7 +1,12 @@
 package poolweb.util;
 
+import poolweb.data.dao.PoolWebDataLayer;
+import poolweb.data.model.Question;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public final class ParserAnswer {
 
@@ -29,6 +34,17 @@ public final class ParserAnswer {
             answer = s + "$;";
         }
         return answer;
+    }
+
+    public Map<Integer, List<String>> parserQuestion(List<Question> q){
+        Map<Integer, List<String>> map = new TreeMap<>();
+        Integer i = 1;
+        for (Question split : q) {
+            map.put(i, parserAnswer(split.getQAnswer()));
+            i++;
+        }
+        System.out.println(map);
+        return map;
     }
 
 }

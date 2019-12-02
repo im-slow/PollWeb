@@ -30,9 +30,9 @@ public class CreatePoll extends PoolWebBaseController  {
                 request.setAttribute("message", "Unable to load Users");
                 action_error(request, response);
             }
-            } catch (TemplateManagerException e) {
-                e.printStackTrace();
-            }
+        } catch (TemplateManagerException e) {
+            e.printStackTrace();
+        }
     }
 
         //Necessario per gestire le return di errori
