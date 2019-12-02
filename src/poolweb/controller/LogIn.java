@@ -31,10 +31,7 @@ public class LogIn extends PoolWebBaseController {
         } catch (NumberFormatException ex) {
             request.setAttribute("message", "Invalid number submitted");
             action_error(request, response);
-        } catch (IOException ex) {
-            request.setAttribute("exception", ex);
-            action_error(request, response);
-        } catch (TemplateManagerException ex) {
+        } catch (IOException | TemplateManagerException ex) {
             request.setAttribute("exception", ex);
             action_error(request, response);
         }
@@ -48,23 +45,17 @@ public class LogIn extends PoolWebBaseController {
             } else {
                 System.out.println("non loggato");
             }
-            if (true) {
-                request.setAttribute("page_title", "Accedi"); //Titolo da iniettare nel template con freeMarker
-                TemplateResult res = new TemplateResult(getServletContext());
-                request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-                res.activate("login.ftl", request, response);
-            } else {
-                request.setAttribute("message", "Unable to load Users");
-                action_error(request, response);
-            }
+            request.setAttribute("page_title", "Accedi"); //Titolo da iniettare nel template con freeMarker
+            TemplateResult res = new TemplateResult(getServletContext());
+            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+            res.activate("login.ftl", request, response);
         } catch (TemplateManagerException e) {
             e.printStackTrace();
         }
     }
 
-    private void action_write(HttpServletRequest request, HttpServletResponse response, String email, String password) throws IOException, ServletException, TemplateManagerException {
+    private void action_write(HttpServletRequest request, HttpServletResponse response, String email, String password) throws IOException, TemplateManagerException {
         try {
-            System.out.println(request.getAttribute("urlrequest"));
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(email, HashingMaps(password));

@@ -106,7 +106,6 @@ public class SecurityLayer {
         for (byte b1 : b) {
             sb.append(Integer.toHexString(b1 & 0xfff).toString());
         }
-        System.out.println(sb.toString());
         return sb.toString();
     }
 
