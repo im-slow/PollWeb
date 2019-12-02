@@ -8,6 +8,8 @@ import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +26,7 @@ public class Profile extends PoolWebBaseController {
             if (s!= null) {
                 action_user(request, response, s);
             } else {
-                response.sendRedirect("/accedi");
+                action_redirect(request, response);
             }
         } catch (IOException ioexc) {
             ioexc.printStackTrace();
@@ -48,6 +50,16 @@ public class Profile extends PoolWebBaseController {
             }
             res.activate("profile.ftl", request, response);
         } catch (DataException | TemplateManagerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void action_redirect(HttpServletRequest request, HttpServletResponse response) throws  IOException {
+        try {
+            request.setAttribute("urlrequest", request.getRequestURL());
+            RequestDispatcher rd = request.getRequestDispatcher("/accedi");
+            rd.forward(request, response);
+        } catch (ServletException e) {
             e.printStackTrace();
         }
     }

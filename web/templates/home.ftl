@@ -91,7 +91,7 @@
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-users"></i>
-                    <span class="number" data-from="0" data-to="34" data-refresh-interval="100"></span>
+                    <span class="number" data-from="0" data-to="34" data-refresh-interval="100">100</span>
                     <h4>Utenti</h4>
                 </div>
                 <!-- End of Counter Item -->

@@ -64,12 +64,13 @@ public class LogIn extends PoolWebBaseController {
 
     private void action_write(HttpServletRequest request, HttpServletResponse response, String email, String password) throws IOException, ServletException, TemplateManagerException {
         try {
+            System.out.println(request.getAttribute("urlrequest"));
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             User newUser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser(email, HashingMaps(password));
             if (newUser!= null) {
                 createSession(request, newUser.getName(), newUser.getID());
-                response.sendRedirect("/profilo");
+                response.sendRedirect(request.getAttribute("urlrequest").toString());
             } else {
                 request.setAttribute("page_title", "Accedi");
                 request.setAttribute("login_error", "Username o password errati");
@@ -81,7 +82,7 @@ public class LogIn extends PoolWebBaseController {
     }
 
     private void action_update(HttpServletRequest request, HttpServletResponse response, HttpSession s) throws IOException, ServletException, TemplateManagerException {
-        response.sendRedirect("/profilo");
+        response.sendRedirect(request.getAttribute("urlrequest").toString());
     }
 
     //Necessario per gestire le return di errori

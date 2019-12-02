@@ -49,7 +49,7 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/accedi">Profilo</a>
+                    <a class="nav-link" href="/profilo">Profilo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contatti</a>
