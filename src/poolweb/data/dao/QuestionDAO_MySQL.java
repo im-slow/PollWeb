@@ -2,11 +2,9 @@ package poolweb.data.dao;
 
 import poolweb.data.model.Question;
 import poolweb.data.proxy.QuestionProxy;
-import poolweb.data.proxy.UserProxy;
 import poolweb.framework.data.DAO;
 import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,10 +16,16 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
     private final String SELECT_ALL_QUESTION = "SELECT id FROM question";
     private final String SELECT_QUESTION_BY_ID = "SELECT * FROM question WHERE id = ?";
     private final String SELECT_QUESTION_BY_IDPOLL = "SELECT * FROM question WHERE IDpoll=?";
+    private final String INSERT_QUESTION = "INSERT INTO question (positionNumber, uniqueCode, questionText, note, mandatory, questionType, minimum, maximum, qAnswer, IDpoll) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String UPDATE_QUESTION = "UPDATE question SET positionNumber=?, uniqueCode=?, questionText=?, note=?, mandatory=?, questionType=?, minimum=?, maximum=?, qAnswer=?, IDpoll=?" +
+            "WHERE ID=?";
 
     private PreparedStatement allQuestion;
     private PreparedStatement questionByID;
     private PreparedStatement questionByIDpoll;
+    private PreparedStatement insertQuestion;
+    private PreparedStatement updateQuestion;
 
     public QuestionDAO_MySQL(DataLayer d) { super(d);}
 
@@ -32,6 +36,8 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             allQuestion = connection.prepareStatement(SELECT_ALL_QUESTION);
             questionByID = connection.prepareStatement(SELECT_QUESTION_BY_ID);
             questionByIDpoll = connection.prepareStatement(SELECT_QUESTION_BY_IDPOLL);
+            insertQuestion = connection.prepareStatement(INSERT_QUESTION);
+            updateQuestion = connection.prepareStatement(UPDATE_QUESTION);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -43,6 +49,8 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             allQuestion.close();
             questionByID.close();
             questionByIDpoll.close();
+            insertQuestion.close();
+            updateQuestion.close();
         } catch (SQLException ex){
             //
         }
@@ -78,6 +86,43 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             throw new DataException("Unable to load poll by PollID", ex);
         }
         return result;
+    }
+
+    @Override
+    public void storeQuestion(Question question) throws DataException {
+        int id = question.getID();
+        try {
+            if (question.getID() > 0) {
+                if (question instanceof QuestionProxy && ((QuestionProxy) question).isDirty()) {
+                    return;
+                }
+                //here is for the update of the all parametes, for specific update need to create new PreparedStatement
+                updateQuestion.setInt(1, question.getPositionNumber());
+                updateQuestion.setString(2, question.getCode());
+                updateQuestion.setString(3, question.getQuestionText());
+                updateQuestion.setString(3, question.getNote());
+                updateQuestion.setBoolean(3, question.getMandatory());
+                updateQuestion.setString(3, question.getQuestionType().toString());
+                updateQuestion.setString(3, question.getMaximum());
+                updateQuestion.setString(3, question.getMinimum());
+                updateQuestion.setString(3, question.getMinimum());
+                updateQuestion.setString(3, question.getQAnswer());
+            } else {
+                insertQuestion.setInt(1, /*question.getPositionNumber()*/ 1);
+                insertQuestion.setString(2, question.getCode());
+                insertQuestion.setString(3, question.getQuestionText());
+                insertQuestion.setString(4, question.getNote());
+                insertQuestion.setBoolean(5, question.getMandatory());
+                insertQuestion.setString(6, question.getQuestionType().toString());
+                insertQuestion.setString(7, question.getMaximum());
+                insertQuestion.setString(8, question.getMinimum());
+                insertQuestion.setString(9, question.getQAnswer());
+                insertQuestion.setInt(10, 3);
+                insertQuestion.execute();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

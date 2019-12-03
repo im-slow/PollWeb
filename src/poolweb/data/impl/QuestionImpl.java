@@ -19,6 +19,7 @@ public class QuestionImpl implements Question {
 
 
     public QuestionImpl() {
+        ID = 0;
         code = "";
         text = "";
         note = "";

@@ -432,13 +432,14 @@ footer {
   margin-bottom: 15px;
   height: 38px;
   font-weight: 300; }
-  .form-control:focus {
-    border-color: #f15e75;
-    box-shadow: 0 0 0 0.2rem rgba(253, 101, 90, 0.25); }
 
-  .form-contro-maxmin {
-      margin-bottom: 0 !important;
-  }
+.form-control:focus {
+  border-color: #f15e75;
+  box-shadow: 0 0 0 0.2rem rgba(253, 101, 90, 0.25); }
+
+.form-contro-maxmin {
+    margin-bottom: 0 !important;
+}
 
 #gtco-contact-form form label.error {
   margin-bottom: 15px;

@@ -8,7 +8,6 @@ import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

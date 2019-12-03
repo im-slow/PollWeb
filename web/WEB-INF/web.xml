@@ -77,6 +77,11 @@
         <servlet-class>poolweb.controller.GetPolls</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>InsertAnswer</servlet-name>
+        <servlet-class>poolweb.controller.InsertQuestions</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -110,6 +115,11 @@
     <servlet-mapping>
         <servlet-name>TuttiSondaggi</servlet-name>
         <url-pattern>/tuttisondaggi</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>InsertAnswer</servlet-name>
+        <url-pattern>/inseriscidomande</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

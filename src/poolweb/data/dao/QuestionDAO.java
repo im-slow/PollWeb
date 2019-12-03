@@ -18,4 +18,6 @@ public interface QuestionDAO {
 
     public List<Question> getQuestionByPollID(int IDpoll) throws DataException;
 
+    public void storeQuestion(Question q) throws DataException;
+
 }
