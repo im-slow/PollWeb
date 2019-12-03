@@ -29,7 +29,7 @@ public interface Question {
 
     String getMaximum();
 
-    String getQAnswer();
+    String[] getQAnswer();
 
     Poll getPoll();
 
@@ -51,7 +51,7 @@ public interface Question {
 
     void setMaximum(String max);
 
-    void setQAnswer(String qAnswer);
+    void setQAnswer(String[] qAnswer);
 
     void setPoll(Poll poll);
 

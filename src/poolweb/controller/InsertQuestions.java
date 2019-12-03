@@ -54,7 +54,7 @@ public class InsertQuestions extends PoolWebBaseController{
                         q.setNote(request.getParameter("info" +idx));
                         q.setMaximum(request.getParameter("max" +idx));
                         q.setMinimum(request.getParameter("min" +idx));
-                        q.setQAnswer(parserAnswer(request.getParameterValues("domanda"+idx)));
+                        q.setQAnswer(request.getParameterValues("domanda"+idx));
                         q.setCode(randomQuestCode());
 //                        q.setPoll(); da gestire
                         q.setQuestionType(Question.QuestionType.valueOf("MULTIPLECHOISE")); //take from code

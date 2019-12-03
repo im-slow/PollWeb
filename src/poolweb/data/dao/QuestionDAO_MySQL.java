@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static poolweb.util.ParserAnswer.parserAnswer;
+
 public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
 
     private final String SELECT_ALL_QUESTION = "SELECT id FROM question";
@@ -106,7 +108,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
                 updateQuestion.setString(3, question.getMaximum());
                 updateQuestion.setString(3, question.getMinimum());
                 updateQuestion.setString(3, question.getMinimum());
-                updateQuestion.setString(3, question.getQAnswer());
+                updateQuestion.setString(3, parserAnswer(question.getQAnswer()));
             } else {
                 insertQuestion.setInt(1, /*question.getPositionNumber()*/ 1);
                 insertQuestion.setString(2, question.getCode());
@@ -116,7 +118,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
                 insertQuestion.setString(6, question.getQuestionType().toString());
                 insertQuestion.setString(7, question.getMaximum());
                 insertQuestion.setString(8, question.getMinimum());
-                insertQuestion.setString(9, question.getQAnswer());
+                insertQuestion.setString(9, parserAnswer(question.getQAnswer()));
                 insertQuestion.setInt(10, 3);
                 insertQuestion.execute();
             }
@@ -158,7 +160,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             a.setQuestionType(Question.QuestionType.valueOf(rs.getString("questionType")));
             a.setMinimum(rs.getString("minimum"));
             a.setMinimum(rs.getString("maximum"));
-            a.setQAnswer(rs.getString("qAnswer"));
+            a.setQAnswer(parserAnswer(rs.getString("qAnswer")));
             a.setPollKey(rs.getInt("IDpoll"));
             return a;
         } catch (SQLException ex) {

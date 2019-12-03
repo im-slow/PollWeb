@@ -16,7 +16,7 @@
                                 <div class="blog-item d-flex flex-column flex-grow-1">
                                     <div class="blog-img">
                                         <#if (pollDB.pollstatus)>
-                                            <a href="/rispondisondaggio/${pollDB.ID}"><img src="../style/img/card-image.png" alt=""></a>
+                                            <a href="/rispondisondaggio?id=${pollDB.ID}"><img src="../style/img/card-image.png" alt=""></a>
                                         <#else>
                                             <a href="#"><img src="../style/img/card-image.png" alt=""></a>
                                         </#if>

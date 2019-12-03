@@ -10,17 +10,21 @@
                     <label>${question.questionText}</label>
                     <#if question.questionType == "SINGLECHOISE">
                         <div class="form-check ml-3">
+                            <#list question.QAnswer as q>
                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
                             <label class="form-check-label pl-3" for="exampleRadios1">
-                                Risposta 1
+                                ${q}
                             </label>
+                            </#list>
                         </div>
                     <#else>
                         <div class="form-check ml-3">
-                            <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1">
-                            <label class="form-check-label pl-3" for="exampleRadios1">
-                                Risposta 1
-                            </label>
+                            <#list question.QAnswer as q>
+                                <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1">
+                                <label class="form-check-label pl-3" for="exampleRadios1">
+                                    ${q}
+                                </label>
+                            </#list>
                         </div>
                     </#if>
                 </div>
