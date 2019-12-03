@@ -64,11 +64,14 @@
                         <div class="container-fluid">
                             <div class="col-sm-12">
                                 <div id="append-answer-js" class="form-group">
-                                    <div id="question-option-js" class="d-flex flex-column align-items-center justify-content-center">
-                                        <input name="domanda1" id="answer-js" type="text" class="form-control" placeholder="Inserisci domanda" required>
-                                        <div class="invalid-feedback">
-                                            Il campo non può essere vuoto
+                                    <div id="question-option-js" class="d-flex flex-row align-items-center justify-content-between">
+                                        <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                                            <input name="domanda1" id="answer-js" type="search" class="form-control" placeholder="Inserisci domanda" value="" required />
+                                            <div class="invalid-feedback">
+                                                Il campo non può essere vuoto
+                                            </div>
                                         </div>
+                                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js ml-2" style="margin-bottom: 15px;"><h3> - </h3></a>
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +89,8 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 d-flex flex-row align-items-end justify-content-end">
-                                <div id="answer-js" class="">
-                                    <a id="new-answer-js" href="javascript:void(0)" class="text-orange font-weight-bold a-click"><h3> + </h3></a>
+                                <div id="new-answer-js" class="">
+                                    <a href="javascript:void(0)" class="text-orange font-weight-bold a-click"><h3> + </h3></a>
                                 </div>
                             </div>
                         </div>

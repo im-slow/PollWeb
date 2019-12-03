@@ -72,14 +72,29 @@ function listChild() {
         curnode.find('#min-js').attr('name', `min${counter}`);
         curnode.find('#max-js').attr('name', `max${counter}`);
         curnode.find('#info-js').attr('name', `info${counter}`);
+        curnode.find('#answer-js').attr('name', `domanda${counter}`);
         curnode.find('#number-js').html(counter);
     });
 }
 
 //add new Single choise or multiple choise answer
-$(document).on('click', '#answer-js', () => {
-    console.log($(this).parent().parent());
-    $(this).parent().parent().parent().find('#append-answer-js').append(basicAnswer.clone()).hide().fadeIn(600);
+$(document).on('click', '#new-answer-js', function() {
+    const parent = $(this).parent().parent().parent();
+    basicAnswerclone = parent.find('#question-option-js').clone();
+    basicAnswerclone.find('#answer-js').val( '');
+    parent.find('#append-answer-js').append(basicAnswerclone).hide().fadeIn(600);
+});
+
+//delete question
+$(document).on('click', '.remove-question2-js', function () {
+    let element = 0;
+    $('#append-answer-js > div').each(function () {
+        element++;
+    });
+    console.log(element);
+    if (element>1) {
+        $(this).parent().remove(); //parent con la vecchia "X"
+    }
 });
 
 (function() {
