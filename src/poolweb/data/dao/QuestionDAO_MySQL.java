@@ -92,7 +92,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
 
     @Override
     public void storeQuestion(Question question) throws DataException {
-        int id = question.getID();
+        int id = question.getID(); //if u want to check Poll's owner
         try {
             if (question.getID() > 0) {
                 if (question instanceof QuestionProxy && ((QuestionProxy) question).isDirty()) {
@@ -120,7 +120,14 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
                 insertQuestion.setString(8, question.getMinimum());
                 insertQuestion.setString(9, parserAnswer(question.getQAnswer()));
                 insertQuestion.setInt(10, 3);
-                insertQuestion.execute();
+                if (insertQuestion.executeUpdate() == 1) {
+                    try (ResultSet rs = insertQuestion.getGeneratedKeys()) {
+                        if (rs.next()) {
+                            id = rs.getInt(1);
+                        }
+                    }
+                    question.setID(id);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

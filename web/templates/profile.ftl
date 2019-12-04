@@ -18,7 +18,7 @@
                             <div class="col-md-4 blog-item-wrapper d-flex flex-column">
                                 <div class="blog-item d-flex flex-column flex-grow-1">
                                     <div class="blog-img">
-                                        <a href="single.html"><img src="../style/img/card-image.png" alt=""></a>
+                                        <a href="/rispondisondaggio?id=${pollDB.ID}"><img src="../style/img/card-image.png" alt=""></a>
                                     </div>
                                     <div class="blog-text">
                                         <div class="blog-tag">
@@ -29,7 +29,7 @@
                                             </#if>
                                         </div>
                                         <div class="blog-title">
-                                            <a href="#"><h4>${pollDB.title}</h4></a>
+                                            <a href="/rispondisondaggio?id=${pollDB.ID}"><h4>${pollDB.title}</h4></a>
                                         </div>
                                         <div class="blog-meta">
                                             <p class="blog-date">30 May 2016</p> /
