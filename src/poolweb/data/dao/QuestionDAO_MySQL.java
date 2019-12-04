@@ -116,8 +116,8 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
                 insertQuestion.setString(4, question.getNote());
                 insertQuestion.setBoolean(5, question.getMandatory());
                 insertQuestion.setString(6, question.getQuestionType().toString());
-                insertQuestion.setString(7, question.getMaximum());
-                insertQuestion.setString(8, question.getMinimum());
+                insertQuestion.setString(7, question.getMinimum());
+                insertQuestion.setString(8, question.getMaximum());
                 insertQuestion.setString(9, parserAnswer(question.getQAnswer()));
                 insertQuestion.setInt(10, 3);
                 if (insertQuestion.executeUpdate() == 1) {
@@ -166,7 +166,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             a.setMandatory(rs.getBoolean("mandatory"));
             a.setQuestionType(Question.QuestionType.valueOf(rs.getString("questionType")));
             a.setMinimum(rs.getString("minimum"));
-            a.setMinimum(rs.getString("maximum"));
+            a.setMaximum(rs.getString("maximum"));
             a.setQAnswer(parserAnswer(rs.getString("qAnswer")));
             a.setPollKey(rs.getInt("IDpoll"));
             return a;

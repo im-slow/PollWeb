@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="form-input">
+    <input class="form-control" type="text" placeholder="Scrivi qui la tua risposta">
+</div>

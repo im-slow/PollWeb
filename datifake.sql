@@ -34,3 +34,9 @@ UPDATE `dbpollweb`.`poll` SET `URLPoll`='url1' WHERE `ID`='1';
 UPDATE `dbpollweb`.`poll` SET `URLPoll`='url2' WHERE `ID`='2';
 UPDATE `dbpollweb`.`poll` SET `URLPoll`='url3' WHERE `ID`='3';
 
+INSERT INTO `dbpollweb`.`question` (`ID`, `positionNumber`, `uniqueCode`, `questionText`, `note`, `mandatory`, `questionType`, `minimum`, `maximum`, `qAnswer`, `IDpoll`) VALUES ('3', '3', '2345632', 'Scrivi un grande testo', 'NULL','1', 'LONGTEXT', '12', '400', 'NULL', '1');
+INSERT INTO `dbpollweb`.`question` (`ID`, `positionNumber`, `uniqueCode`, `questionText`, `note`, `mandatory`, `questionType`, `minimum`, `maximum`, `qAnswer`, `IDpoll`) VALUES ('4', '4', '231315632', 'Scrivi un piccolo testo', 'la precedente domanda non aveva note','1', 'SHORTTEXT', '12', '35', 'NULL', '1');
+INSERT INTO `dbpollweb`.`question` (`ID`, `positionNumber`, `uniqueCode`, `questionText`, `note`, `mandatory`, `questionType`, `minimum`, `maximum`, `qAnswer`, `IDpoll`) VALUES ('5', '5', '12345', 'Inserisci una data', 'quella che ti pare', '1', 'DATE', '12/11/1970', '04/12/2019', 'NULL', '1');
+INSERT INTO `dbpollweb`.`question` (`ID`, `positionNumber`, `uniqueCode`, `questionText`, `note`, `mandatory`, `questionType`, `minimum`, `maximum`, `qAnswer`, `IDpoll`) VALUES ('6', '6', '87654', 'Inserisci un numero', 'inserisci un numero tra 69 e 90 per teresa', '1', 'NUMBER', '69', '90', 'NULL', '1');
+
+

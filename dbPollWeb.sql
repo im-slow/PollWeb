@@ -45,7 +45,7 @@ create table question(
     positionNumber integer unsigned not null,
     uniqueCode varchar(32) not null unique,
     questionText text not null,
-    note varchar(32) not null,
+    note varchar(255) not null,
     mandatory bool not null,
     questionType enum('SHORTTEXT','LONGTEXT','NUMBER','DATE','SINGLECHOISE','MULTIPLECHOISE'),
     minimum varchar(32),
