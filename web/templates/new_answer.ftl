@@ -24,24 +24,10 @@
                             <div class="col-md-12">
                             <#switch question.questionType>
                                 <#case "SINGLECHOISE">
-                                    <#list question.QAnswer as q>
-                                    <div class="radio">
-                                            <input type="radio" id="radio${q?index}" name="radio${q?index}" value="option${q?index}">
-                                            <label class="pl-3" for="radio${q?index}">
-                                                ${q}
-                                            </label>
-                                    </div>
-                                    </#list>
+                                    <#include "answer-switch/singlechoise.ftl">
                                     <#break>
                                 <#case "MULTIPLECHOISE">
-                                    <div class="form-check ml-3">
-                                        <#list question.QAnswer as q>
-                                            <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1">
-                                            <label class="form-check-label pl-3" for="exampleRadios1">
-                                                ${q}
-                                            </label>
-                                        </#list>
-                                    </div>
+                                    <#include "answer-switch/multiplechise.ftl">
                                     <#break>
                                 <#case "SHORTTEXT">
                                     ...
