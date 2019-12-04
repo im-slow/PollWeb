@@ -1,7 +1,7 @@
 <#list question.QAnswer as q>
-    <div class="radio">
-        <input type="radio" id="radio${q?index}" name="radio${q?index}" value="option${q?index}">
-        <label class="pl-3" for="radio${q?index}">
+    <div class="row flex text-align radio form-check">
+        <input class="form-check-input mt-2" type="radio" id="${q?index}" name="radio">
+        <label class="form-check-label pl-3" for="radio">
             ${q}
         </label>
     </div>

@@ -30,16 +30,16 @@
                                     <#include "answer-switch/multiplechise.ftl">
                                     <#break>
                                 <#case "SHORTTEXT">
-                                    ...
+                                    <#include "answer-switch/shorttext.ftl">
                                     <#break>
                                 <#case "LONGTEXT">
-                                    ...
+                                    <#include "answer-switch/longtext.ftl">
                                     <#break>
                                 <#case "DATE">
-                                    ...
+                                    <#include "answer-switch/date.ftl">
                                     <#break>
                                 <#case "NUMBER">
-                                    ...
+                                    <#include "answer-switch/number.ftl">
                                     <#break>
                                 <#default>
                                     ...
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center align-text-center justify-content-between flex ml-4">
-                            <h4><small>Note: ${question.questionText}</small></h4>
+                            <h4><small>Note: ${question.note}</small></h4>
                         </div>
                     </div>
                 </div>
