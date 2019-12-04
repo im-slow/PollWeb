@@ -110,7 +110,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
                 updateQuestion.setString(3, question.getMinimum());
                 updateQuestion.setString(3, parserAnswer(question.getQAnswer()));
             } else {
-                insertQuestion.setInt(1, /*question.getPositionNumber()*/ 1);
+                insertQuestion.setInt(1, question.getPositionNumber());
                 insertQuestion.setString(2, question.getCode());
                 insertQuestion.setString(3, question.getQuestionText());
                 insertQuestion.setString(4, question.getNote());
