@@ -42,7 +42,7 @@ create table poll(
 #domande
 create table question(
 	ID integer unsigned not null primary key auto_increment,
-    positionNumber integer unsigned not null unique,
+    positionNumber integer unsigned not null,
     uniqueCode varchar(32) not null unique,
     questionText text not null,
     note varchar(32) not null,
