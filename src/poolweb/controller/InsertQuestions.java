@@ -53,8 +53,8 @@ public class InsertQuestions extends PoolWebBaseController{
                         q.setCode(randomQuestCode());
 //                        q.setPoll(); da gestire
                         q.setQuestionType(Question.QuestionType.valueOf("MULTIPLECHOISE")); //take from code
-                        q.setMandatory(true); //take from code
-                        q.setPositionNumber(3); //take from code
+                        q.setMandatory(Boolean.parseBoolean(request.getParameter("isobbligo"+idx))); //take from code
+                        q.setPositionNumber(Integer.parseInt(request.getParameter("numberquest"+idx))); //take from code
                         ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().storeQuestion(q);
                         action_write(request, response);
                     }

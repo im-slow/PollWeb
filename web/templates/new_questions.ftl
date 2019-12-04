@@ -10,6 +10,7 @@
         <form method="post" name="new-questions" class="needs-validation" action="/inseriscidomande" novalidate>
             <div id="accordionExample" class="accordion">
                 <div id="card-header-js" class="price-box card col-md-8 offset-md-2 m-t-4">
+                    <input type="text" class="form-control question-input-js" id="questnumber" name="numberquest1" hidden>
                     <div class="card-header border-bottom border-top border-left border-right" id="heading1">
                         <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5 collpase-header-js" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
                             <h6 id="number-js" class="text-orange font-weight-bold mr-2">1</h6>

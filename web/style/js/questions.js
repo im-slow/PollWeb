@@ -73,6 +73,8 @@ function listChild() {
         curnode.find('#max-js').attr('name', `max${counter}`);
         curnode.find('#info-js').attr('name', `info${counter}`);
         curnode.find('#answer-js').attr('name', `domanda${counter}`);
+        curnode.find('#questnumber').attr('name', `numberquest${counter}`);
+        curnode.find('#questnumber').val(counter);
         curnode.find('#number-js').html(counter);
     });
 }
