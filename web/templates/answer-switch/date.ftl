@@ -1,3 +1,3 @@
 <div class="form-input">
-    <input class="form-control" type="text" placeholder="Scrivi qui la tua risposta">
+    <input id="datepicker" class="form-control" placeholder="Inserisci una data nel seguente formato dd/mm/yyyy" />
 </div>
