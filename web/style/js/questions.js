@@ -169,8 +169,7 @@ $(document).on('click', '#hidden-answer-js', function() {
     }
     choiseClone.removeAttr('hidden');
     $(this).closest('#card-header-js').find('#answer-type-js').html(choiseClone);
-    // parent.find("#answer-type-js").html(choiseClone);
-    // parent.find("#answer-type-js").attr('value', $(this).attr('name'));
-    // parent.find("#answer-type-js").attr('name', 'questionType');
+    $(this).closest('#card-header-js').find('#answer-type-js').attr('value', $(this).attr('name'));
+    $(this).closest('#card-header-js').find('#answer-type-js').attr('name', 'questionType');
     console.log('ok');
 });
