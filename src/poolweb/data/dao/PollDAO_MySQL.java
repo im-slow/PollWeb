@@ -8,6 +8,7 @@ import poolweb.framework.data.DataLayer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,17 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     private final String SELECT_POPOULAR_POLLID = "SELECT ID as IDPOLL FROM poll LIMIT 3";
     private final String SELECT_POLL_BY_ID = "SELECT * FROM poll WHERE ID = ?";
     private final String SELECT_POLL_BY_USER_ID = "SELECT * FROM poll WHERE IDuser = ? LIMIT 5";
+    private final String INSERT_POLL = "INSERT INTO poll (title, openText, closeText, openPoll, statePoll, URLPoll, IDuser)" +
+            "VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private final String UPDATE_POLL = "UPDATE poll SET title=?, openText=?, closeText=?, openPoll=?, statePoll=?, URLPoll=?)" +
+            "WHERE ID=?";
 
     private PreparedStatement allPoll;
     private PreparedStatement popoularPoll;
     private PreparedStatement pollByID;
     private PreparedStatement pollByUserID;
+    private PreparedStatement insertPoll;
+    private PreparedStatement updatePoll;
 
     public PollDAO_MySQL(DataLayer d) {
         super(d);
@@ -35,6 +42,8 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             allPoll = connection.prepareStatement(SELECT_ALL_POLLID);
             pollByID = connection.prepareStatement(SELECT_POLL_BY_ID);
             pollByUserID = connection.prepareStatement(SELECT_POLL_BY_USER_ID);
+            insertPoll = connection.prepareStatement(INSERT_POLL, Statement.RETURN_GENERATED_KEYS);
+            updatePoll = connection.prepareStatement(UPDATE_POLL);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -107,6 +116,39 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     }
 
     @Override
+    public void storePoll(Poll poll) throws DataException {
+        int id = poll.getID();
+        try {
+            if (poll.getID() > 0) {
+                if (poll instanceof PollProxy && ((PollProxy) poll).isDirty()) {
+                    return;
+                }
+                //Here write the update
+            } else {
+                insertPoll.setString(1, poll.getTitle());
+                insertPoll.setString(2, poll.getOpentext());
+                insertPoll.setString(3, poll.getClosetext());
+                insertPoll.setBoolean(4, poll.getOpenstatus());
+                insertPoll.setBoolean(5, poll.getPollstatus());
+//                insertPoll.setString(6, poll.getURL());
+                insertPoll.setString(6, "hsdhYysd");
+                insertPoll.setInt(7, poll.getUser().getID());
+                if (insertPoll.executeUpdate() == 1) {
+                    try (ResultSet rs = insertPoll.getGeneratedKeys()) {
+                        if (rs.next()) {
+                            id = rs.getInt(1);
+                        }
+                    }
+                    poll.setID(id);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new DataException("Unable to insert or update Poll", ex);
+        }
+    }
+
+    @Override
     public PollProxy createPoll(ResultSet rs) throws DataException {
         try {
             PollProxy a = createPoll();
@@ -115,6 +157,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             a.setOpentext(rs.getString("openText"));
             a.setClosetext(rs.getString("closeText"));
             a.setPollstatus(rs.getBoolean("statePoll"));
+            a.setOpenStatus(rs.getBoolean("openPoll"));
             a.setAuthorKey(rs.getInt("IDuser"));
             return a;
         } catch (SQLException ex) {

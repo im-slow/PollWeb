@@ -164,6 +164,9 @@ a {
 .fs-40 {
   font-size: 40px; }
 
+.align-text-center {
+  text-align: center!important;
+}
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
@@ -432,6 +435,14 @@ footer {
   margin-bottom: 15px;
   height: 38px;
   font-weight: 300; }
+
+.delete_option_quest {
+  margin-bottom: 15px;
+  border-radius: .25rem;
+  border: 1px solid #fedda9;
+  padding: .375rem .75rem;
+  height: 38px;
+}
 
 .form-control:focus {
   border-color: #f15e75;

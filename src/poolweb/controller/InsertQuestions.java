@@ -4,16 +4,11 @@ import poolweb.data.dao.PoolWebDataLayer;
 import poolweb.data.model.Question;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
-import poolweb.framework.result.SplitSlashesFmkExt;
-import poolweb.framework.result.TemplateManagerException;
-import poolweb.framework.result.TemplateResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
-import java.util.TreeSet;
 
 import static poolweb.util.ParserAnswer.randomQuestCode;
 
@@ -35,30 +30,30 @@ public class InsertQuestions extends PoolWebBaseController{
     private void action_poll(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
             if (request.getParameterMap() != null) {
-                TreeSet<String> indexes = new TreeSet<>();
-                Map<String, String[]> parmap = request.getParameterMap();
-                for(Map.Entry<String, String[]> entry : parmap.entrySet()) {
-                    indexes.add((entry.getKey().substring(entry.getKey().length() - 1)));
-                }
-                for(String idx: indexes) {
+                for(int idx = 1; idx <= Integer.parseInt(request.getParameter("questnumbers")); idx++) {
                     // -- Here take the parameters for create a single Question Obj -- //
                     Question q;
                     q = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().createQuestion();
                     if (q != null) {
+                        if (request.getParameter("id" +idx) != null) {
+                            q.setID(Integer.parseInt(request.getParameter("id" +idx)));
+                        }
+                        System.out.println(request.getParameter("questname2"));
                         q.setQuestionText(request.getParameter("questname" +idx));
                         q.setNote(request.getParameter("info" +idx));
                         q.setMaximum(request.getParameter("max" +idx));
                         q.setMinimum(request.getParameter("min" +idx));
                         q.setQAnswer(request.getParameterValues("domanda"+idx));
                         q.setCode(randomQuestCode());
-//                        q.setPoll(); da gestire
+//                        q.setPoll(); da gestire, recuperare l'ID del poll creato precedentemente
                         q.setQuestionType(Question.QuestionType.valueOf("MULTIPLECHOISE")); //take from code
-                        q.setMandatory(Boolean.parseBoolean(request.getParameter("isobbligo"+idx))); //take from code
-                        q.setPositionNumber(Integer.parseInt(request.getParameter("numberquest"+idx))); //take from code
+                        q.setMandatory(Boolean.parseBoolean(request.getParameter("isobbligo"+idx)));
+                        q.setMandatory(Boolean.parseBoolean(request.getParameter("isobbligo"+idx)));
+                        q.setPosition(Integer.parseInt(request.getParameter("numberquest"+idx)));
                         ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().storeQuestion(q);
-                        action_write(request, response);
                     }
                 }
+                action_write(response);
             } else {
                 request.setAttribute("message", "Cannot update article: insufficient parameters");
                 action_error(request, response);
@@ -70,16 +65,8 @@ public class InsertQuestions extends PoolWebBaseController{
         }
     }
 
-    private void action_write(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            TemplateResult res = new TemplateResult(getServletContext());
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            request.setAttribute("page_title", "Inserimento Riuscito");
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            res.activate("status_insert.ftl", request, response);
-        } catch (TemplateManagerException e) {
-            e.printStackTrace();
-        }
+    private void action_write(HttpServletResponse response) throws IOException {
+        response.sendRedirect("/inserimentoriuscito");
     }
 
     //Necessario per gestire le return di errori

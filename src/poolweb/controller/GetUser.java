@@ -2,7 +2,6 @@ package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
 import poolweb.data.model.Poll;
-import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;

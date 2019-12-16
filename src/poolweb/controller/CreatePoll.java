@@ -32,7 +32,7 @@ public class CreatePoll extends PoolWebBaseController  {
     private void action_poll(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
             if (true) {
-                request.setAttribute("page_title", "Crea Sondaggio"); //Titolo da iniettare nel template con freeMarker
+                request.setAttribute("page_title", "Crea Sondaggio");
                 TemplateResult res = new TemplateResult(getServletContext());
                 request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
                 res.activate("new_poll.ftl", request, response);

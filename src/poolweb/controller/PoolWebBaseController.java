@@ -23,6 +23,7 @@ public abstract class PoolWebBaseController extends HttpServlet {
         try (PoolWebDataLayer datalayer = new PoolWebDataLayer(ds)) {
             datalayer.init();
             request.setAttribute("datalayer", datalayer);
+            request.setCharacterEncoding("UTF-8");
             processRequest(request, response);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -37,4 +38,5 @@ public abstract class PoolWebBaseController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processBaseRequest(request, response);
     }
+
 }

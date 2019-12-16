@@ -63,7 +63,7 @@ public class QuestionImpl implements Question {
     }
 
     @Override
-    public int getPositionNumber() {
+    public int getPosition() {
         return position;
     }
 
@@ -118,7 +118,7 @@ public class QuestionImpl implements Question {
     }
 
     @Override
-    public void setPositionNumber(int position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 

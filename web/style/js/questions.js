@@ -13,8 +13,9 @@ var sortable = Sortable.create(el, {
 
 //Question
 $(document).ready(function () {
-    basicQuestion = $('#card-header-js').clone();
+    basicQuestion = $('#card-header-js-plh').clone();
     basicAnswer = $('#question-option-js').clone();
+    listChild();
 });
 
 //Add new Question
@@ -26,6 +27,7 @@ $(document).on('click', '#another-question-js', () => {
 //Remove Questions
 $(document).on('click', '.remove-question-js', function (e) {
     e.stopPropagation();
+    const elementremv = $(this);
     let element = 0;
     $('.accordion > div').each(function () {
         element++;
@@ -38,8 +40,24 @@ $(document).on('click', '.remove-question-js', function (e) {
             buttons: ['Annulla', 'Elimina']
         }).then((willDelete) => {
             if (willDelete) {
-                $(this).parent().parent().parent().remove();
-                listChild();
+                const idvalue = $(this).closest('#card-header-js').find('.proxy-id-js').attr('value');
+                if ($(this).closest('#card-header-js').find('.proxy-id-js').length) {
+                    $.ajax({
+                        type: 'POST',
+                        data: { id: idvalue },
+                        url: `http://localhost:8080/removeQuestion`,
+                        success: function() {
+                            elementremv.closest('#card-header-js').remove();
+                            listChild();
+                        },
+                        error: function(data) {
+                            console.log(`error${data}`);
+                        }
+                    });
+                } else {
+                    $(this).parent().parent().parent().remove();
+                    listChild();
+                }
             } else {
                 console.log('Dismissed');
             }
@@ -57,7 +75,7 @@ $(document).on('change', '.question-input-js', function () {
     }
 });
 
-//List and enable Boostrap Collapse Accordion
+//List and enable Boostrap Collapse Accordion and set input name
 function listChild() {
     let counter = 0;
     $('.accordion > div').each(function () {
@@ -74,9 +92,15 @@ function listChild() {
         curnode.find('#info-js').attr('name', `info${counter}`);
         curnode.find('#answer-js').attr('name', `domanda${counter}`);
         curnode.find('#questnumber').attr('name', `numberquest${counter}`);
+        curnode.find('.proxy-id-js').attr('name', `id${counter}`);
+        curnode.removeAttr('hidden');
+        curnode.find('#append-answer-js').find('div').each(function() {
+            $(this).find('input').attr('name', `domanda${counter}`);
+        });
         curnode.find('#questnumber').val(counter);
         curnode.find('#number-js').html(counter);
     });
+    $('#questnumbers').val(counter); // Number of all quest
 }
 
 //add new Single choise or multiple choise answer
@@ -88,14 +112,13 @@ $(document).on('click', '#new-answer-js', function() {
 });
 
 //delete question
-$(document).on('click', '.remove-question2-js', function () {
+$(document).on('click', '.delete_option_quest', function () {
     let element = 0;
-    $('#append-answer-js > div').each(function () {
+    $(this).closest('#append-answer-js').children('div').each(function () {
         element++;
     });
-    console.log(element);
     if (element>1) {
-        $(this).parent().remove(); //parent con la vecchia "X"
+        $(this).closest('#question-option-js').remove(); //parent con la vecchia "X"
     }
 });
 

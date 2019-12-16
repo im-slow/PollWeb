@@ -12,37 +12,45 @@
             <div class="flex-row justify-content-center align-items-center">
                 <!-- Contact Form Holder -->
                 <div class="flex-column justify-content-center pd-h">
-                    <form method="post" name="contact-us" action="">
+                    <form method="post" name="new_poll" class="needs-validation" action="/inseriscipoll" novalidate>
                         <div class="row">
-
                             <div class="col-md-12">
-                                <label>Titolo Sondaggio</label>
+                                <label for="validationCustom01">Titolo Sondaggio</label>
                                 <div class="col-md-12 form-input">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Titolo del sondaggio">
+                                    <input type="text" class="form-control" name="nomedomanda"  id="validationCustom01" placeholder="Titolo del sondaggio" required>
+                                    <div class="invalid-feedback">
+                                        Inserisci un titolo per il sondaggio
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label>Testo di apertura</label>
+                                <label for="validationCustom02">Testo di apertura</label>
                                 <div class="col-md-12 form-input">
-                                    <textarea type="text" class="form-control noresize" name="subject" placeholder="Descrizione sondaggio" rows="4"></textarea>
+                                    <textarea id="validationCustom02" type="text" class="form-control noresize" name="testoapertura" placeholder="Descrizione sondaggio" rows="4" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Inserisci testo di apertura
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label>Testo di chiusura</label>
+                                <label for="validationCustom03">Testo di chiusura</label>
                                 <div class="col-md-12 form-input">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Testo di fine compilazione del sondaggio">
+                                    <input type="text" class="form-control" id="validationCustom03" name="testochiusura" placeholder="Testo di fine compilazione del sondaggio" required />
+                                    <div class="invalid-feedback">
+                                        Inserisci testo di chiusura
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <label>Privacy</label>
                                 <div class="form-check ml-3">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    <input class="form-check-input" type="radio" name="statuspoll" id="exampleRadios1" value="1" required checked>
                                     <label class="form-check-label pl-3" for="exampleRadios1">
                                         Pubblico
                                     </label>
                                 </div>
                                 <div class="form-check ml-3">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                    <input class="form-check-input" type="radio" name="statuspoll" id="exampleRadios2" value="0" required>
                                     <label class="form-check-label pl-3" for="exampleRadios2">
                                         Privato
                                     </label>
@@ -50,20 +58,29 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">
-                                    <a  class="btn btn-block btn-secondary btn-red" href="/aggiungidomande">Crea Sondaggio</a>
+                                    <input type="submit" value="Crea Sondaggio" class="btn btn-block btn-secondary btn-red" />
                                 </div>
-<#--                                <div class="col-md-12 form-btn text-center nopadding" style="margin-top: 20px;">-->
-<#--                                    <input type="submit" value="Crea Sondaggio" class="btn btn-block btn-secondary btn-red" href="/aggiungidomande" />-->
-<#--                                </div>-->
                             </div>
                         </div>
                     </form>
-                    <div id="form-message-warning"></div>
-                    <div id="form-message-success">
-                        Il tuo sondaggio è stato creato, grazie!
-                    </div>
+                    <script>
+                        (function() {
+                            'use strict';
+                            window.addEventListener('load', function() {
+                                var forms = document.getElementsByClassName('needs-validation');
+                                var validation = Array.prototype.filter.call(forms, function(form) {
+                                    form.addEventListener('submit', function(event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </div>
-                <!-- End of Contact Form Holder -->
             </div>
         </div>
     </div>

@@ -1,10 +1,8 @@
 package poolweb.data.dao;
 
 import poolweb.data.model.Poll;
-import poolweb.data.proxy.PollProxy;
 import poolweb.framework.data.DataException;
 
-import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -21,5 +19,7 @@ public interface PollDAO {
     public Poll createPoll(ResultSet rs) throws DataException;
 
     public Poll createPoll();
+
+    public void storePoll(Poll p) throws DataException;
 
 }

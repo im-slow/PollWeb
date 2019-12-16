@@ -3,7 +3,6 @@ package poolweb.data.proxy;
 import poolweb.data.dao.PollDAO;
 import poolweb.data.impl.QuestionImpl;
 import poolweb.data.model.Poll;
-import poolweb.data.model.Question;
 import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
 
@@ -73,8 +72,8 @@ public class QuestionProxy extends QuestionImpl {
     }
 
     @Override
-    public void setPositionNumber(int position){
-        super.setPositionNumber(position);
+    public void setPosition(int position){
+        super.setPosition(position);
         this.dirty = true;
     }
 

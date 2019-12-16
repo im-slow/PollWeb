@@ -30,4 +30,8 @@ public interface Poll {
 
     public void setUser(User user);
 
+    public String getURL();
+
+    public void setURL(String url);
+
 }

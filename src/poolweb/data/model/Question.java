@@ -23,7 +23,7 @@ public interface Question {
 
     boolean getMandatory();
 
-    int getPositionNumber();
+    int getPosition();
 
     String getMinimum();
 
@@ -45,7 +45,7 @@ public interface Question {
 
     void setMandatory(boolean mandatory);
 
-    void setPositionNumber(int position);
+    void setPosition(int position);
 
     void setMinimum(String min);
 

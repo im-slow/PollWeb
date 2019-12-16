@@ -11,6 +11,7 @@ public class PollImpl implements Poll {
     private String closetext;
     private boolean openstatus;
     private boolean pollstatus;
+    private String URL;
     private User user;
 
     public PollImpl() {
@@ -86,5 +87,15 @@ public class PollImpl implements Poll {
     @Override
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String getURL() {
+        return URL;
+    }
+
+    @Override
+    public void setURL(String url) {
+        URL = url;
     }
 }

@@ -102,6 +102,9 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
         } catch (SQLException ex) {
             throw new DataException("Unable to load answer by questionID", ex);
         }
+//        finally {
+//            destroy(); It's a good practice?
+//        }
         return null;
     }
 

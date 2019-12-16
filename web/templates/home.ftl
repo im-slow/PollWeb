@@ -1,5 +1,5 @@
 <div class="jumbotron d-flex align-items-center flex-row-reverse" style="background-image: url(../style/img/survey4.png)">
-    <div class="d-flex flex-column align-items-center align-text-center">
+    <div class="d-flex flex-column align-items-center align-text-center ml-auto">
         <h1 class="display-2 mb-4">PollWeb</h1>
         <p>Rispondi ai nostri sondaggi o creane uno personalizzato.
             <br>Pubblici o privati, a seconda delle tue esigenze.
@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="blog-meta">
                                             <p class="blog-date">30 May 2016</p> /
-                                            <p class="blog-comment"><a href="">23 Comments</a></p>
+                                            <p class="blog-comment"><a>23 Comments</a></p>
                                         </div>
                                         <div class="blog-desc">
                                             <p>${pollDB.opentext}</p>

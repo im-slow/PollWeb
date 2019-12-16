@@ -20,4 +20,6 @@ public interface QuestionDAO {
 
     public void storeQuestion(Question q) throws DataException;
 
+    public void removeQuestion(int id) throws DataException;
+
 }
