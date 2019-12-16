@@ -53,7 +53,7 @@
                     <a class="nav-link" href="/profilo">Profilo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contatti</a>
+                    <a class="nav-link" href="/contact">Contatti</a>
                 </li>
             </ul>
         </div>
@@ -157,6 +157,9 @@
           </div>
       </div>
   </footer>
+</div>
+
+  </div>
   	<!-- External JS -->
 <#--    <script-->
 <#--        src="https://code.jquery.com/jquery-3.4.1.js"-->
@@ -180,4 +183,14 @@
 
     <script src="../style/js/app.min.js"></script>
   </body>
+  	<#--<script src="//localhost:35729/livereload.js"></script>-->
+
+    <!-- DatePicker(Calendario) libreria e script -->
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
   </html>

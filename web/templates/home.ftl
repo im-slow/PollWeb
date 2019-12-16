@@ -91,29 +91,29 @@
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-users"></i>
-                    <span class="number" data-from="0" data-to="34" data-refresh-interval="100">100</span>
+                    <span class="number" data-from="0" data-to="34" data-refresh-interval="100">${uCount}</span>
                     <h4>Utenti</h4>
                 </div>
                 <!-- End of Counter Item -->
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-briefcase"></i>
-                    <span class="number" data-from="0" data-to="32" data-refresh-interval="100">516</span>
+                    <span class="number" data-from="0" data-to="32" data-refresh-interval="100">${pCount?size}</span>
                     <h4>Sondaggi</h4>
                 </div>
                 <!-- End of Counter Item -->
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-heart"></i>
-                    <span class="number" data-from="0" data-to="38" data-refresh-interval="100">10292</span>
-                    <h4>Risposte ai Sondaggi</h4>
+                    <span class="number" data-from="0" data-to="38" data-refresh-interval="100">${qCount?size}</span>
+                    <h4>Domande</h4>
                 </div>
                 <!-- End of Counter Item -->
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-rocket"></i>
-                    <span class="number" data-from="0" data-to="29" data-refresh-interval="100">90</span>
-                    <h4>VALORI</h4>
+                    <span class="number" data-from="0" data-to="29" data-refresh-interval="100">${aCount?size}</span>
+                    <h4>Risposte</h4>
                 </div>
                 <!-- End of Counter Item -->
             </div>

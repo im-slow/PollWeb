@@ -4,6 +4,7 @@ import poolweb.data.model.Answer;
 import poolweb.data.model.Poll;
 import poolweb.data.model.Question;
 import poolweb.data.proxy.AnswerProxy;
+import poolweb.data.proxy.QuestionProxy;
 import poolweb.framework.data.DAO;
 import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
@@ -15,15 +16,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import static poolweb.util.ParserAnswer.parserAnswer;
+
 public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
 
     private final String SELECT_ALL_ANSWER_ID = "SELECT ID FROM answer";
     private final String SELECT_ANSWER_BY_ID = "SELECT * FROM answer WHERE ID = ?";
     private final String SELECT_ANSWER_BY_QUESTION_ID = "SELECT * FROM answer WHERE IDquestion = ?";
+    private final String INSERT_ANSWER = "INSERT INTO answer (answer, IDquestion)" +
+            "VALUES (?, ?)";
+    private final String UPDATE_ANSWER = "UPDATE answer SET answer=?, IDquestion=?" +
+            "WHERE ID=?";
 
     private PreparedStatement allAnswer;
     private PreparedStatement answerByID;
     private PreparedStatement answerByQuestionID;
+    private PreparedStatement insertAnswer;
+    private PreparedStatement updateAnswer;
 
     public AnswerDAO_MySQL(DataLayer d) {
         super(d);
@@ -110,7 +119,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
 
 
     @Override
-    public List<Answer> getAllAnswer() throws DataException {
+    public List<Answer> getAllAnswerByQuestionID() throws DataException {
         List<Answer> result = new ArrayList<Answer>();
         try (ResultSet rs = answerByQuestionID.executeQuery()) {
             while(rs.next()) {
@@ -121,5 +130,46 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
             throw new DataException("Unable to load answers by questionID", ex);
         }
     }
+
+    @Override
+    public List<Answer> getAllAnswer() throws DataException {
+        List<Answer> result = new ArrayList<Answer>();
+        try (ResultSet rs = allAnswer.executeQuery()) {
+            while(rs.next()) {
+                result.add(getAnswerByID(rs.getInt("ID")));
+            }
+            return result;
+        } catch (SQLException ex) {
+            throw new DataException("Unable to load answers by questionID", ex);
+        }
+    }
+
+    @Override
+    public void storeAnswer(Answer answer) throws DataException {
+        int id = answer.getID(); //if u want to check Poll's owner
+        try {
+            if (answer.getID() > 0) {
+                if (answer instanceof AnswerProxy && ((AnswerProxy) answer).isDirty()) {
+                    return;
+                }
+                //here is for the update of the all parametes, for specific update need to create new PreparedStatement
+                updateAnswer.setString(1, answer.getAnswer());
+            } else {
+                insertAnswer.setString(1, answer.getAnswer());
+                insertAnswer.setInt(2, 3);
+                if (insertAnswer.executeUpdate() == 1) {
+                    try (ResultSet rs = insertAnswer.getGeneratedKeys()) {
+                        if (rs.next()) {
+                            id = rs.getInt(1);
+                        }
+                    }
+                    answer.setID(id);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
