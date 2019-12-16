@@ -24,7 +24,8 @@ $(document).ready(function () {
 
 //Add new Question
 $(document).on('click', '#another-question-js', () => {
-    $('.accordion').append(basicQuestion.clone()).hide().fadeIn(600);
+    var cloneBasic = basicQuestion.clone().attr('id', 'card-header-js');
+    $('.accordion').append(cloneBasic).hide().fadeIn(600);
     listChild();
 });
 
@@ -146,29 +147,30 @@ $(document).on('click', '.delete_option_quest', function () {
 })();
 
 $(document).on('click', '#hidden-answer-js', function() {
-        var val = $(this).attr('value');
-        console.log(val);
-        const parent = $(this).parent().parent().parent().parent().parent().parent();
-        switch(val) {
-            case "answer":
-                choiseClone = parent.find("#answer-field-js").clone();
-                choiseClone.find("#answer-js").setAttribute('required', 'true');
-                break;
-            case "min-max":
-                choiseClone = parent.find("#min-max-field-js").clone();
-                choiseClone.find("#min-js").setAttribute('required', 'true');
-                choiseClone.find("#max-js").setAttribute('required', 'true');
-                break;
-            case "all":
-                choiseClone = parent.find("#all-field-js").clone();
-                choiseClone.find("#answer-js").setAttribute('required', 'true');
-                choiseClone.find("#min-js").setAttribute('required', 'true');
-                choiseClone.find("#max-js").setAttribute('required', 'true');
-                break;
-        }
-        choiseClone.removeAttr('hidden');
-        parent.find("#answer-type-js").html(choiseClone);
-        parent.find("#answer-type-js").attr('value', $(this).attr('name'));
-        parent.find("#answer-type-js").attr('name', 'questionType');
-        console.log('ok');
+    var val = $(this).attr('value');
+    console.log(val);
+    const parent = $(this).closest('.section-content');
+    switch(val) {
+        case "answer":
+            choiseClone = parent.find("#answer-field-js").clone();
+            choiseClone.find("#answer-js").attr('required', 'true');
+            break;
+        case "min-max":
+            choiseClone = parent.find("#min-max-field-js").clone();
+            choiseClone.find("#min-js").attr('required', 'true');
+            choiseClone.find("#max-js").attr('required', 'true');
+            break;
+        case "all":
+            choiseClone = parent.find("#all-field-js").clone();
+            choiseClone.find("#answer-js").attr('required', 'true');
+            choiseClone.find("#min-js").attr('required', 'true');
+            choiseClone.find("#max-js").attr('required', 'true');
+            break;
+    }
+    choiseClone.removeAttr('hidden');
+    $(this).closest('#card-header-js').find('#answer-type-js').html(choiseClone);
+    // parent.find("#answer-type-js").html(choiseClone);
+    // parent.find("#answer-type-js").attr('value', $(this).attr('name'));
+    // parent.find("#answer-type-js").attr('name', 'questionType');
+    console.log('ok');
 });

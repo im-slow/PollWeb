@@ -38,7 +38,6 @@ public class InsertQuestions extends PoolWebBaseController{
                         if (request.getParameter("id" +idx) != null) {
                             q.setID(Integer.parseInt(request.getParameter("id" +idx)));
                         }
-                        System.out.println(request.getParameter("questname2"));
                         q.setQuestionText(request.getParameter("questname" +idx));
                         q.setNote(request.getParameter("info" +idx));
                         q.setMaximum(request.getParameter("max" +idx));
