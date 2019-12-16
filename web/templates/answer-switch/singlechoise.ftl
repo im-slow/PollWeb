@@ -1,15 +1,19 @@
-<#list question.QAnswer as q>
-    <div class="radio d-flex flex-column justify-content-center align-items-start">
-        <input type="radio" id="radio${q?index}" name="radio${q?index}" value="option${q?index}">
-        <label class="pl-3" for="radio${q?index}">
-    <div class="row flex text-align radio form-check">
+<div class="form-check ml-3 d-flex flex-column justify-content-center align-items-start">
+    <#list question.QAnswer as q>
         <#if question.mandatory>
-            <input class="form-check-input mt-2" type="radio" id="${q?index}" name="radio" value="${q?index}" required>
+                <div class="col-md-12 form-check mb-3">
+                    <input class="form-check-label pl-3 ml-4" type="radio" id="radio${q?index}" name="radio${question.position}" value="option${q?index}" required>
+                    <label class="form-check-label pl-3 ml-4" for="radio${q?index}">
+                        ${q}
+                    </label>
+                </div>
         <#else>
-            <input class="form-check-input mt-2" type="radio" id="${q?index}" name="radio" value="${q?index}">
+            <div class="col-md-12 form-check mb-3">
+                <input class="form-check-label pl-3 ml-4" type="radio" id="radio${q?index}" name="radio${question.position}" value="option${q?index}">
+                <label class="form-check-label pl-3 ml-4" for="radio${q?index}">
+                    ${q}
+                </label>
+            </div>
         </#if>
-        <label class="form-check-label pl-3" for="radio">
-            ${q}
-        </label>
-    </div>
-</#list>
+    </#list>
+</div>
