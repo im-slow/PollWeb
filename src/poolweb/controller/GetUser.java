@@ -1,7 +1,9 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
+import poolweb.data.model.Answer;
 import poolweb.data.model.Poll;
+import poolweb.data.model.Question;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;

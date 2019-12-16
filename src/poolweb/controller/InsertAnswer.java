@@ -51,7 +51,7 @@ public class InsertAnswer extends PoolWebBaseController {
                 action_error(request, response);
 
             }
-        } catch (DataException ex) {
+        } catch (Exception ex) { //Data Excetion
             request.setAttribute("message", "Cannot create Question");
             action_error(request, response);
         }
