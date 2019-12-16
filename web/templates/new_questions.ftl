@@ -61,12 +61,14 @@
                                     </div>
                                 </div>
                                 <div class="border-top pt-5 mx-5"></div>
-                                <div class="col-md-12">
-                                    <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
-                                        <input name="min${qst.position}" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *" value="${qst.minimum}" required>
-                                        <input name="max${qst.position}" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *" value="${qst.maximum}" required>
-                                    </div>
-                                </div>
+                                    <#if qst.minimum ??>
+                                        <div class="col-md-12">
+                                            <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
+                                                <input name="min${qst.position}" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *" value="${qst.minimum}" required>
+                                                <input name="max${qst.position}" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *" value="${qst.maximum}" required>
+                                            </div>
+                                        </div>
+                                    </#if>
                                 <div class="container-fluid">
                                     <div class="col-sm-12">
                                         <div id="append-answer-js" class="form-group">
