@@ -53,8 +53,9 @@ public class FailureResult {
             //se abbiamo registrato un template per i messaggi di errore, proviamo a usare quello
             //if an error template has been configured, try it
             if (context.getInitParameter("view.error_template") != null) {
+                request.setAttribute("page_title", "Errore");
                 request.setAttribute("error", message);
-                request.setAttribute("outline_tpl", "");
+                request.setAttribute("outline_tpl", context.getInitParameter("view.outline_template"));
                 template.activate(context.getInitParameter("view.error_template"), request, response);
             } else {
                 //altrimenti, inviamo un errore HTTP

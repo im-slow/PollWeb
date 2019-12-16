@@ -48,12 +48,12 @@ public class InsertPoll extends PoolWebBaseController  {
                     action_write(response);
                 }
                 else {
-                    request.setAttribute("message", "Unable to update poll");
+                    request.setAttribute("message", "Errore aggiornamento del sondaggio");
                     action_error(request, response);
                 }
             }
         } catch (DataException ex) {
-            request.setAttribute("message", "Unable to create poll");
+            request.setAttribute("message", "Errore creazione del sondaggio");
             action_error(request, response);
         }
     }

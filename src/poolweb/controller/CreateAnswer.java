@@ -45,9 +45,6 @@ public class CreateAnswer extends PoolWebBaseController {
             request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
-            for(String q : question.get(1).getQAnswer()){
-                System.out.println(q);
-            }
             request.setAttribute("question", question);
             request.setAttribute("poll", poll);
             if (true) {
@@ -72,16 +69,25 @@ public class CreateAnswer extends PoolWebBaseController {
             User user = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
             if (poll != null) {
                 List<Question> q = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
-                if (user != null && poll.getUser().getID() == user.getID() && !poll.getOpenstatus()) {
-                    request.setAttribute("page_title", "Aggiungi Domande");
-                    request.setAttribute("question", q);
-                    res.activate("new_questions.ftl", request, response);
-                } else if (poll.getOpenstatus()) {
-                    request.setAttribute("page_title", "Rispondi");
-                    request.setAttribute("poll", poll);
-                    request.setAttribute("question", q);
-                    res.activate("new_answer.ftl", request, response);
+                if (poll.getUser().getID() == user.getID()) {
+                    if (user != null  && !poll.getOpenstatus()) {
+                        request.setAttribute("page_title", "Aggiungi Domande");
+                        request.setAttribute("question", q);
+                        request.setAttribute("pollID", request.getParameter("id"));
+                        res.activate("new_questions.ftl", request, response);
+                    } else if (poll.getOpenstatus()) {
+                        request.setAttribute("page_title", "Rispondi");
+                        request.setAttribute("poll", poll);
+                        request.setAttribute("question", q);
+                        res.activate("new_answer.ftl", request, response);
+                    }
+                } else {
+                    request.setAttribute("message", "Non sei autorizzato a modificare questo sondaggio");
+                    action_error(request, response);
                 }
+            } else {
+                request.setAttribute("message", "Ops.. Il sondaggio non è presente nel sistema");
+                action_error(request, response);
             }
         } catch (DataException | TemplateManagerException e) {
             request.setAttribute("message", "C'e stato un problema nel recupero del sondaggio");

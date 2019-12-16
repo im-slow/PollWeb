@@ -104,7 +104,7 @@ function listChild() {
         });
         curnode.find('#questnumber').val(counter);
         curnode.find('#number-js').html(counter);
-        curnode.find('#answer-type-js').attr('name', `questionType${counter}`);
+        curnode.find('#question-type-js').attr('name', `questionType${counter}`);
     });
     $('#questnumbers').val(counter); // Number of all quest
 }
@@ -112,9 +112,9 @@ function listChild() {
 //add new Single choise or multiple choise answer
 $(document).on('click', '#new-answer-js', function() {
     const parent = $(this).parent().parent().parent();
-    basicAnswerclone = parent.find('#question-option-js').clone();
+    basicAnswerclone = parent.find('#question-option-js').first().clone();
     basicAnswerclone.find('#answer-js').val( '');
-    parent.find('#append-answer-js').append(basicAnswerclone).hide().fadeIn(600);
+    parent.find('#append-answer-js').append(basicAnswerclone);
 });
 
 //delete question
@@ -146,30 +146,36 @@ $(document).on('click', '.delete_option_quest', function () {
     }, false);
 })();
 
+//Menage the different types of questions
 $(document).on('click', '#hidden-answer-js', function() {
     var val = $(this).attr('value');
-    console.log(val);
+    var numberquest = $(this).closest('#card-header-js').find('#number-js').text();
     const parent = $(this).closest('.section-content');
     switch(val) {
         case "answer":
-            choiseClone = parent.find("#answer-field-js").clone();
+            choiseClone = parent.find("#answer-field-js-plh").clone();
             choiseClone.find("#answer-js").attr('required', 'true');
+            choiseClone.find("#answer-js").attr('name', `domanda${numberquest}`);
             break;
         case "min-max":
-            choiseClone = parent.find("#min-max-field-js").clone();
+            choiseClone = parent.find("#min-max-field-js-plh").clone();
             choiseClone.find("#min-js").attr('required', 'true');
             choiseClone.find("#max-js").attr('required', 'true');
+            choiseClone.find("#max-js").attr("name", `max${numberquest}`);
+            choiseClone.find("#min-js").attr('name', `min${numberquest}`);
+            choiseClone.find("#answer-js").attr('name', `domanda${numberquest}`);
             break;
         case "all":
-            choiseClone = parent.find("#all-field-js").clone();
+            choiseClone = parent.find("#all-field-js-plh").clone();
             choiseClone.find("#answer-js").attr('required', 'true');
+            choiseClone.find("#answer-js").attr('name', `domanda${numberquest}`);
             choiseClone.find("#min-js").attr('required', 'true');
             choiseClone.find("#max-js").attr('required', 'true');
+            choiseClone.find("#max-js").attr("name", `max${numberquest}`);
+            choiseClone.find("#min-js").attr('name', `min${numberquest}`);
             break;
     }
     choiseClone.removeAttr('hidden');
     $(this).closest('#card-header-js').find('#answer-type-js').html(choiseClone);
-    $(this).closest('#card-header-js').find('#answer-type-js').attr('value', $(this).attr('name'));
-    $(this).closest('#card-header-js').find('#answer-type-js').attr('name', 'questionType');
-    console.log('ok');
+    $(this).closest('#card-header-js').find('#question-type-js').attr('name', `questionType${numberquest}`);
 });

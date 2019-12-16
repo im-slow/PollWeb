@@ -39,7 +39,7 @@
     </context-param>
     <context-param>
         <param-name>view.error_template</param-name>
-        <param-value>error.ftl.html</param-value>
+        <param-value>error.ftl</param-value>
     </context-param>
 
     <servlet>

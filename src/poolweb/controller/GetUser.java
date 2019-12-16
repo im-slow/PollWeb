@@ -53,6 +53,7 @@ public class GetUser extends PoolWebBaseController {
                 action_error(request, response);
             }
         } catch (DataException ex) {
+            ex.printStackTrace();
             request.setAttribute("message", "Data access exception: " + ex.getMessage());
             action_error(request, response);
         } catch (TemplateManagerException e) {
