@@ -11,6 +11,58 @@
             <div id="accordionExample" class="accordion">
                 <div id="card-header-js" class="price-box card col-md-8 offset-md-2 m-t-4">
                     <input type="text" class="form-control question-input-js" id="questnumber" name="numberquest1" hidden>
+                    <!-- SWITCH ANSWER TYPE -->
+
+                    <!-- SINGLE CHOISE -->
+                    <div id="answer-field-js" hidden="true">
+                        <div class="container-fluid">
+                            <div class="col-sm-12">
+                                <div id="append-answer-js" class="form-group">
+                                    <div id="question-option-js" class="d-flex flex-row align-items-center justify-content-between">
+                                        <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                                            <input name="domanda1" id="answer-js" type="search" class="form-control" placeholder="Inserisci domanda" value=""/>
+                                        </div>
+                                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js ml-2" style="margin-bottom: 15px;"><h3> - </h3></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SINGLE CHOISE -->
+                    <!-- MULTIPLE CHOISE -->
+                    <div id="all-field-js" hidden="true">
+                        <div class="col-md-12">
+                            <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
+                                <input name="min1" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *">
+                                <input name="max1" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *">
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="col-sm-12">
+                                <div id="append-answer-js" class="form-group">
+                                    <div id="question-option-js" class="d-flex flex-row align-items-center justify-content-between">
+                                        <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                                            <input name="domanda1" id="answer-js" type="search" class="form-control" placeholder="Inserisci domanda" value=""/>
+                                        </div>
+                                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js ml-2" style="margin-bottom: 15px;"><h3> - </h3></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MULTIPLE CHOISE-->
+                    <!-- DATE, NUMBER, SHORT AND LONG TEXT -->
+                    <div id="min-max-field-js" hidden="true">
+                        <div class="col-md-12">
+                            <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
+                                <input name="min1" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *">
+                                <input name="max1" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END DATE, NUMBER, SHORT AND LONG TEXT-->
+                    <!-- SWITCH ANSWER TYPE -->
+
                     <div class="card-header border-bottom border-top border-left border-right" id="heading1">
                         <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5 collpase-header-js" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
                             <h6 id="number-js" class="text-orange font-weight-bold mr-2">1</h6>
@@ -45,35 +97,37 @@
                                         Tipologia
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Scelta singola</a>
-                                        <a class="dropdown-item" href="#">Scelta multipla</a>
-                                        <a class="dropdown-item" href="#">Testo Lungo</a>
-                                        <a class="dropdown-item" href="#">Testo Breve</a>
-                                        <a class="dropdown-item" href="#">Data</a>
-                                        <a class="dropdown-item" href="#">Numero</a>
+                                        <a id="hidden-answer-js" value="answer" name="SINGLECHOISE" class="dropdown-item" href="javascript:void(0)">Scelta singola</a>
+                                        <a id="hidden-answer-js" value="all" name="MULTIPLECHOISE" class="dropdown-item" href="javascript:void(0)">Scelta multipla</a>
+                                        <a id="hidden-answer-js" value="min-max" name="LONGTEXT" class="dropdown-item" href="javascript:void(0)">Testo Lungo</a>
+                                        <a id="hidden-answer-js" value="min-max" name="SHORTTEXT" class="dropdown-item" href="javascript:void(0)">Testo Breve</a>
+                                        <a id="hidden-answer-js" value="min-max" name="DATE" class="dropdown-item" href="javascript:void(0)">Data</a>
+                                        <a id="hidden-answer-js" value="min-max" name="NUMBER" class="dropdown-item" href="javascript:void(0)">Numero</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="border-top pt-5 mx-5"></div>
-                        <div class="col-md-12">
-                            <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
-                                <input name="min1" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *" required>
-                                <input name="max1" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *" required>
-                            </div>
-                        </div>
-                        <div class="container-fluid">
-                            <div class="col-sm-12">
-                                <div id="append-answer-js" class="form-group">
-                                    <div id="question-option-js" class="d-flex flex-row align-items-center justify-content-between">
-                                        <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
-                                            <input name="domanda1" id="answer-js" type="search" class="form-control" placeholder="Inserisci domanda" value="" required />
+                        <div id="answer-type-js">
+                            <!-- SINGLE CHOISE -->
+                            <div id="answer-field-js">
+                                <div class="container-fluid">
+                                    <div class="col-sm-12">
+                                        <div id="append-answer-js" class="form-group">
+                                            <div id="question-option-js" class="d-flex flex-row align-items-center justify-content-between">
+                                                <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                                                    <input name="domanda1" id="answer-js" type="search" class="form-control" placeholder="Inserisci domanda" value="" required/>
+                                                </div>
+                                                <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js ml-2" style="margin-bottom: 15px;"><h3> - </h3></a>
+                                            </div>
                                         </div>
-                                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js ml-2" style="margin-bottom: 15px;"><h3> - </h3></a>
                                     </div>
                                 </div>
                             </div>
+                            <!-- END SINGLE CHOISE -->
                         </div>
+
                         <div class="col-sm-12 d-flex flex-row align-items-center">
                             <div class="col-sm-6 d-flex flex-row align-items-center">
                                 <div class="">
@@ -104,4 +158,3 @@
         </form>
     </div>
 </section>
-

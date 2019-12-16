@@ -16,8 +16,12 @@ public interface AnswerDAO {
 
     Answer getAnswerByID(int ID) throws DataException;
 
+    List<Answer> getAllAnswer() throws DataException;
+
     Answer getAnswerByQuestionID(int ID) throws DataException;
 
-    List<Answer> getAllAnswer() throws DataException;
+    List<Answer> getAllAnswerByQuestionID() throws DataException;
+
+    void storeAnswer(Answer a) throws DataException;
 
 }

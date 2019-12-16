@@ -1,6 +1,9 @@
 var basicAnswer;
 var basicQuestion;
-
+var answerType;
+var allField;
+var minMaxField;
+var answerField;
 
 var el = document.getElementById('accordionExample');
 
@@ -15,6 +18,11 @@ var sortable = Sortable.create(el, {
 $(document).ready(function () {
     basicQuestion = $('#card-header-js').clone();
     basicAnswer = $('#question-option-js').clone();
+    answerType = $('#answer-type-js').clone();
+    allField = $('#all-field-js').clone();
+    minMaxField = $('#min-max-field-js').clone();
+    answerField = $('#answer-field-js').clone();
+
 });
 
 //Add new Question
@@ -76,6 +84,7 @@ function listChild() {
         curnode.find('#questnumber').attr('name', `numberquest${counter}`);
         curnode.find('#questnumber').val(counter);
         curnode.find('#number-js').html(counter);
+        curnode.find('#answer-type-js').attr('name', `questionType${counter}`);
     });
 }
 
@@ -116,3 +125,31 @@ $(document).on('click', '.remove-question2-js', function () {
         });
     }, false);
 })();
+
+$(document).on('click', '#hidden-answer-js', function() {
+        var val = $(this).attr('value');
+        console.log(val);
+        const parent = $(this).parent().parent().parent().parent().parent().parent();
+        switch(val) {
+            case "answer":
+                choiseClone = parent.find("#answer-field-js").clone();
+                choiseClone.find("#answer-js").setAttribute('required', 'true');
+                break;
+            case "min-max":
+                choiseClone = parent.find("#min-max-field-js").clone();
+                choiseClone.find("#min-js").setAttribute('required', 'true');
+                choiseClone.find("#max-js").setAttribute('required', 'true');
+                break;
+            case "all":
+                choiseClone = parent.find("#all-field-js").clone();
+                choiseClone.find("#answer-js").setAttribute('required', 'true');
+                choiseClone.find("#min-js").setAttribute('required', 'true');
+                choiseClone.find("#max-js").setAttribute('required', 'true');
+                break;
+        }
+        choiseClone.removeAttr('hidden');
+        parent.find("#answer-type-js").html(choiseClone);
+        parent.find("#answer-type-js").attr('value', $(this).attr('name'));
+        parent.find("#answer-type-js").attr('name', 'questionType');
+        console.log('ok');
+});

@@ -17,10 +17,12 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
     private final String SELECT_ALL_USER = "SELECT id FROM utente";
     private final String SELECT_USER_BY_ID = "SELECT * FROM utente WHERE id = ?";
     private final String SELECT_USER_BY_NAME_AND_PASSWORD ="SELECT * FROM utente where email = ? AND pwd = ?";
+    private final String COUNT_ALL_USER = "SELECT COUNT(id) FROM utente";
 
     private PreparedStatement allUser;
     private PreparedStatement userByID;
     private PreparedStatement userByLogin;
+    private PreparedStatement countUser;
 
     public UserDAO_MySQL(DataLayer d) { super(d);}
 
@@ -31,6 +33,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
             allUser = connection.prepareStatement(SELECT_ALL_USER);
             userByID = connection.prepareStatement(SELECT_USER_BY_ID);
             userByLogin = connection.prepareStatement(SELECT_USER_BY_NAME_AND_PASSWORD);
+            countUser = connection.prepareStatement(COUNT_ALL_USER);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -42,6 +45,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
             allUser.close();
             userByID.close();
             userByLogin.close();
+            countUser.close();
         } catch (SQLException ex){
             //
         }
@@ -91,6 +95,21 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
             throw new DataException("Unable to load User by ID", ex);
         }
         return null;
+    }
+
+    @Override
+    public int getCount() throws DataException {
+        int count = 0;
+        try {
+            try (ResultSet rs = countUser.executeQuery()) {
+                if (rs.next()) {
+                    count = rs.getInt("COUNT(id)");
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataException("Unable to count all User", ex);
+        }
+        return count;
     }
 
     @Override

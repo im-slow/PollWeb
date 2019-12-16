@@ -1,5 +1,6 @@
 package poolweb.data.dao;
 
+import freemarker.template.DefaultArrayAdapter;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 
@@ -15,5 +16,7 @@ public interface UserDAO {
     User getUser(int ID) throws DataException;
 
     User getUser(String email, String password) throws DataException;
+
+    int getCount() throws DataException;
 
 }

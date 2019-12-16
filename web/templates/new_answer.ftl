@@ -7,7 +7,7 @@
                 <p class="section-sub-title">${poll.opentext}</p>
             </div>
         </div>
-        <form class="border col-md-8 offset-md-2">
+        <form id="answer" class="border col-md-8 offset-md-2">
             <#list question as question>
                 <div class="price-box">
                     <div class="card-body">
@@ -21,7 +21,7 @@
                 <div class="price-box">
                     <div class="card-body">
                         <div class=" align-items-center align-text-center justify-content-between flex-nowrap px-5 pb-2">
-                            <div class="col-md-12">
+                            <div name="${question.positionNumber}" class="col-md-12">
                             <#switch question.questionType>
                                 <#case "SINGLECHOISE">
                                     <#include "answer-switch/singlechoise.ftl">
@@ -46,12 +46,17 @@
                             </#switch>
                             </div>
                         </div>
+                        <#if question.note != "NULL">
                         <div class="d-flex align-items-center align-text-center justify-content-between flex ml-4">
                             <h4><small>Note: ${question.note}</small></h4>
                         </div>
+                        </#if>
                     </div>
                 </div>
             </#list>
+            <div class="d-flex flex-column justify-content-center align-items-stretch py-5 offset-md-2 m-t-4 col-md-8">
+                <input type="submit" value="Inserisci" class="btn btn-secondary rounded-pill btn-red a-click" href="/profile" />
+            </div>
         </form>
         <div class="section-content">
             <!-- Section Title -->

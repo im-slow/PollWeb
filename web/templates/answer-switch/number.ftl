@@ -1,3 +1,7 @@
 <div class="form-input">
-    <input class="form-control" type="number" placeholder="Inserisci un valore numerico">
+    <#if question.mandatory>
+        <input class="form-control" type="number" name="number-text-content" placeholder="Inserisci un valore numerico" required>
+    <#else>
+        <input class="form-control" type="number" name="number-text-content" placeholder="Inserisci un valore numerico">
+    </#if>
 </div>
