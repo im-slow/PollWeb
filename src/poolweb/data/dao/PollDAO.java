@@ -3,6 +3,7 @@ package poolweb.data.dao;
 import poolweb.data.model.Poll;
 import poolweb.framework.data.DataException;
 
+import javax.xml.crypto.Data;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -23,5 +24,7 @@ public interface PollDAO {
     public void storePoll(Poll p) throws DataException;
 
     public void closeStatus(int ID) throws DataException;
+
+    int getCount() throws DataException;
 
 }

@@ -22,4 +22,6 @@ public interface QuestionDAO {
 
     public void removeQuestion(int id) throws DataException;
 
+    int getCount() throws DataException;
+
 }

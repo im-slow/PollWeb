@@ -33,9 +33,9 @@ public class GetUser extends PoolWebBaseController {
     private void action_user(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
             List<Poll> poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPopoularPoll();
-            List<Poll> pCount = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getAllPoll();
-            List<Question> qCount = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestions();
-            List<Answer> aCount = ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().getAllAnswer();
+            int pCount = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getCount();
+            int qCount = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getCount();
+            int aCount = ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().getCount();
             int uCount = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getCount();
 
             if (poll != null) {

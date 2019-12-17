@@ -27,12 +27,14 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
             "VALUES (?, ?)";
     private final String UPDATE_ANSWER = "UPDATE answer SET answer=?, IDquestion=?" +
             "WHERE ID=?";
+    private final String COUNT_ANSWER = "SELECT COUNT(id) FROM answer";
 
     private PreparedStatement allAnswer;
     private PreparedStatement answerByID;
     private PreparedStatement answerByQuestionID;
     private PreparedStatement insertAnswer;
     private PreparedStatement updateAnswer;
+    private PreparedStatement countAnswer;
 
     public AnswerDAO_MySQL(DataLayer d) {
         super(d);
@@ -47,7 +49,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
             allAnswer = connection.prepareStatement(SELECT_ALL_ANSWER_ID);
             answerByID = connection.prepareStatement(SELECT_ANSWER_BY_ID);
             answerByQuestionID = connection.prepareStatement(SELECT_ANSWER_BY_QUESTION_ID);
-
+            countAnswer = connection.prepareStatement(COUNT_ANSWER);
         } catch (SQLException ex) {
             throw new DataException("Error initializing newspaper data layer", ex);
         }
@@ -59,7 +61,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
             allAnswer.close();
             answerByID.close();
             answerByQuestionID.close();
-
+            countAnswer.close();
         } catch (SQLException ex) {
             //
         }
@@ -117,6 +119,20 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
         return null;
     }
 
+    @Override
+    public int getCount() throws DataException {
+        int count = 0;
+        try {
+            try (ResultSet rs = countAnswer.executeQuery()) {
+                if (rs.next()) {
+                    count = rs.getInt("COUNT(id)");
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataException("Unable to count all Answer", ex);
+        }
+        return count;
+    }
 
     @Override
     public List<Answer> getAllAnswerByQuestionID() throws DataException {

@@ -24,4 +24,6 @@ public interface AnswerDAO {
 
     void storeAnswer(Answer a) throws DataException;
 
+    int getCount() throws DataException;
+
 }

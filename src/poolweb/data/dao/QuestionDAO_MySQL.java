@@ -25,6 +25,8 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
     private final String UPDATE_QUESTION = "UPDATE question SET positionNumber=?, uniqueCode=?, questionText=?, note=?, mandatory=?, questionType=?, minimum=?, maximum=?, qAnswer=?" +
             "WHERE ID=?";
     private final String REMOVE_QUESTION = "DELETE FROM question WHERE ID=?";
+    private final String COUNT_ALL_QUESTION = "SELECT COUNT(id) FROM question";
+
 
 
     private PreparedStatement allQuestion;
@@ -33,6 +35,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
     private PreparedStatement insertQuestion;
     private PreparedStatement updateQuestion;
     private PreparedStatement removeQuestion;
+    private PreparedStatement countQuestion;
 
     public QuestionDAO_MySQL(DataLayer d) { super(d);}
 
@@ -46,6 +49,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             insertQuestion = connection.prepareStatement(INSERT_QUESTION, Statement.RETURN_GENERATED_KEYS);
             updateQuestion = connection.prepareStatement(UPDATE_QUESTION);
             removeQuestion = connection.prepareStatement(REMOVE_QUESTION);
+            countQuestion = connection.prepareStatement(COUNT_ALL_QUESTION);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -60,6 +64,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             insertQuestion.close();
             updateQuestion.close();
             removeQuestion.close();
+            countQuestion.close();
         } catch (SQLException ex){
             //
         }
@@ -79,6 +84,21 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             throw new DataException("Unable to load Question by ID", ex);
         }
         return null;
+    }
+
+    @Override
+    public int getCount() throws DataException {
+        int count = 0;
+        try {
+            try (ResultSet rs = countQuestion.executeQuery()) {
+                if (rs.next()) {
+                    count = rs.getInt("COUNT(id)");
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataException("Unable to count all Question", ex);
+        }
+        return count;
     }
 
     @Override

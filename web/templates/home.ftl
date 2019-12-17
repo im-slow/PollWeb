@@ -98,21 +98,21 @@
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-briefcase"></i>
-                    <span class="number" data-from="0" data-to="32" data-refresh-interval="100">${pCount?size}</span>
+                    <span class="number" data-from="0" data-to="32" data-refresh-interval="100">${pCount}</span>
                     <h4>Sondaggi</h4>
                 </div>
                 <!-- End of Counter Item -->
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-heart"></i>
-                    <span class="number" data-from="0" data-to="38" data-refresh-interval="100">${qCount?size}</span>
+                    <span class="number" data-from="0" data-to="38" data-refresh-interval="100">${qCount}</span>
                     <h4>Domande</h4>
                 </div>
                 <!-- End of Counter Item -->
                 <!-- Counter Item -->
                 <div class="col-md-3 col-sm-6 counter-item">
                     <i class="lnr lnr-rocket"></i>
-                    <span class="number" data-from="0" data-to="29" data-refresh-interval="100">${aCount?size}</span>
+                    <span class="number" data-from="0" data-to="29" data-refresh-interval="100">${aCount}</span>
                     <h4>Risposte</h4>
                 </div>
                 <!-- End of Counter Item -->
