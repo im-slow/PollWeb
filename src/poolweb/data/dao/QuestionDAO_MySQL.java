@@ -26,6 +26,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
             "WHERE ID=?";
     private final String REMOVE_QUESTION = "DELETE FROM question WHERE ID=?";
 
+
     private PreparedStatement allQuestion;
     private PreparedStatement questionByID;
     private PreparedStatement questionByIDpoll;

@@ -41,13 +41,14 @@ public class CreateAnswer extends PoolWebBaseController {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             Poll poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(parseInt(request.getParameter("id")));
-            if (poll != null && poll.getPollstatus())
-            request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
-            request.setAttribute("question", question);
-            request.setAttribute("poll", poll);
-            if (true) {
+            System.out.println(parseInt(request.getParameter("id")));
+            System.out.println(poll.getPollstatus());
+            if (poll != null) {
+                List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
+                request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
+                request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+                request.setAttribute("question", question);
+                request.setAttribute("poll", poll);
                 res.activate("new_answer.ftl", request, response);
             } else {
                 request.setAttribute("message", "Unable to load Users");

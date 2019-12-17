@@ -2,6 +2,7 @@ package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
 import poolweb.data.model.Poll;
+import poolweb.data.model.Role;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
@@ -40,13 +41,22 @@ public class Profile extends PoolWebBaseController {
             request.setAttribute("page_title", "Profilo");
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByUserID(currentuser.getID());
+            Role role = ((PoolWebDataLayer) request.getAttribute("datalayer")).getRoleDAO().getRoleByUser(currentuser);
             request.setAttribute("user", currentuser);
+            // check errori
             if (usersPoll != null) {
                 request.setAttribute("userPoll", usersPoll);
             } else {
                 request.setAttribute("message", "Error during User loading");
                 action_error(request, response);
             }
+            if (role !=null) {
+                request.setAttribute("role", role);
+            } else {
+                request.setAttribute("message", "Error during Role loading");
+                action_error(request, response);
+            }
+            // tutto ok carica template
             res.activate("profile.ftl", request, response);
         } catch (DataException | TemplateManagerException e) {
             e.printStackTrace();

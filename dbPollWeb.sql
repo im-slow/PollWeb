@@ -2,15 +2,8 @@ drop database if exists dbPollWeb;
 create database dbpollweb;
 use dbpollweb;
 
-#servizi
-create table servizio(
-	ID integer unsigned not null primary key auto_increment,
-    nome varchar(45) not null,
-    description varchar(255) not null
-);
-
-#gruppo
-create table gruppo(
+#role
+create table roles(
 	ID integer unsigned not null primary key auto_increment,
     nome varchar(45) not null,
     description varchar(255) not null
@@ -28,7 +21,6 @@ create table utente(
 #sondaggio
 create table poll(
 	ID integer unsigned not null primary key auto_increment,
-    idNum integer not null unique,
     title varchar(32) not null,
     openText varchar(255) not null,
     closeText varchar(255) not null,
@@ -84,20 +76,11 @@ create table submittedBy(
 	constraint answer_instance foreign key (IDinstance) references instance(ID) on update cascade on delete cascade
 );
 
-#associazione (n,m) servizio <---> gruppo
-create table utilizza(
-	IDservizio integer unsigned not null,
-    IDgruppo integer unsigned not null,
-    primary key(IDservizio, IDgruppo),
-    constraint utilizza_servizio foreign key (IDservizio) references servizio(ID) on update cascade on delete cascade,
-    constraint utilizza_gruppo foreign key (IDgruppo) references gruppo(ID) on update cascade on delete cascade
-);
-
-#associazione (n,m) utente <---> gruppo
-create table appartiene(
-	IDutente integer unsigned not null,
-    IDgruppo integer unsigned not null,
-    primary key(IDutente, IDgruppo),
-    constraint appartiene_utente foreign key (IDutente) references utente(ID) on update cascade on delete cascade,
-    constraint appartiene_gruppo foreign key (IDgruppo) references gruppo(ID) on update cascade on delete cascade
+#associazione (n,m) utente <---> ruolo
+create table users_roles(
+	IDusers integer unsigned not null,
+    IDroles integer unsigned not null,
+    primary key(IDusers, IDroles),
+    constraint users_roles foreign key (IDusers) references utente(ID) on update cascade on delete cascade,
+    constraint roles_users foreign key (IDroles) references roles(ID) on update cascade on delete cascade
 );
