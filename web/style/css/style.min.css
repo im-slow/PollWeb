@@ -182,11 +182,6 @@ a {
   -webkit-transform: translateY(-1px);
   transform: translateY(-1px); }
 
-.btn-orange {
-  background-color: #FDBA51 !important;
-  color: #fff !important;
-  border: none !important; }
-
 .btn-cyan {
   background-color: #35B8AD !important;
   color: #fff !important;
@@ -194,6 +189,13 @@ a {
 
 .btn-red {
   background-color: #FC665F !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px;
+}
+
+.btn-orange {
+  background-color: #FDBA51 !important;
   color: #fff !important;
   border: none !important;
   border-radius: 10px;

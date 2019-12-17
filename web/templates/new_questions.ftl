@@ -213,21 +213,17 @@
             <div class="d-flex flex-row justify-content-end align-items-center py-5 offset-md-2 m-t-4 col-md-8">
                 <a id="another-question-js" class="btn btn-secondary rounded-pill btn-grey a-click"><b>Aggiungi Domanda</b></a>
             </div>
-            <div class="d-flex flex-column justify-content-center align-items-stretch py-5 offset-md-2 m-t-4 col-md-8">
-                <input type="submit" value="Inserisci" class="btn btn-secondary rounded-pill btn-red a-click" />
+            <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-4 offset-md-2 col-md-8">
+                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6">
+                    <input type="submit" value="Conferma modifica" class="btn btn-secondary rounded-pill btn-orange a-click" />
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6">
+                    <input type="submit" value="Concludi" class="btn btn-secondary rounded-pill btn-red a-click" />
+                </div>
             </div>
         </form>
 
         <!--- Second section - Change status ---->
-
-<#--        <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-4 offset-md-2 col-md-8">-->
-<#--            <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-4">-->
-<#--                <input type="submit" value="Inserisci" class="btn btn-secondary rounded-pill btn-red a-click" />-->
-<#--            </div>-->
-<#--            <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-4">-->
-<#--                <input type="submit" value="Inserisci" class="btn btn-secondary rounded-pill btn-red a-click" />-->
-<#--            </div>-->
-<#--        </div>-->
 
         <div id="card-header-js-plh" class="price-box card col-md-8 offset-md-2 m-t-4" hidden>
             <label for="questnumber"></label><input type="text" class="form-control question-input-js" id="questnumber" name="numberquest1" hidden>
