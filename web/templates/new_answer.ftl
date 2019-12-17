@@ -41,19 +41,19 @@
                                                 <#include "answer-switch/multiplechoise.ftl">
                                                 <#break>
                                             <#case "SHORTTEXT">
-                                                ...
+                                                <#include "answer-switch/shorttext.ftl">
                                                 <#break>
                                             <#case "LONGTEXT">
-                                                ...
+                                                <#include "answer-switch/longtext.ftl">
                                                 <#break>
                                             <#case "DATE">
-                                                ...
+                                                <#include "answer-switch/date.ftl">
                                                 <#break>
                                             <#case "NUMBER">
-                                                ...
+                                                <#include "answer-switch/number.ftl">
                                                 <#break>
                                             <#default>
-                                                ...
+                                                 <#include "answer-switch/shorttext.ftl">
                                         </#switch>
                                     </div>
                                 </div>

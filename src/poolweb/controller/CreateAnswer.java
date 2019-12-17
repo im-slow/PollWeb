@@ -41,18 +41,20 @@ public class CreateAnswer extends PoolWebBaseController {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             Poll poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(parseInt(request.getParameter("id")));
-            System.out.println(parseInt(request.getParameter("id")));
-            System.out.println(poll.getPollstatus());
-            if (poll != null) {
-                List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
+            if (poll != null && poll.getPollstatus()) {
                 request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
                 request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+                List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
                 request.setAttribute("question", question);
                 request.setAttribute("poll", poll);
-                res.activate("new_answer.ftl", request, response);
+                if (true) {
+                    res.activate("new_answer.ftl", request, response);
+                } else {
+                    request.setAttribute("message", "Unable to load Users");
+                    action_error(request, response);
+                }
             } else {
-                request.setAttribute("message", "Unable to load Users");
-                action_error(request, response);
+
             }
         } catch (DataException ex) {
             request.setAttribute("message", "Data access exception: " + ex.getMessage());
@@ -68,26 +70,39 @@ public class CreateAnswer extends PoolWebBaseController {
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             Poll poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(parseInt(request.getParameter("id")));
             User user = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
-            if (poll != null) {
-                List<Question> q = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
-                if (poll.getUser().getID() == user.getID()) {
-                    if (user != null  && !poll.getOpenstatus()) {
-                        request.setAttribute("page_title", "Aggiungi Domande");
-                        request.setAttribute("question", q);
-                        request.setAttribute("pollID", request.getParameter("id"));
-                        res.activate("new_questions.ftl", request, response);
-                    } else if (poll.getOpenstatus()) {
-                        request.setAttribute("page_title", "Rispondi");
-                        request.setAttribute("poll", poll);
-                        request.setAttribute("question", q);
-                        res.activate("new_answer.ftl", request, response);
+            if (user != null) {
+                if (poll != null) {
+                    List<Question> q = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
+                    if (user.getID() == poll.getUser().getID()) {
+                        if (poll.getPollstatus()) {
+                            request.setAttribute("page_title", "Gestisci Sondaggio");
+                            request.setAttribute("question", q);
+                            request.setAttribute("poll", poll);
+                            res.activate("menage_poll.ftl", request, response);
+                        } else {
+                            request.setAttribute("page_title", "Aggiungi Domande");
+                            request.setAttribute("question", q);
+                            request.setAttribute("pollID", request.getParameter("id"));
+                            res.activate("new_questions.ftl", request, response);
+                        }
+                    } else {
+                        if (poll.getPollstatus()) {
+                            request.setAttribute("page_title", "Rispondi");
+                            request.setAttribute("poll", poll);
+                            request.setAttribute("question", q);
+                            res.activate("new_answer.ftl", request, response);
+                        } else {
+                            request.setAttribute("message", "Non hai il permesso per accedere a questa sezione");
+                            action_error(request, response);
+                        }
                     }
                 } else {
-                    request.setAttribute("message", "Non sei autorizzato a modificare questo sondaggio");
+                    request.setAttribute("message", "Errore caricamento sondaggio");
+                    request.setAttribute("submessage", "Non siamo riusciti a recuperare il sondaggio");
                     action_error(request, response);
                 }
             } else {
-                request.setAttribute("message", "Ops.. Il sondaggio non è presente nel sistema");
+                request.setAttribute("message", "Sessione scaduta, riprova");
                 action_error(request, response);
             }
         } catch (DataException | TemplateManagerException e) {

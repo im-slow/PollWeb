@@ -1,11 +1,15 @@
 package poolweb.controller;
 
+import com.sun.deploy.net.HttpRequest;
 import poolweb.data.dao.PoolWebDataLayer;
 import poolweb.data.model.Poll;
 import poolweb.data.model.Question;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
+import poolweb.framework.result.SplitSlashesFmkExt;
+import poolweb.framework.result.TemplateManagerException;
+import poolweb.framework.result.TemplateResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -64,7 +68,7 @@ public class InsertQuestions extends PoolWebBaseController{
                             ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().storeQuestion(q);
                         }
                     }
-                    action_write(response);
+                    action_write(request, response);
                 } else {
                     request.setAttribute("message", "Errore aggiornamento domande");
                     action_error(request, response);
@@ -73,14 +77,18 @@ public class InsertQuestions extends PoolWebBaseController{
                 request.setAttribute("message", "Non sei autorizzato a modificare questo sondaggio");
                 action_error(request, response);
             }
-        } catch (DataException ex) {
-            request.setAttribute("message", "Cannot create Question");
+        } catch (DataException | TemplateManagerException ex) {
+            request.setAttribute("message", "Errore inserimento domande");
             action_error(request, response);
         }
     }
 
-    private void action_write(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/inserimentoriuscito");
+    private void action_write(HttpServletRequest request, HttpServletResponse response) throws IOException, TemplateManagerException {
+        request.setAttribute("page_title", "Domande inserite");
+        TemplateResult res = new TemplateResult(getServletContext());
+        request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+        request.setAttribute("message", "le domande sono state inserite con successo");
+        res.activate("success.ftl", request, response);
     }
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {

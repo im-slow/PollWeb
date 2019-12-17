@@ -3,8 +3,8 @@
         <div class="section-content">
             <!-- Section Title -->
             <div class="title-wrap">
-                <h2 class="section-title">Domande inserite</h2>
-                <p class="section-sub-title">Le domande del sondaggio sono state inserite correttamente</p>
+                <h2 class="section-title">Operazione riuscita</h2>
+                <p class="section-sub-title">${message}</p>
 
             </div>
             <!-- End of Section Title -->
