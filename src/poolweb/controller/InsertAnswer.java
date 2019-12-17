@@ -63,7 +63,7 @@ public class InsertAnswer extends PoolWebBaseController {
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             request.setAttribute("page_title", "Inserimento Riuscito");
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            res.activate("status_insert.ftl", request, response);
+            res.activate("success.ftl", request, response);
         } catch (TemplateManagerException e) {
             e.printStackTrace();
         }

@@ -22,6 +22,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final String UPDATE_POLL = "UPDATE poll SET title=?, openText=?, closeText=?, openPoll=?, statePoll=?, URLPoll=?)" +
             "WHERE ID=?";
+    private final String PUBLISH_POLL = "UPDATE poll SET statePoll=1 WHERE ID=?";
 
     private PreparedStatement allPoll;
     private PreparedStatement popoularPoll;
@@ -29,6 +30,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     private PreparedStatement pollByUserID;
     private PreparedStatement insertPoll;
     private PreparedStatement updatePoll;
+    private PreparedStatement publishPoll;
 
     public PollDAO_MySQL(DataLayer d) {
         super(d);
@@ -44,6 +46,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             pollByUserID = connection.prepareStatement(SELECT_POLL_BY_USER_ID);
             insertPoll = connection.prepareStatement(INSERT_POLL, Statement.RETURN_GENERATED_KEYS);
             updatePoll = connection.prepareStatement(UPDATE_POLL);
+            publishPoll = connection.prepareStatement(PUBLISH_POLL);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -145,6 +148,16 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new DataException("Unable to insert or update Poll", ex);
+        }
+    }
+
+    @Override
+    public void closeStatus(int ID) throws DataException {
+        try {
+            publishPoll.setInt(1, ID);
+            publishPoll.executeUpdate();
+        } catch (SQLException e) {
+           throw new DataException("Unable to publish poll", e);
         }
     }
 

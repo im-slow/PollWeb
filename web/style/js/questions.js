@@ -32,7 +32,7 @@ $(document).on('click', '#another-question-js', () => {
 //Remove Questions
 $(document).on('click', '.remove-question-js', function (e) {
     e.stopPropagation();
-    const elementremv = $(this);
+    const elementremove = $(this);
     let element = 0;
     $('.accordion > div').each(function () {
         element++;
@@ -46,13 +46,15 @@ $(document).on('click', '.remove-question-js', function (e) {
         }).then((willDelete) => {
             if (willDelete) {
                 const idvalue = $(this).closest('#card-header-js').find('.proxy-id-js').attr('value');
+                const pollID = $('#pollID-js').attr('value');
                 if ($(this).closest('#card-header-js').find('.proxy-id-js').length) {
                     $.ajax({
                         type: 'POST',
-                        data: { id: idvalue },
+                        data: { id: idvalue, pollID },
                         url: `http://localhost:8080/removeQuestion`,
                         success: function() {
-                            elementremv.closest('#card-header-js').remove();
+                            console.log(elementremove);
+                            elementremove.closest('#card-header-js').remove();
                             listChild();
                         },
                         error: function(data) {
@@ -167,7 +169,6 @@ $(document).on('click', '#hidden-answer-js', function() {
             break;
         case "all":
             choiseClone = parent.find("#all-field-js-plh").clone();
-            choiseClone.find("#answer-js").attr('required', 'true');
             choiseClone.find("#answer-js").attr('name', `domanda${numberquest}`);
             choiseClone.find("#min-js").attr('required', 'true');
             choiseClone.find("#max-js").attr('required', 'true');

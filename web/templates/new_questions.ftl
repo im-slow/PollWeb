@@ -10,7 +10,7 @@
         <form method="post" name="new-questions" class="needs-validation" action="/inseriscidomande" novalidate>
             <label for="questnumbers"></label>
             <input type="text" class="form-control question-input-js" id="questnumbers" name="questnumbers" hidden>
-            <input type="text" name="idpoll" value="${pollID}" hidden>
+            <input id="pollID-js" type="text" name="idpoll" value="${pollID}" hidden>
             <div id="accordionExample" class="accordion">
                 <#if (question?size>0)>
                     <#list question as qst>
@@ -102,7 +102,11 @@
                                         </div>
                                         <div class="form-check form-check-inline pl-4">
                                             <label class="switch">
-                                                <input name="isobbligo${qst.position}" type="checkbox">
+                                                <#if qst.mandatory>
+                                                    <input name="isobbligo${qst.position}" type="checkbox" checked>
+                                                <#else>
+                                                    <input name="isobbligo${qst.position}" type="checkbox">
+                                                </#if>
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>
@@ -214,11 +218,11 @@
                 <a id="another-question-js" class="btn btn-secondary rounded-pill btn-grey a-click"><b>Aggiungi Domanda</b></a>
             </div>
             <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-4 offset-md-2 col-md-8">
-                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6">
+                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingleft">
                     <input type="submit" value="Conferma modifica" class="btn btn-secondary rounded-pill btn-orange a-click" />
                 </div>
-                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6">
-                    <input type="submit" value="Concludi" class="btn btn-secondary rounded-pill btn-red a-click" />
+                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingright">
+                    <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio/?id=${pollID}">Concludi</a>
                 </div>
             </div>
         </form>
@@ -341,8 +345,8 @@
             <input name="questionType1" value="MULTIPLECHOISE" id="question-type-js" hidden>
             <div class="col-md-12">
                 <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
-                    <input name="min1" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *">
-                    <input name="max1" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *">
+                    <input name="min1" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *" required>
+                    <input name="max1" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *" required>
                 </div>
             </div>
             <div class="container-fluid">
@@ -366,8 +370,8 @@
             <input name="questionType1" value="SHORTTEXT" id="question-type-js" hidden>
             <div class="col-md-12">
                 <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
-                    <input name="min1" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *">
-                    <input name="max1" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *">
+                    <input name="min1" id="min-js" type="number" class="form-control mr-3 form-contro-maxmin" placeholder="minimo risposte multiple *" >
+                    <input name="max1" id="max-js" type="number" class="form-control form-contro-maxmin" placeholder="massimo risposte multiple *" >
                 </div>
             </div>
         </div>

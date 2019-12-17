@@ -1,6 +1,8 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
+import poolweb.data.model.Poll;
+import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 
@@ -18,9 +20,10 @@ public class RemoveQuestion extends PoolWebBaseController{
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             HttpSession s = checkSession(request);
-            if (request.getParameter("id") != null && s != null) {
-                action_poll(request, response);
+            if (request.getParameter("id") != null && request.getParameter("pollID") != null && s != null) {
+                action_poll(request, response, s);
             } else {
+                request.setAttribute("message", "Parametri non sufficienti");
                 action_error(request, response);
             }
         } catch (IOException e) {
@@ -28,21 +31,33 @@ public class RemoveQuestion extends PoolWebBaseController{
         }
     }
 
-    private void action_poll(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void action_poll(HttpServletRequest request, HttpServletResponse response, HttpSession s) throws IOException, ServletException {
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().removeQuestion(id);
+            User us = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
+            Poll pl = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(Integer.parseInt(request.getParameter("pollID")));
+            if (pl != null && us.getID() == pl.getUser().getID()) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().removeQuestion(id);
+                action_write(response);
+            } else {
+                request.setAttribute("message", "Non sei autorizzato a modificare il sondaggio");
+                action_error(request, response);
+            }
         } catch (DataException e) {
             action_error(request, response);
         }
     }
 
+    private void action_write(HttpServletResponse response) throws IOException {
+        response.getWriter().write("{success: true}");
+    }
+
     //Necessario per gestire le return di errori
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
-        if (request.getAttribute("exception") != null) {
-            (new FailureResult(getServletContext())).activate((Exception) request.getAttribute("exception"), request, response);
-        } else {
-            (new FailureResult(getServletContext())).activate((String) request.getAttribute("message"), request, response);
+        try {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, (String) request.getAttribute("message"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

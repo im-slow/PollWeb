@@ -54,11 +54,12 @@ public class InsertQuestions extends PoolWebBaseController{
                             if (request.getParameter("domanda"+idx) != null ) {
                                 q.setQAnswer(request.getParameterValues("domanda"+idx));
                             }
+                            if (request.getParameter("isobbligo"+idx) != null) {
+                                q.setMandatory(true);
+                            }
                             q.setCode(randomQuestCode());
                             q.setPoll(poll);
                             q.setQuestionType(Question.QuestionType.valueOf(request.getParameter("questionType"+idx))); //take from code
-                            q.setMandatory(Boolean.parseBoolean(request.getParameter("isobbligo"+idx)));
-                            q.setMandatory(Boolean.parseBoolean(request.getParameter("isobbligo"+idx)));
                             q.setPosition(Integer.parseInt(request.getParameter("numberquest"+idx)));
                             ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().storeQuestion(q);
                         }
@@ -82,7 +83,6 @@ public class InsertQuestions extends PoolWebBaseController{
         response.sendRedirect("/inserimentoriuscito");
     }
 
-    //Necessario per gestire le return di errori
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
         if (request.getAttribute("exception") != null) {
             (new FailureResult(getServletContext())).activate((Exception) request.getAttribute("exception"), request, response);

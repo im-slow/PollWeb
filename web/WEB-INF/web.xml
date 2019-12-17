@@ -83,6 +83,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>PublicPoll</servlet-name>
+        <servlet-class>poolweb.controller.PublicPoll</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>InsertPoll</servlet-name>
         <servlet-class>poolweb.controller.InsertPoll</servlet-class>
     </servlet>
@@ -140,6 +145,11 @@
     <servlet-mapping>
         <servlet-name>InsertAnswer</servlet-name>
         <url-pattern>/inseriscidomande</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PublicPoll</servlet-name>
+        <url-pattern>/pubblicasondaggio</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

@@ -19,7 +19,7 @@
                                     <h6 id="number-js" class="text-orange font-weight-bold mr-2">${question.position}</h6>
                                 </div>
                                 <div class="d-flex flex-column align-items-center align-text-center justify-content-center px-5">
-                                    <h6 class="question-name-js">${question.questionText}</h6>
+                                    <h6 class="question-name-js">${question.questionText} <#if question.mandatory> (*)</#if></h6>
                                     <#if question.note != "">
                                         <p>
                                             <b class="mr-2">Note: </b>
