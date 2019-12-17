@@ -134,7 +134,7 @@
 
     <servlet-mapping>
         <servlet-name>Rispondi</servlet-name>
-        <url-pattern>/rispondisondaggio/*</url-pattern>
+        <url-pattern>/rispondisondaggio</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

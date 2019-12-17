@@ -157,6 +157,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             publishPoll.setInt(1, ID);
             publishPoll.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
            throw new DataException("Unable to publish poll", e);
         }
     }

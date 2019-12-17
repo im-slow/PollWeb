@@ -222,7 +222,7 @@
                     <input type="submit" value="Conferma modifica" class="btn btn-secondary rounded-pill btn-orange a-click" />
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingright">
-                    <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio/?id=${pollID}">Concludi</a>
+                    <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio?id=${pollID}">Concludi</a>
                 </div>
             </div>
         </form>

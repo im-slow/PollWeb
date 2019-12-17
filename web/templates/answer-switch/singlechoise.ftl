@@ -2,7 +2,7 @@
     <#list question.QAnswer as q>
         <#if question.mandatory>
                 <div class="col-md-12 form-check mb-3">
-                    <input class="form-check-label pl-3 ml-4" type="radio" id="radio${q?index}" name="radio${question.position}" value="option${q?index}" required>
+                    <input class="form-check-label pl-3 ml-4" type="radio" id="radio${q?index}" name="radio${question.position}" value="${q}" required>
                     <label class="form-check-label pl-3 ml-4" for="radio${q?index}">
                         ${q}
                     </label>

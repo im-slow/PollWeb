@@ -6,7 +6,12 @@
             <!-- Section Title -->
             <div class="title-wrap">
                 <h2 class="section-title">Problema interno</h2>
-                <p class="section-sub-title">${message}</p>
+                <p class="section-sub-title">
+                    ${message}
+                    <#if submessage??>
+                        <br> ${submessage}
+                    </#if>
+                </p>
 
             </div>
             <!-- End of Section Title -->
