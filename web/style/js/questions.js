@@ -151,6 +151,8 @@ $(document).on('click', '.delete_option_quest', function () {
 //Menage the different types of questions
 $(document).on('click', '#hidden-answer-js', function() {
     var val = $(this).attr('value');
+    var name = $(this).attr('name');
+    console.log(name);
     var numberquest = $(this).closest('#card-header-js').find('#number-js').text();
     const parent = $(this).closest('.section-content');
     switch(val) {
@@ -179,4 +181,21 @@ $(document).on('click', '#hidden-answer-js', function() {
     choiseClone.removeAttr('hidden');
     $(this).closest('#card-header-js').find('#answer-type-js').html(choiseClone);
     $(this).closest('#card-header-js').find('#question-type-js').attr('name', `questionType${numberquest}`);
+    $(this).closest('#card-header-js').find('#question-type-js').attr('value', name);
+});
+
+$(document).on('click', '.changestatuspoll-js', function () {
+    var idpoll = $('#pollID-js').attr('value');
+    swal({
+        title: 'Rendere il sondaggio pubblico?',
+        text: 'Non potrai più modificare le domande inserite',
+        icon: 'warning',
+        buttons: ['Annulla', 'Conferma']
+    }).then((willDelete) => {
+        if (willDelete) {
+            window.location = `http://localhost:8080/pubblicasondaggio?id=${idpoll}`;
+        } else {
+            console.log('Dismissed');
+        }
+    });
 });

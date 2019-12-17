@@ -79,14 +79,16 @@
                                             <div class="col-sm-12">
                                                 <div id="append-answer-js" class="form-group">
                                                     <#list qst.QAnswer as answer>
-                                                        <div id="question-option-js" class="d-flex flex-row align-items-center justify-content-between">
-                                                            <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
-                                                                <input name="domanda${qst.position}" id="answer-js" type="search" class="form-control" placeholder="Inserisci domanda" value="${answer}" required />
+                                                        <#if answer != "">
+                                                            <div id="question-option-js" class="d-flex flex-row align-items-center justify-content-between">
+                                                                <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                                                                    <input name="domanda${qst.position}" id="answer-js" type="search" class="form-control" placeholder="Inserisci domanda" value="${answer}" required />
+                                                                </div>
+                                                                <div class="d-flex flex-column justify-content-center align-items-center align-text-center ml-3 delete_option_quest">
+                                                                    <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js"><h3> - </h3></a>
+                                                                </div>
                                                             </div>
-                                                            <div class="d-flex flex-column justify-content-center align-items-center align-text-center ml-3 delete_option_quest">
-                                                                <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js"><h3> - </h3></a>
-                                                            </div>
-                                                        </div>
+                                                        </#if>
                                                     </#list>
                                                 </div>
                                             </div>
@@ -222,7 +224,7 @@
                     <input type="submit" value="Conferma modifica" class="btn btn-secondary rounded-pill btn-orange a-click" />
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingright">
-                    <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio?id=${pollID}">Concludi</a>
+                    <a class="btn btn-block btn-secondary btn-red changestatuspoll-js" href="javascript:void(0)">Concludi</a>
                 </div>
             </div>
         </form>

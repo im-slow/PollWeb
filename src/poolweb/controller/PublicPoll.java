@@ -6,6 +6,9 @@ import poolweb.data.model.Question;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
+import poolweb.framework.result.SplitSlashesFmkExt;
+import poolweb.framework.result.TemplateManagerException;
+import poolweb.framework.result.TemplateResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -57,6 +60,9 @@ public class PublicPoll extends PoolWebBaseController {
             request.setAttribute("message", "Errore modifica stato del sondaggio");
             action_error(request, response);
             e.printStackTrace();
+        } catch (TemplateManagerException e) {
+            request.setAttribute("message", "Errore generico");
+            action_error(request, response);
         }
     }
 
@@ -70,8 +76,12 @@ public class PublicPoll extends PoolWebBaseController {
     }
 
     //Necessario per gestire le return di errori
-    private void action_write(HttpServletRequest request, HttpServletResponse response) {
-
+    private void action_write(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException {
+        request.setAttribute("page_title", "Sondaggio Pubblicato");
+        TemplateResult res = new TemplateResult(getServletContext());
+        request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+        request.setAttribute("message", "Il sondaggio è stato pubblicato con successo");
+        res.activate("success.ftl", request, response);
     }
 
 }

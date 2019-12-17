@@ -9,7 +9,7 @@
         <!-- End of Section Title -->
         <input id="pollID-js" type="text" name="idpoll" value="${poll.ID}" hidden>
         <#list question as qst>
-            <div class="price-box card col-md-8 offset-md-2 m-t-4">
+            <div class="price-box card col-md-8 offset-md-2 m-t-4 mb-4">
                 <div class="card-header border-bottom border-top border-left border-right">
                     <div class="row align-items-center align-text-center flex-nowrap px-5">
                         <h6 class="text-orange font-weight-bold mr-2"> ${qst.position} </h6>
@@ -26,7 +26,7 @@
                     <div class="col-md-12">
                         <label class="pl-4">Note della domanda</label>
                         <div class="col-md-12 form-input">
-                            <input type="text" class="form-control" placeholder="Inserisci informazioni adizionali della domanda" value="${qst.note}" readonly>
+                            <input type="text" class="form-control" placeholder="Nota della domanda" value="${qst.note}" readonly>
                         </div>
                     </div>
 
@@ -37,11 +37,13 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <#list qst.QAnswer as answer>
-                                            <div class="d-flex flex-row align-items-center">
-                                                <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
-                                                    <input class="form-control" placeholder="Inserisci domanda" value="${answer}" readonly />
+                                            <#if answer != "">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+                                                        <input class="form-control" placeholder="Inserisci domanda" value="${answer}" readonly />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </#if>
                                         </#list>
                                     </div>
                                 </div>
