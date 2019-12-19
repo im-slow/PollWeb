@@ -1,15 +1,13 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
-import poolweb.data.model.Answer;
 import poolweb.data.model.Poll;
-import poolweb.data.model.Question;
-import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +42,7 @@ public class GetUser extends PoolWebBaseController {
                 request.setAttribute("uCount", uCount);
                 request.setAttribute("qCount", qCount);
                 request.setAttribute("aCount", aCount);
-                request.setAttribute("page_title", "Home"); //Titolo da iniettare nel template con freeMarker
+                request.setAttribute("page_title", "Home");
                 TemplateResult res = new TemplateResult(getServletContext());
                 request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
                 res.activate("home.ftl", request, response);

@@ -47,17 +47,15 @@ public class CreateAnswer extends PoolWebBaseController {
                 List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
                 request.setAttribute("question", question);
                 request.setAttribute("poll", poll);
-                if (true) {
-                    res.activate("new_answer.ftl", request, response);
-                } else {
-                    request.setAttribute("message", "Unable to load Users");
-                    action_error(request, response);
-                }
+                res.activate("new_answer.ftl", request, response);
             } else {
-
+                request.setAttribute("message", "Errore caricamento del sondaggio");
+                request.setAttribute("submessage", "Riprova più tardi");
+                action_error(request, response);
             }
         } catch (DataException ex) {
-            request.setAttribute("message", "Data access exception: " + ex.getMessage());
+            request.setAttribute("message", "Errore caricamento del sondaggio");
+            request.setAttribute("submessage", "Riprova più tardi");
             action_error(request, response);
         } catch (TemplateManagerException e) {
             e.printStackTrace();

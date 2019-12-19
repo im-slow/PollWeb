@@ -93,6 +93,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>Inserimentoriuscito</servlet-name>
+        <servlet-class>poolweb.controller.InsertSucceeded</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>RemoveQuestion</servlet-name>
         <servlet-class>poolweb.controller.RemoveQuestion</servlet-class>
     </servlet>
@@ -115,6 +120,11 @@
     <servlet-mapping>
         <servlet-name>CreateQuestions</servlet-name>
         <url-pattern>/aggiungidomande</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Inserimentoriuscito</servlet-name>
+        <url-pattern>/inserimentoriuscito</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

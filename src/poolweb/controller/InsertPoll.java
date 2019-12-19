@@ -5,6 +5,9 @@ import poolweb.data.model.Poll;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
+import poolweb.framework.result.SplitSlashesFmkExt;
+import poolweb.framework.result.TemplateManagerException;
+import poolweb.framework.result.TemplateResult;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,14 +48,14 @@ public class InsertPoll extends PoolWebBaseController  {
                     p.setPollstatus(Boolean.parseBoolean(request.getParameter("statuspoll")));
                     p.setUser(user);
                     ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().storePoll(p);
-                    action_write(response);
+                    action_write(request, response);
                 }
                 else {
                     request.setAttribute("message", "Errore aggiornamento del sondaggio");
                     action_error(request, response);
                 }
             }
-        } catch (DataException ex) {
+        } catch (DataException e) {
             request.setAttribute("message", "Errore creazione del sondaggio");
             action_error(request, response);
         }
@@ -60,7 +63,7 @@ public class InsertPoll extends PoolWebBaseController  {
 
 
 
-    private void action_write(HttpServletResponse response) throws IOException {
+    private void action_write(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("/inserimentoriuscito");
     }
 
@@ -74,7 +77,6 @@ public class InsertPoll extends PoolWebBaseController  {
         }
     }
 
-    //Necessario per gestire le return di errori
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
         if (request.getAttribute("exception") != null) {
             (new FailureResult(getServletContext())).activate((Exception) request.getAttribute("exception"), request, response);

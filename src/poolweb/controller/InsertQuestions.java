@@ -1,15 +1,12 @@
 package poolweb.controller;
 
-import com.sun.deploy.net.HttpRequest;
 import poolweb.data.dao.PoolWebDataLayer;
 import poolweb.data.model.Poll;
 import poolweb.data.model.Question;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
-import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
-import poolweb.framework.result.TemplateResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -84,11 +81,7 @@ public class InsertQuestions extends PoolWebBaseController{
     }
 
     private void action_write(HttpServletRequest request, HttpServletResponse response) throws IOException, TemplateManagerException {
-        request.setAttribute("page_title", "Domande inserite");
-        TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-        request.setAttribute("message", "le domande sono state inserite con successo");
-        res.activate("success.ftl", request, response);
+        response.sendRedirect("/inserimentoriuscito");
     }
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {

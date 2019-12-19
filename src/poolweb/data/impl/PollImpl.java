@@ -15,7 +15,9 @@ public class PollImpl implements Poll {
     private User user;
 
     public PollImpl() {
-
+       ID = 0;
+       pollstatus = false;
+       openstatus = false;
     }
 
 

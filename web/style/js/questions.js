@@ -14,7 +14,7 @@ var sortable = Sortable.create(el, {
 //Question
 $(document).ready(function () {
     basicQuestion = $('#card-header-js-plh').clone();
-    basicAnswer = $('#question-option-js').clone();
+    basicAnswer = $('.question-option-js').clone();
     answerType = $('#answer-type-js').clone();
     allField = $('#all-field-js').clone();
     minMaxField = $('#min-max-field-js').clone();
@@ -93,20 +93,20 @@ function listChild() {
         curnode.find('.card-body-js').attr('aria-labelledby', `heading${counter}`);
         curnode.find('.card-body-js').removeClass('show');
         curnode.find('.card-body-js').attr('id', `collapse${counter}`);
-        curnode.find('#validationCustom01').attr('name', `questname${counter}`);
-        curnode.find('#min-js').attr('name', `min${counter}`);
-        curnode.find('#max-js').attr('name', `max${counter}`);
-        curnode.find('#info-js').attr('name', `info${counter}`);
-        curnode.find('#answer-js').attr('name', `domanda${counter}`);
-        curnode.find('#questnumber').attr('name', `numberquest${counter}`);
+        curnode.find(`#validationCustom01`).attr('name', `questname${counter}`);
+        curnode.find('.min-js').attr('name', `min${counter}`);
+        curnode.find('.max-js').attr('name', `max${counter}`);
+        curnode.find('.info-js').attr('name', `info${counter}`);
+        curnode.find('.answer-js').attr('name', `domanda${counter}`);
+        curnode.find('.questnumber-js').attr('name', `numberquest${counter}`);
         curnode.find('.proxy-id-js').attr('name', `id${counter}`);
         curnode.removeAttr('hidden');
         curnode.find('#append-answer-js').find('div').each(function() {
             $(this).find('input').attr('name', `domanda${counter}`);
         });
-        curnode.find('#questnumber').val(counter);
+        curnode.find('.questnumber-js').val(counter);
         curnode.find('#number-js').html(counter);
-        curnode.find('#question-type-js').attr('name', `questionType${counter}`);
+        curnode.find('.question-type-js').attr('name', `questionType${counter}`);
     });
     $('#questnumbers').val(counter); // Number of all quest
 }
@@ -114,8 +114,8 @@ function listChild() {
 //add new Single choise or multiple choise answer
 $(document).on('click', '#new-answer-js', function() {
     const parent = $(this).parent().parent().parent();
-    basicAnswerclone = parent.find('#question-option-js').first().clone();
-    basicAnswerclone.find('#answer-js').val( '');
+    basicAnswerclone = parent.find('.question-option-js').first().clone();
+    basicAnswerclone.find('.answer-js').val( '');
     parent.find('#append-answer-js').append(basicAnswerclone);
 });
 
@@ -126,7 +126,7 @@ $(document).on('click', '.delete_option_quest', function () {
         element++;
     });
     if (element>1) {
-        $(this).closest('#question-option-js').remove(); //parent con la vecchia "X"
+        $(this).closest('.question-option-js').remove(); //parent con la vecchia "X"
     }
 });
 
@@ -149,10 +149,10 @@ $(document).on('click', '.delete_option_quest', function () {
 })();
 
 //Menage the different types of questions
-$(document).on('click', '#hidden-answer-js', function() {
-    var val = $(this).attr('value');
-    var name = $(this).attr('name');
-    console.log(name);
+$(document).on('change', '.dropdown-menu', function() {
+    var val = $(this).val();
+    var name = $(this).find(':selected').attr('name');
+    console.log(name, val);
     var numberquest = $(this).closest('#card-header-js').find('#number-js').text();
     const parent = $(this).closest('.section-content');
     switch(val) {
@@ -180,8 +180,8 @@ $(document).on('click', '#hidden-answer-js', function() {
     }
     choiseClone.removeAttr('hidden');
     $(this).closest('#card-header-js').find('#answer-type-js').html(choiseClone);
-    $(this).closest('#card-header-js').find('#question-type-js').attr('name', `questionType${numberquest}`);
-    $(this).closest('#card-header-js').find('#question-type-js').attr('value', name);
+    $(this).closest('#card-header-js').find('.question-type-js').attr('name', `questionType${numberquest}`);
+    $(this).closest('#card-header-js').find('.question-type-js').attr('value', name);
 });
 
 $(document).on('click', '.changestatuspoll-js', function () {
