@@ -32,6 +32,6 @@ public interface Poll {
 
     public String getURL();
 
-    public void setURL(String url);
+    public void setURL();
 
 }

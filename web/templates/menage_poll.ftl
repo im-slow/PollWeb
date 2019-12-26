@@ -49,7 +49,6 @@
                                 </div>
                         <!-- END SINGLE CHOISE -->
                     </div>
-
                     <div class="col-sm-12 d-flex flex-row align-items-center">
                         <div class="col-sm-6 d-flex flex-row align-items-center">
                             <div class="">
@@ -70,6 +69,33 @@
                 </div>
             </div>
         </#list>
+        <#if poll.openstatus>
+            <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-5 offset-md-2 col-md-8">
+                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-5 col-md-12 nopadding">
+                    <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio?id=${poll.ID}">Chiudi Sondaggio</a>
+                </div>
+            </div>
+        <#else>
+        <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-5 offset-md-2 col-md-8">
+            <h4>Aggiungi utenti al sondaggio privato</h4><a href="javascript:void(0)" class="text-orange font-weight-bold a-click new-answer-js pr-2"><h3> + </h3></a>
+        </div>
+        <div id="answer-field-js">
+            <input class="question-type-js" name="questionType1" value="SINGLECHOISE" hidden>
+            <div class="container-fluid col-sm-8">
+                <div class="align-items-center justify-content-center col-sm-12 nopadding">
+                    <div id="append-answer-js" class="form-group">
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1 question-option-js">
+                                <input name="domanda1" type="search" class="form-control answer-js" placeholder="Inserisci domanda" required />
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-center align-text-center ml-3 delete_option_quest">
+                                <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question2-js"><h3> - </h3></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-4 offset-md-2 col-md-8">
             <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingleft">
                 <input type="submit" value="Aggiungi utente" class="btn btn-secondary rounded-pill btn-orange a-click" />
@@ -78,6 +104,7 @@
                 <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio?id=${poll.ID}">Chiudi Sondaggio</a>
             </div>
         </div>
+        </#if>
         <!--- Second section - Change status ---->
         </div>
 </section>

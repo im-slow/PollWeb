@@ -44,8 +44,6 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
     public void init() throws DataException {
         try {
             super.init();
-
-            super.init();
             allAnswer = connection.prepareStatement(SELECT_ALL_ANSWER_ID);
             answerByID = connection.prepareStatement(SELECT_ANSWER_BY_ID);
             answerByQuestionID = connection.prepareStatement(SELECT_ANSWER_BY_QUESTION_ID);

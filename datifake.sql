@@ -47,3 +47,4 @@ INSERT INTO `dbpollweb`.`users_roles` (`IDusers`, `IDroles`) VALUES ('1', '1');
 INSERT INTO `dbpollweb`.`users_roles` (`IDusers`, `IDroles`) VALUES ('2', '2');
 INSERT INTO `dbpollweb`.`users_roles` (`IDusers`, `IDroles`) VALUES ('3', '3');
 
+select roles.* from roles inner join users_roles on roles.id=users_roles.IDroles AND users_roles.IDusers = '2';

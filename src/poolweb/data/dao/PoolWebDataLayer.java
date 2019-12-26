@@ -19,6 +19,7 @@ public class PoolWebDataLayer extends DataLayer {
         registerDAO(Question.class, new QuestionDAO_MySQL(this));
         registerDAO(Answer.class, new AnswerDAO_MySQL(this));
         registerDAO(Role.class, new RoleDAO_MySQL(this));
+        registerDAO(Instance.class, new InstanceDAO_MySQL(this));
     }
 
     public UserDAO getUserDAO() { return ((UserDAO) getDAO(User.class)); }
@@ -26,4 +27,5 @@ public class PoolWebDataLayer extends DataLayer {
     public QuestionDAO getQuestionDAO() { return ((QuestionDAO) getDAO(Question.class)); }
     public AnswerDAO getAnswerDAO() { return  ((AnswerDAO) getDAO(Answer.class)); }
     public RoleDAO getRoleDAO() { return ((RoleDAO) getDAO(Role.class)); }
+    public InstanceDAO getInstanceDAO() { return ((InstanceDAO) getDAO(Instance.class)); }
 }

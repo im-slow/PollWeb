@@ -1,5 +1,6 @@
 package poolweb.data.impl;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import poolweb.data.model.Poll;
 import poolweb.data.model.User;
 
@@ -97,7 +98,7 @@ public class PollImpl implements Poll {
     }
 
     @Override
-    public void setURL(String url) {
-        URL = url;
+    public void setURL() {
+        URL = RandomStringUtils.randomAlphabetic(5);
     }
 }

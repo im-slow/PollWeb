@@ -152,7 +152,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
                 insertPoll.setBoolean(4, poll.getOpenstatus());
                 insertPoll.setBoolean(5, poll.getPollstatus());
 //                insertPoll.setString(6, poll.getURL());
-                insertPoll.setString(6, "hsdhYysd");
+                insertPoll.setString(6, poll.getURL());
                 insertPoll.setInt(7, poll.getUser().getID());
                 if (insertPoll.executeUpdate() == 1) {
                     try (ResultSet rs = insertPoll.getGeneratedKeys()) {
@@ -190,6 +190,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             a.setClosetext(rs.getString("closeText"));
             a.setPollstatus(rs.getBoolean("statePoll"));
             a.setOpenStatus(rs.getBoolean("openPoll"));
+            a.setURL();
             a.setAuthorKey(rs.getInt("IDuser"));
             return a;
         } catch (SQLException ex) {
