@@ -11,10 +11,7 @@ import poolweb.framework.data.DAO;
 import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +45,7 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
             instanceByID = connection.prepareStatement(SELECT_INSTANCE_BY_ID);
             instanceByUser = connection.prepareStatement(SELECT_INSTANCE_BY_USER);
             instanceByPoll = connection.prepareStatement(SELECT_INSTANCE_BY_POLL);
-            insertInstance = connection.prepareStatement(INSERT_INSTANCE);
+            insertInstance = connection.prepareStatement(INSERT_INSTANCE, Statement.RETURN_GENERATED_KEYS);
             updateInstance = connection.prepareStatement(UPDATE_INSTANCE);
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -153,7 +150,7 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
 
     @Override
     public void storeInstance(Instance instance) throws DataException {
-        int id = instance.getUser().getID();
+        int id = instance.getID();
         try {
             if (instance.getID() > 0) {
                 if (instance instanceof InstanceProxy && ((InstanceProxy) instance).isDirty()) {

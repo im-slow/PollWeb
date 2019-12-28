@@ -1,5 +1,6 @@
 package poolweb.data.impl;
 
+import poolweb.data.model.Role;
 import poolweb.data.model.User;
 
 public class UserImpl implements User {
@@ -8,11 +9,12 @@ public class UserImpl implements User {
     private String name;
     private String email;
     private String password;
+    private Role role;
 
     public UserImpl() {
         name = "";
         email = "";
-        password = null;
+        password = "";
     }
 
     @Override
@@ -43,11 +45,21 @@ public class UserImpl implements User {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public Role getRole() {
+        return role;
+    }
+
+    @Override
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

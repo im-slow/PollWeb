@@ -18,4 +18,7 @@ public interface User {
 
     void setPassword(String password);
 
+    Role getRole();
+
+    void setRole(Role role);
 }

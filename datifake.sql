@@ -1,6 +1,6 @@
-INSERT INTO `dbpollweb`.`utente` (`ID`, `nome`,`cognome`, `email`, `pwd`) VALUES ('1', 'Andrea', 'Amicosante','andrea@gmail.com', 'fbefd8749ff346f9037fe650810f8dfef336c');
-INSERT INTO `dbpollweb`.`utente` (`ID`, `nome`,`cognome`, `email`, `pwd`) VALUES ('2', 'Angelo', 'DAlfonso','angelo@gmil.com', 'fbefd8749ff346f9037fe650810f8dfef336c'); #123stella
-INSERT INTO `dbpollweb`.`utente` (`ID`, `nome`,`cognome`, `email`, `pwd`) VALUES ('3', 'Stefano', 'Ravanetti','stefano@gmail.com', 'fbefd8749ff346f9037fe650810f8dfef336c');
+INSERT INTO `dbpollweb`.`utente` (`ID`, `nome`, `email`, `pwd`) VALUES ('1', 'Andrea', 'andrea@gmail.com', 'fbefd8749ff346f9037fe650810f8dfef336c');
+INSERT INTO `dbpollweb`.`utente` (`ID`, `nome`, `email`, `pwd`) VALUES ('2', 'Angelo', 'angelo@gmil.com', 'fbefd8749ff346f9037fe650810f8dfef336c'); #123stella
+INSERT INTO `dbpollweb`.`utente` (`ID`, `nome`, `email`, `pwd`) VALUES ('3', 'Stefano', 'stefano@gmail.com', 'fbefd8749ff346f9037fe650810f8dfef336c');
 
 INSERT INTO `dbpollweb`.`poll` (`ID`, `title`, `openText`, `closeText`, `openPoll`, `statePoll`, `URLPoll`, `IDuser`) VALUES (1, 'primo sondaggio', 'questo é un sondaggio di prova', 'grazie per aver Compilato il sondaggio!', 1, 1, 'sondaggioprova1', 1);
 

@@ -1,6 +1,5 @@
 package poolweb.data.dao;
 
-import poolweb.data.model.Poll;
 import poolweb.data.model.Role;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
@@ -19,5 +18,7 @@ public interface RoleDAO {
     Role createRole(ResultSet rs) throws DataException;
 
     Role createRole();
+
+    void storeUserRole(User user) throws DataException;
 
 }

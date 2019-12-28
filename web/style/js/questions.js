@@ -30,19 +30,23 @@ $(document).on('click', '#another-question-js', () => {
 });
 
 //Remove Questions
-$(document).on('click', '.remove-question-js', function (e) {
+$(document).on('click', '#remove-question-js', function (e) {
     e.stopPropagation();
     const elementremove = $(this);
-    let element = 0;
-    $('.accordion > div').each(function () {
-        element++;
-    });
-    if (element > 1) {
         swal({
-            title: 'Sei sicuro di voler rimuovere la domanda?',
-            text: 'Non sarai in grado di recuperarla successivamente!',
-            icon: 'warning',
-            buttons: ['Annulla', 'Elimina']
+            title: "An input!",
+            text: "Write something interesting:",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            inputPlaceholder: "Write something"
+        }, function (inputValue) {
+            if (inputValue === false) return false;
+            if (inputValue === "") {
+                swal.showInputError("You need to write something!");
+                return false
+            }
+            swal("Nice!", "You wrote: " + inputValue, "success");
         }).then((willDelete) => {
             if (willDelete) {
                 const idvalue = $(this).closest('#card-header-js').find('.proxy-id-js').attr('value');
@@ -69,7 +73,6 @@ $(document).on('click', '.remove-question-js', function (e) {
                 console.log('Dismissed');
             }
         });
-    }
 });
 
 //Keep the answer name on focus
@@ -199,3 +202,57 @@ $(document).on('click', '.changestatuspoll-js', function () {
         }
     });
 });
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function newUser() {
+    swal({
+        text: 'Inserisci un email per aggiungere un utente al sondaggio (es. name@email.com):',
+        content: {
+            element: "input",
+            attributes: {
+                placeholder: "Inserisci email",
+                type: "text"
+            },
+        },
+        button: {
+            text: "Aggiungi",
+            closeModal: false,
+        },
+    }).then(name => {
+        if (!name || !validateEmail(name)) {
+            return swal("L'email non è stata scritta nel modo corretto!");
+        }
+        if (name) {
+            const nome = name;
+            const password = Math.random().toString(36).slice(2);
+            const role = "USER";
+            var url_string = window.location.href;
+            var captured = /id=([^&]+)/.exec(url_string)[1]; // Value is in [1] ('384' in our case)
+            const url = captured ? captured : 'null';
+            var data = { nome: nome, password: password, role: role, IDpoll: url };
+            var saveData = $.ajax({
+                type: 'POST',
+                url: "http://localhost:8080/rispondisondaggio?id="+url,
+                data: data,
+                dataType: "text",
+                success: function(resultData) {
+                    swal({
+                        title: "Utente creato con successo",
+                        text: "É stata inviata un email all'indirizzo: \""+nome+"\", con la password e l'indirizzo URL per rispondere al sondaggio. "+"Debug, Password: "+password+", IDpoll:"+url+".",
+                    });
+                }
+            });
+        }
+    }).catch(err => {
+        if (err) {
+            swal("Oh noes!", "The AJAX request failed!", "error");
+        } else {
+            swal.stopLoading();
+            swal.close();
+        }
+    });
+}

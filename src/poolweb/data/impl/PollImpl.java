@@ -19,6 +19,7 @@ public class PollImpl implements Poll {
        ID = 0;
        pollstatus = false;
        openstatus = false;
+       URL = "";
     }
 
 

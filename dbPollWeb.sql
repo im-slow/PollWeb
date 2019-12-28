@@ -12,8 +12,7 @@ create table roles(
 #utente
 create table utente(
 	ID integer unsigned not null primary key auto_increment,
-    nome varchar(32) not null unique,
-    cognome varchar(32) not null unique,
+    nome varchar(255) not null,
     email varchar(255) not null,
     pwd varchar(255) not null
 );

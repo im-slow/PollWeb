@@ -144,7 +144,14 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
                 if (poll instanceof PollProxy && ((PollProxy) poll).isDirty()) {
                     return;
                 }
-                //Here write the update
+                updatePoll.setString(1, poll.getTitle());
+                updatePoll.setString(2, poll.getOpentext());
+                updatePoll.setString(3, poll.getClosetext());
+                updatePoll.setBoolean(4, poll.getOpenstatus());
+                updatePoll.setBoolean(5, poll.getPollstatus());
+                updatePoll.setString(6, poll.getURL());
+                updatePoll.setInt(7, poll.getUser().getID());
+                updatePoll.executeUpdate();
             } else {
                 insertPoll.setString(1, poll.getTitle());
                 insertPoll.setString(2, poll.getOpentext());

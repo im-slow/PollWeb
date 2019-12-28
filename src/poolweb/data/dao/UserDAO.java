@@ -11,7 +11,11 @@ public interface UserDAO {
 
     List<User> getUsers() throws DataException;
 
+    User createUser() throws DataException;
+
     User createUser(ResultSet res) throws DataException;
+
+    void storeUser(User user) throws DataException;
 
     User getUser(int ID) throws DataException;
 
