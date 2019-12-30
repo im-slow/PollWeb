@@ -13,7 +13,6 @@ var sortable = Sortable.create(el, {
 
 //Question
 $(document).ready(function () {
-    basicQuestion = $('#card-header-js-plh').clone();
     basicAnswer = $('.question-option-js').clone();
     answerType = $('#answer-type-js').clone();
     allField = $('#all-field-js').clone();
@@ -24,29 +23,26 @@ $(document).ready(function () {
 
 //Add new Question
 $(document).on('click', '#another-question-js', () => {
-    var cloneBasic = basicQuestion.clone().attr('id', 'card-header-js');
+    var test = $('#card-header-js-plh').clone(true);
+    var cloneBasic = test.clone(true).attr('id', 'card-header-js');
     $('.accordion').append(cloneBasic).hide().fadeIn(600);
     listChild();
 });
 
 //Remove Questions
-$(document).on('click', '#remove-question-js', function (e) {
+$(document).on('click', '.remove-question-js', function (e) {
     e.stopPropagation();
     const elementremove = $(this);
+    let element = 0;
+    $('.accordion > div').each(function () {
+        element++;
+    });
+    if (element > 1) {
         swal({
-            title: "An input!",
-            text: "Write something interesting:",
-            type: "input",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            inputPlaceholder: "Write something"
-        }, function (inputValue) {
-            if (inputValue === false) return false;
-            if (inputValue === "") {
-                swal.showInputError("You need to write something!");
-                return false
-            }
-            swal("Nice!", "You wrote: " + inputValue, "success");
+            title: 'Sei sicuro di voler rimuovere la domanda?',
+            text: 'Non sarai in grado di recuperarla successivamente!',
+            icon: 'warning',
+            buttons: ['Annulla', 'Elimina']
         }).then((willDelete) => {
             if (willDelete) {
                 const idvalue = $(this).closest('#card-header-js').find('.proxy-id-js').attr('value');
@@ -73,6 +69,7 @@ $(document).on('click', '#remove-question-js', function (e) {
                 console.log('Dismissed');
             }
         });
+    }
 });
 
 //Keep the answer name on focus
@@ -103,6 +100,8 @@ function listChild() {
         curnode.find('.answer-js').attr('name', `domanda${counter}`);
         curnode.find('.questnumber-js').attr('name', `numberquest${counter}`);
         curnode.find('.proxy-id-js').attr('name', `id${counter}`);
+        curnode.find('.label-tipology-js').attr('for', `exampleFormControlSelect${counter}`);
+        curnode.find('select').attr('id', `exampleFormControlSelect${counter}`);
         curnode.removeAttr('hidden');
         curnode.find('#append-answer-js').find('div').each(function() {
             $(this).find('input').attr('name', `domanda${counter}`);
@@ -152,7 +151,7 @@ $(document).on('click', '.delete_option_quest', function () {
 })();
 
 //Menage the different types of questions
-$(document).on('change', '.dropdown-menu', function() {
+$(document).on('change', '.form-control', function() {
     var val = $(this).val();
     var name = $(this).find(':selected').attr('name');
     console.log(name, val);

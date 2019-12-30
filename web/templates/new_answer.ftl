@@ -1,19 +1,16 @@
 <section id="gtco-contact-form" class="bg-white pt-5" xmlns="http://www.w3.org/1999/html">
     <div class="section-content">
-        <!-- Section Title -->
-        <#--        <div class="title-wrap">-->
-        <#--            <h2 class="section-title">${poll.title}</h2>-->
-        <#--            <p class="section-sub-title">${poll.opentext}</p>-->
-        <#--        </div>-->
         <div class="col justify-content-center align-items-center title-wrap mb-3">
             <h2 class="section-title">${poll.title}</h2>
             <p class="section-sub-title">${poll.opentext}</p>
         </div>
-        <form class="" action="/" name="testanswer" method="post">
+        <form class="" action="/answer" name="testanswer" method="post">
+            <input id="pollID-js" type="text" name="idpoll" value="${poll.ID}" hidden>
             <div class="price-box card col-md-8 offset-md-2 m-t-4">
                 <div class="border-bottom border-top border-left border-right">
                     <#list question as question>
                         <div class="price-box">
+                            <input name="questionID${question.position}" value="${question.ID}" hidden/>
                             <div class="card-body align-items-center justify-content-center">
                                 <div class="float-left align-items-center justify-content-center ml-3">
                                     <h6 id="number-js" class="text-orange font-weight-bold mr-2">${question.position}</h6>
@@ -31,7 +28,7 @@
                         </div>
                         <div class="price-box">
                             <div class="card-body">
-                                <div class=" align-items-center justify-content-between flex-nowrap px-5 pb-2">
+                                <div class=" align-items-center justify-content-between flex-nowrap pb-2">
                                     <div class="col-md-12">
                                         <#switch question.questionType>
                                             <#case "SINGLECHOISE">

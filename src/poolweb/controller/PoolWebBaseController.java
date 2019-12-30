@@ -1,6 +1,7 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
+import poolweb.framework.result.FailureResult;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -26,7 +27,9 @@ public abstract class PoolWebBaseController extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             processRequest(request, response);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            request.setAttribute("message", "Errore interno");
+            request.setAttribute("submessage", "Riprova più tardi");
+            action_error(request, response);
         }
     }
     @Override
@@ -37,6 +40,14 @@ public abstract class PoolWebBaseController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processBaseRequest(request, response);
+    }
+
+    private void action_error(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getAttribute("exception") != null) {
+            (new FailureResult(getServletContext())).activate((Exception) request.getAttribute("exception"), request, response);
+        } else {
+            (new FailureResult(getServletContext())).activate((String) request.getAttribute("message"), request, response);
+        }
     }
 
 

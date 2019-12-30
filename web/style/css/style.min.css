@@ -505,6 +505,10 @@ footer {
   padding-right: 10%;
 }
 
+/*.dropdown-menu {*/
+/*  width: 200px; !important;*/
+/*}*/
+
 .swal-title {
   font-family: 'Work Sans', sans-serif;
   font-weight: 300!important;

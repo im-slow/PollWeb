@@ -44,20 +44,22 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap">
-                                    <div class="d-flex flex-row justify-content-center align-items-center">
-                                        <div class="btn-group p-t-5 pl-4 pb-5 mt-3">
-                                            <select class="dropdown-menu">
-                                                <option  value="answer" name="SINGLECHOISE" class="dropdown-item hidden-answer-js">Scelta singola</option>
-                                                <option  value="all" name="MULTIPLECHOISE" class="dropdown-item hidden-answer-js">Scelta multipla</option>
-                                                <option  value="min-max" name="LONGTEXT" class="dropdown-item hidden-answer-js">Testo Lungo</option>
-                                                <option  value="min-max" name="SHORTTEXT" class="dropdown-item hidden-answer-js">Testo Breve</option>
-                                                <option  value="min-max" name="DATE" class="dropdown-item hidden-answer-js">Data</option>
-                                                <option  value="min-max" name="NUMBER" class="dropdown-item hidden-answer-js">Numero</option>
-                                            </select>
-                                        </div>
+                                <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap mb-4">
+                                    <div class="col-md-9 d-flex flex-row justify-content-center align-items-center">
+                                        <label class="mr-3 label-tipology-js" for="exampleFormControlSelect${qst.position}" style="white-space: nowrap">
+                                            Seleziona Tipologia:
+                                        </label>
+                                        <select class="form-control" id="exampleFormControlSelect${qst.position}" style="margin: 0!important">
+                                            <option  value="answer" name="SINGLECHOISE" class="hidden-answer-js" selected>Scelta singola</option>
+                                            <option  value="all" name="MULTIPLECHOISE" class="hidden-answer-js">Scelta multipla</option>
+                                            <option  value="min-max" name="LONGTEXT" class="hidden-answer-js">Testo Lungo</option>
+                                            <option  value="min-max" name="SHORTTEXT" class="hidden-answer-js">Testo Breve</option>
+                                            <option  value="min-max" name="DATE" class="hidden-answer-js">Data</option>
+                                            <option  value="min-max" name="NUMBER" class="hidden-answer-js">Numero</option>
+                                        </select>
                                     </div>
                                 </div>
+
                                 <div class="border-top pt-5 mx-5"></div>
 
                                 <div id="answer-type-js">
@@ -150,22 +152,24 @@
                                 </div>
                             </div>
 
-                        <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap">
-                            <div class="d-flex flex-row justify-content-center align-items-center">
-                                <div class="btn-group p-t-5 pl-4 pb-5 mt-3">
-                                    <select class="dropdown-menu">
-                                        <option  value="answer" name="SINGLECHOISE" class="dropdown-item hidden-answer-js">Scelta singola</option>
-                                        <option  value="all" name="MULTIPLECHOISE" class="dropdown-item hidden-answer-js">Scelta multipla</option>
-                                        <option  value="min-max" name="LONGTEXT" class="dropdown-item hidden-answer-js">Testo Lungo</option>
-                                        <option  value="min-max" name="SHORTTEXT" class="dropdown-item hidden-answer-js">Testo Breve</option>
-                                        <option  value="min-max" name="DATE" class="dropdown-item hidden-answer-js">Data</option>
-                                        <option  value="min-max" name="NUMBER" class="dropdown-item hidden-answer-js">Numero</option>
+                            <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap mb-4">
+                                <div class="col-md-9 d-flex flex-row justify-content-center align-items-center">
+                                    <label class="mr-3" for="exampleFormControlSelect1" style="white-space: nowrap">
+                                        Seleziona Tipologia:
+                                    </label>
+                                    <select class="form-control" id="exampleFormControlSelect1" style="margin: 0!important">
+                                        <option  value="answer" name="SINGLECHOISE" class="hidden-answer-js" selected>Scelta singola</option>
+                                        <option  value="all" name="MULTIPLECHOISE" class="hidden-answer-js">Scelta multipla</option>
+                                        <option  value="min-max" name="LONGTEXT" class="hidden-answer-js">Testo Lungo</option>
+                                        <option  value="min-max" name="SHORTTEXT" class="hidden-answer-js">Testo Breve</option>
+                                        <option  value="min-max" name="DATE" class="hidden-answer-js">Data</option>
+                                        <option  value="min-max" name="NUMBER" class="hidden-answer-js">Numero</option>
                                     </select>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="border-top pt-5 mx-5"></div>
+                            <div class="border-top pt-5 mx-5"></div>
+
                             <div id="answer-type-js">
                                 <!-- SINGLE CHOISE -->
                                 <div id="answer-field-js">
@@ -173,8 +177,8 @@
                                     <div class="container-fluid">
                                         <div class="col-sm-12">
                                             <div id="append-answer-js" class="form-group">
-                                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                                    <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1 question-option-js">
+                                                <div class="d-flex flex-row align-items-center justify-content-between question-option-js">
+                                                    <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
                                                         <input name="domanda1" type="search" class="form-control answer-js" placeholder="Inserisci domanda" required />
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center align-items-center align-text-center ml-3 delete_option_quest">
@@ -188,26 +192,26 @@
                                 <!-- END SINGLE CHOISE -->
                             </div>
 
-                        <div class="col-sm-12 d-flex flex-row align-items-center">
-                            <div class="col-sm-6 d-flex flex-row align-items-center">
-                                <div class="">
-                                    <label>Obbligatoria: </label>
+                            <div class="col-sm-12 d-flex flex-row align-items-center">
+                                <div class="col-sm-6 d-flex flex-row align-items-center">
+                                    <div class="">
+                                        <label>Obbligatoria: </label>
+                                    </div>
+                                    <div class="form-check form-check-inline pl-4">
+                                        <label class="switch">
+                                            <input name="isobbligo1" type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline pl-4">
-                                    <label class="switch">
-                                        <input name="isobbligo1" type="checkbox">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 d-flex flex-row align-items-end justify-content-end">
-                                <div id="new-answer-js" class="">
-                                    <a href="javascript:void(0)" class="text-orange font-weight-bold a-click"><h3> + </h3></a>
+                                <div class="col-sm-6 d-flex flex-row align-items-end justify-content-end">
+                                    <div id="new-answer-js" class="">
+                                        <a href="javascript:void(0)" class="text-orange font-weight-bold a-click"><h3> + </h3></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </#if>
             </div>
             <div class="d-flex flex-row justify-content-end align-items-center py-5 offset-md-2 m-t-4 col-md-8">
@@ -254,18 +258,19 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap">
-                    <div class="d-flex flex-row justify-content-center align-items-center">
-                        <div class="btn-group p-t-5 pl-4 pb-5 mt-3">
-                            <select class="dropdown-menu">
-                                <option  value="answer" name="SINGLECHOISE" class="dropdown-item hidden-answer-js">Scelta singola</option>
-                                <option  value="all" name="MULTIPLECHOISE" class="dropdown-item hidden-answer-js">Scelta multipla</option>
-                                <option  value="min-max" name="LONGTEXT" class="dropdown-item hidden-answer-js">Testo Lungo</option>
-                                <option  value="min-max" name="SHORTTEXT" class="dropdown-item hidden-answer-js">Testo Breve</option>
-                                <option  value="min-max" name="DATE" class="dropdown-item hidden-answer-js">Data</option>
-                                <option  value="min-max" name="NUMBER" class="dropdown-item hidden-answer-js">Numero</option>
-                            </select>
-                        </div>
+                <div class="col-md-12 row pl-5 justify-content-between align-items-center py-2 flex-nowrap mb-4">
+                    <div class="col-md-9 d-flex flex-row justify-content-center align-items-center">
+                        <label class="mr-3" for="exampleFormControlSelect1" style="white-space: nowrap">
+                            Seleziona Tipologia:
+                        </label>
+                        <select class="form-control" id="exampleFormControlSelect1" style="margin: 0!important">
+                            <option  value="answer" name="SINGLECHOISE" class="hidden-answer-js" selected>Scelta singola</option>
+                            <option  value="all" name="MULTIPLECHOISE" class="hidden-answer-js">Scelta multipla</option>
+                            <option  value="min-max" name="LONGTEXT" class="hidden-answer-js">Testo Lungo</option>
+                            <option  value="min-max" name="SHORTTEXT" class="hidden-answer-js">Testo Breve</option>
+                            <option  value="min-max" name="DATE" class="hidden-answer-js">Data</option>
+                            <option  value="min-max" name="NUMBER" class="hidden-answer-js">Numero</option>
+                        </select>
                     </div>
                 </div>
 
@@ -277,8 +282,8 @@
                         <div class="container-fluid">
                             <div class="col-sm-12">
                                 <div id="append-answer-js" class="form-group">
-                                    <div class="d-flex flex-row align-items-center justify-content-between">
-                                        <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1 question-option-js">
+                                    <div class="d-flex flex-row align-items-center justify-content-between question-option-js">
+                                        <div class="d-flex flex-column align-items-center justify-content-center flex-grow-1">
                                             <input name="domanda1" type="search" class="form-control answer-js" placeholder="Inserisci domanda" required />
                                         </div>
                                         <div class="d-flex flex-column justify-content-center align-items-center align-text-center ml-3 delete_option_quest">

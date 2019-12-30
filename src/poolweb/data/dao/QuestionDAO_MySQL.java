@@ -162,7 +162,7 @@ public class QuestionDAO_MySQL extends DAO implements QuestionDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DataException("Error during insert or update question",e);
         }
     }
 
