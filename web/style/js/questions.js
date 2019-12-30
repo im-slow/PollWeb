@@ -231,12 +231,12 @@ function newUser() {
             const password = Math.random().toString(36).slice(2);
             const role = "USER";
             var url_string = window.location.href;
-            var captured = /id=([^&]+)/.exec(url_string)[1]; // Value is in [1] ('384' in our case)
+            var captured = /id=([^&]+)/.exec(url_string)[1]; // Value is in [1]
             const url = captured ? captured : 'null';
             var data = { nome: nome, password: password, role: role, IDpoll: url };
             var saveData = $.ajax({
                 type: 'POST',
-                url: "http://localhost:8080/rispondisondaggio?id="+url,
+                url: "http://localhost:8080/aggiungiutente", //http://localhost:8080/rispondisondaggio?id="+url,
                 data: data,
                 dataType: "text",
                 success: function(resultData) {
@@ -249,7 +249,7 @@ function newUser() {
         }
     }).catch(err => {
         if (err) {
-            swal("Oh noes!", "The AJAX request failed!", "error");
+            swal("GODDAMN!", "La richiesta AJAX non è andata a buon fine!", "error");
         } else {
             swal.stopLoading();
             swal.close();

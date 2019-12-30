@@ -107,6 +107,11 @@
         <servlet-class>poolweb.controller.GetContact</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>InsertUser</servlet-name>
+        <servlet-class>poolweb.controller.InsertUser</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -140,6 +145,11 @@
     <servlet-mapping>
         <servlet-name>Rispondi</servlet-name>
         <url-pattern>/rispondisondaggio</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>InsertUser</servlet-name>
+        <url-pattern>/aggiungiutente</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

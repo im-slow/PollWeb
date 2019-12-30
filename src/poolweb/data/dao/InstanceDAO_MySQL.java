@@ -158,8 +158,8 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
                 }
                 updateInstance.setBoolean(1, instance.getUserStatus());
                 updateInstance.setDate(2,  new java.sql.Date(instance.getSubmission().getTime()));
-                updateInstance.setInt(3, instance.getPoll().getID());
-                updateInstance.setInt(4, instance.getUser().getID());
+                updateInstance.setInt(3, instance.getUser().getID());
+                updateInstance.setInt(4, instance.getPoll().getID());
                 updateInstance.executeUpdate();
             } else {
                 insertInstance.setBoolean(1, instance.getUserStatus());
@@ -168,8 +168,8 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
                 } else {
                     insertInstance.setNull(2, java.sql.Types.DATE);
                 }
-                insertInstance.setInt(3, instance.getPoll().getID());
-                insertInstance.setInt(4, instance.getUser().getID());
+                insertInstance.setInt(3, instance.getUser().getID());
+                insertInstance.setInt(4, instance.getPoll().getID());
                 if (insertInstance.executeUpdate() == 1) {
                     try (ResultSet rs = insertInstance.getGeneratedKeys()) {
                         if (rs.next()) {
