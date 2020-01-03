@@ -1,12 +1,6 @@
 package poolweb.util;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import poolweb.data.model.Question;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public final class ParserAnswer {
 
@@ -28,6 +22,10 @@ public final class ParserAnswer {
 
     public static String randomQuestCode() {
         return RandomStringUtils.randomAlphabetic(5);
+    }
+
+    public static String randomPollCode() {
+        return RandomStringUtils.randomAlphabetic(10);
     }
 
 //    public static Map<Integer, List<String>> parserQuestion(List<Question> q){

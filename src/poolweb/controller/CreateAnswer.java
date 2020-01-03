@@ -1,11 +1,7 @@
 package poolweb.controller;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.tomcat.jni.Pool;
 import poolweb.data.dao.PoolWebDataLayer;
-import poolweb.data.impl.UserImpl;
 import poolweb.data.model.*;
-import poolweb.data.proxy.UserProxy;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
@@ -30,35 +26,6 @@ public class CreateAnswer extends PoolWebBaseController {
         try {
             HttpSession s = checkSession(request);
             if (s != null) {
-                if (request.getParameter("nome") != null) {
-                    try {
-                        Instance i;
-                        User u;
-                        Poll p;
-                        Role r;
-                        p = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(parseInt(request.getParameter("IDpoll")));
-                        u = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().createUser();
-                        i = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().createInstance();
-                        r = ((PoolWebDataLayer) request.getAttribute("datalayer")).getRoleDAO().getRoleByID(3);
-                        if (u != null && i != null && r != null && p != null) {
-                            u.setEmail(request.getParameter("nome"));
-                            u.setName(StringUtils.substringBefore(request.getParameter("nome"), "@"));
-                            u.setPassword(request.getParameter("password"));
-                            u.setRole(r);
-                            System.out.println(u.getRole()+" "+u.getID()+" "+u.getEmail());
-                            ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().storeUser(u);
-                            i.setUser(u);
-                            i.setPoll(p);
-                            i.setUserStatus(true);
-                            ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().storeInstance(i);
-                            ((PoolWebDataLayer) request.getAttribute("datalayer")).getRoleDAO().storeUserRole(u);
-                        } else {
-                            System.out.println("non va");
-                        }
-                    } catch (DataException e){
-                        e.printStackTrace();;
-                    }
-                }
                 action_user(request, response, s);
             } else {
                 action_answer(request, response);

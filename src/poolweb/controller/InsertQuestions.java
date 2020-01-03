@@ -60,7 +60,7 @@ public class InsertQuestions extends PoolWebBaseController{
                             }
                             q.setCode(randomQuestCode());
                             q.setPoll(poll);
-                            q.setQuestionType(Question.QuestionType.valueOf(request.getParameter("questionType"+idx))); //take from code
+                            q.setQuestionType(Question.QuestionType.valueOf(request.getParameter("questionType"+idx)));
                             q.setPosition(Integer.parseInt(request.getParameter("numberquest"+idx)));
                             ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().storeQuestion(q);
                         }

@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static poolweb.framework.security.SecurityLayer.checkSession;
+import static poolweb.util.ParserAnswer.randomPollCode;
+import static poolweb.util.ParserAnswer.randomQuestCode;
 
 public class InsertPoll extends PoolWebBaseController  {
     @Override
@@ -47,6 +49,7 @@ public class InsertPoll extends PoolWebBaseController  {
                     p.setOpenStatus(Boolean.parseBoolean(request.getParameter("testochiusura"))); //aperto o chiuso
                     p.setPollstatus(Boolean.parseBoolean(request.getParameter("statuspoll")));
                     p.setUser(user);
+                    p.setURL(randomPollCode());
                     ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().storePoll(p);
                     action_write(request, response);
                 }

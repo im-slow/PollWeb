@@ -9,6 +9,7 @@ import poolweb.framework.data.DataLayer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
             answerByID = connection.prepareStatement(SELECT_ANSWER_BY_ID);
             answerByQuestionID = connection.prepareStatement(SELECT_ANSWER_BY_QUESTION_ID);
             countAnswer = connection.prepareStatement(COUNT_ANSWER);
+            insertAnswer = connection.prepareStatement(INSERT_ANSWER, Statement.RETURN_GENERATED_KEYS);
         } catch (SQLException ex) {
             throw new DataException("Error initializing newspaper data layer", ex);
         }
@@ -164,7 +166,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
                 updateAnswer.setString(1, answer.getAnswer());
             } else {
                 insertAnswer.setString(1, answer.getAnswer());
-                insertAnswer.setInt(2, 3);
+                insertAnswer.setInt(2, answer.getQuestionID());
                 if (insertAnswer.executeUpdate() == 1) {
                     try (ResultSet rs = insertAnswer.getGeneratedKeys()) {
                         if (rs.next()) {
@@ -175,7 +177,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DataException("Unable to insert answer", e);
         }
     }
 

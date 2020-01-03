@@ -160,25 +160,25 @@ $(document).on('change', '.form-control', function() {
     switch(val) {
         case "answer":
             choiseClone = parent.find("#answer-field-js-plh").clone();
-            choiseClone.find("#answer-js").attr('required', 'true');
-            choiseClone.find("#answer-js").attr('name', `domanda${numberquest}`);
+            choiseClone.find(".answer-js").attr('name', `domanda${numberquest}`);
             break;
         case "min-max":
             choiseClone = parent.find("#min-max-field-js-plh").clone();
-            choiseClone.find("#min-js").attr('required', 'true');
-            choiseClone.find("#max-js").attr('required', 'true');
-            choiseClone.find("#max-js").attr("name", `max${numberquest}`);
-            choiseClone.find("#min-js").attr('name', `min${numberquest}`);
-            choiseClone.find("#answer-js").attr('name', `domanda${numberquest}`);
+            choiseClone.find(".max-js").attr("name", `max${numberquest}`);
+            choiseClone.find(".min-js").attr('name', `min${numberquest}`);
+            choiseClone.find(".answer-js").attr('name', `domanda${numberquest}`);
             break;
         case "all":
             choiseClone = parent.find("#all-field-js-plh").clone();
-            choiseClone.find("#answer-js").attr('name', `domanda${numberquest}`);
-            choiseClone.find("#min-js").attr('required', 'true');
-            choiseClone.find("#max-js").attr('required', 'true');
-            choiseClone.find("#max-js").attr("name", `max${numberquest}`);
-            choiseClone.find("#min-js").attr('name', `min${numberquest}`);
+            choiseClone.find(".answer-js").attr('name', `domanda${numberquest}`);
+            choiseClone.find(".max-js").attr("name", `max${numberquest}`);
+            choiseClone.find(".min-js").attr('name', `min${numberquest}`);
             break;
+        case "date":
+            choiseClone = parent.find('#date-field-js-plh').clone();
+            choiseClone.find(".answer-js").attr('name', `domanda${numberquest}`);
+            choiseClone.find(".max-js").attr("name", `max${numberquest}`);
+            choiseClone.find(".min-js").attr('name', `min${numberquest}`);
     }
     choiseClone.removeAttr('hidden');
     $(this).closest('#card-header-js').find('#answer-type-js').html(choiseClone);

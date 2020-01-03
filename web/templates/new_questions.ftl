@@ -54,7 +54,7 @@
                                             <option  value="all" name="MULTIPLECHOISE" class="hidden-answer-js">Scelta multipla</option>
                                             <option  value="min-max" name="LONGTEXT" class="hidden-answer-js">Testo Lungo</option>
                                             <option  value="min-max" name="SHORTTEXT" class="hidden-answer-js">Testo Breve</option>
-                                            <option  value="min-max" name="DATE" class="hidden-answer-js">Data</option>
+                                            <option  value="date" name="DATE" class="hidden-answer-js">Data</option>
                                             <option  value="min-max" name="NUMBER" class="hidden-answer-js">Numero</option>
                                         </select>
                                     </div>
@@ -67,12 +67,21 @@
                                     <div id="answer-field-js">
                                         <input class="question-type-js" name="questionType1" value="${qst.questionType}" hidden />
                                         <#if qst.minimum ??>
-                                            <div class="col-md-12">
-                                                <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
-                                                    <input name="min${qst.position}" type="number" class="form-control mr-3 form-contro-maxmin min-js" placeholder="minimo risposte multiple *" value="${qst.minimum}" required>
-                                                    <input name="max${qst.position}" type="number" class="form-control form-contro-maxmin max-js" placeholder="massimo risposte multiple *" value="${qst.maximum}" required>
+                                            <#if qst.questionType == "DATE">
+                                                <div class="col-md-12">
+                                                    <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
+                                                        <input name="min${qst.position}" type="date" class="form-control mr-3 form-contro-maxmin min-js" placeholder="minimo risposte multiple *" value="${qst.minimum}" required>
+                                                        <input name="max${qst.position}" type="date" class="form-control form-contro-maxmin max-js" placeholder="massimo risposte multiple *" value="${qst.maximum}" required>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            <#else>
+                                                <div class="col-md-12">
+                                                    <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
+                                                        <input name="min${qst.position}" type="number" class="form-control mr-3 form-contro-maxmin min-js" placeholder="minimo risposte multiple *" value="${qst.minimum}" required>
+                                                        <input name="max${qst.position}" type="number" class="form-control form-contro-maxmin max-js" placeholder="massimo risposte multiple *" value="${qst.maximum}" required>
+                                                    </div>
+                                                </div>
+                                            </#if>
                                         </#if>
                                         <div class="container-fluid">
                                             <div class="col-sm-12">
@@ -162,7 +171,7 @@
                                         <option  value="all" name="MULTIPLECHOISE" class="hidden-answer-js">Scelta multipla</option>
                                         <option  value="min-max" name="LONGTEXT" class="hidden-answer-js">Testo Lungo</option>
                                         <option  value="min-max" name="SHORTTEXT" class="hidden-answer-js">Testo Breve</option>
-                                        <option  value="min-max" name="DATE" class="hidden-answer-js">Data</option>
+                                        <option  value="date" name="DATE" class="hidden-answer-js">Data</option>
                                         <option  value="min-max" name="NUMBER" class="hidden-answer-js">Numero</option>
                                     </select>
                                 </div>
@@ -231,14 +240,14 @@
 
         <div id="card-header-js-plh" class="price-box card col-md-8 offset-md-2 m-t-4" hidden>
             <input type="text" class="form-control question-input-js questnumber-js" name="numberquest1" hidden>
-            <div class="card-header border-bottom border-top border-left border-right" id="heading1">
-                <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5 collpase-header-js" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+            <div class="card-header border-bottom border-top border-left border-right" id="heading">
+                <div class="row align-items-center align-text-center justify-content-between flex-nowrap px-5 collpase-header-js" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapse">
                     <h6 id="number-js" class="text-orange font-weight-bold mr-2">1</h6>
                     <h6 class="question-name-js">Nuova Domanda</h6>
                     <a href="javascript:void(0)" class="text-orange font-weight-bold a-click remove-question-js ml-2"><h3> - </h3></a>
                 </div>
             </div>
-            <div class="card-body border-bottom border-left border-right collapse show card-body-js" aria-labelledby="heading1" data-parent="#accordionExample" id="collapse1">
+            <div class="card-body border-bottom border-left border-right collapse show card-body-js" aria-labelledby="heading" data-parent="#accordionExample" id="collapse">
                 <div class="col-md-12">
                     <label class="pl-4">Inserici la domanda</label>
                     <div class="col-md-12 form-input">
@@ -251,7 +260,7 @@
                 <div class="col-md-12">
                     <label class="pl-4">Note della domanda</label>
                     <div class="col-md-12 form-input">
-                        <input type="text" class="form-control" id="info-js" name="info1" placeholder="Inserisci informazioni adizionali della domanda">
+                        <input type="text" class="form-control info-js" name="info1" placeholder="Inserisci informazioni adizionali della domanda">
                         <div class="invalid-feedback">
                             Il campo non può essere vuoto
                         </div>
@@ -268,7 +277,7 @@
                             <option  value="all" name="MULTIPLECHOISE" class="hidden-answer-js">Scelta multipla</option>
                             <option  value="min-max" name="LONGTEXT" class="hidden-answer-js">Testo Lungo</option>
                             <option  value="min-max" name="SHORTTEXT" class="hidden-answer-js">Testo Breve</option>
-                            <option  value="min-max" name="DATE" class="hidden-answer-js">Data</option>
+                            <option  value="date" name="DATE" class="hidden-answer-js">Data</option>
                             <option  value="min-max" name="NUMBER" class="hidden-answer-js">Numero</option>
                         </select>
                     </div>
@@ -363,17 +372,27 @@
             </div>
         </div>
         <!-- END MULTIPLE CHOISE-->
-        <!-- DATE, NUMBER, SHORT AND LONG TEXT -->
+        <!-- NUMBER, SHORT AND LONG TEXT -->
         <div id="min-max-field-js-plh" hidden="true">
             <input class="question-type-js" name="questionType1" value="SHORTTEXT" hidden>
             <div class="col-md-12">
                 <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
-                    <input name="min1" type="number" class="form-control mr-3 form-contro-maxmin min-js" placeholder="minimo risposte multiple *" >
-                    <input name="max1" type="number" class="form-control form-contro-maxmin max-js" placeholder="massimo risposte multiple *" >
+                    <input name="min1" type="number" class="form-control mr-3 form-contro-maxmin min-js" placeholder="minimo risposte multiple *" required>
+                    <input name="max1" type="number" class="form-control form-contro-maxmin max-js" placeholder="massimo risposte multiple *" required>
                 </div>
             </div>
         </div>
-        <!-- END DATE, NUMBER, SHORT AND LONG TEXT-->
+        <!-- END NUMBER, SHORT AND LONG TEXT-->
+        <!-- DATE -->
+        <div id="date-field-js-plh" hidden="true">
+            <input class="question-type-js" name="questionType1" value="DATE" hidden>
+            <div class="col-md-12">
+                <div class="d-flex flex-row align-items-center justify-content-center px-4 mt-2 mb-4">
+                    <input name="min1" type="date" class="form-control mr-3 form-contro-maxmin min-js" placeholder="minimo risposte multiple *" required>
+                    <input name="max1" type="date" class="form-control form-contro-maxmin max-js" placeholder="massimo risposte multiple *" required>
+                </div>
+            </div>
+        </div>
         <!-- SWITCH ANSWER TYPE -->
     </div>
 </section>
