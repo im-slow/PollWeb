@@ -10,10 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static poolweb.util.ParserAnswer.parserAnswer;
 
@@ -80,7 +79,24 @@ public class InsertAnswer extends PoolWebBaseController {
                             }
                             break;
                         case DATE:
-                            //check min max date
+                            String questanswer2 = request.getParameter("answer"+position);
+                            Date dateQuestanswer = new SimpleDateFormat("dd/MM/yyyy").parse(questanswer2);
+                            Date dateMin = new SimpleDateFormat("dd/MM/yyyy").parse(q.getMinimum());
+                            Date dateMax = new SimpleDateFormat("dd/MM/yyyy").parse(q.getMaximum());
+                            if (!q.getMandatory() && questanswer2.equals("")) {
+                                a.setAnswer("");
+                                a.setQuestionID(q.getID());
+                                answrs.add(a);
+                            } else {
+                                if (dateQuestanswer.before(dateMax) && dateQuestanswer.after(dateMin)) {
+                                    a.setAnswer(questanswer2);
+                                    a.setQuestionID(q.getID());
+                                    answrs.add(a);
+                                } else {
+                                    request.setAttribute("message", "La data non è inclusa tra minimo e/o massimo");
+                                    action_error(request, response);
+                                }
+                            }
                             break;
                         case SINGLECHOISE:
                             String questanswer1 = request.getParameter("answer"+position);
@@ -128,7 +144,7 @@ public class InsertAnswer extends PoolWebBaseController {
                 request.setAttribute("submessage", "Riprovare più tardi");
                 action_error(request, response);
             }
-        } catch (NumberFormatException | DataException ex) {
+        } catch (NumberFormatException | DataException | ParseException ex) {
             ex.printStackTrace();
             request.setAttribute("message", "Errore dati in input");
             action_error(request, response);
