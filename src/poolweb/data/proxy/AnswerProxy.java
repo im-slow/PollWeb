@@ -22,6 +22,12 @@ public class AnswerProxy extends AnswerImpl {
     }
 
     @Override
+    public void setQuestionID(int id) {
+        super.setQuestionID(id);
+        this.dirty = true;
+    }
+
+    @Override
     public void setAnswer(String answer){
         super.setAnswer(answer);
         this.dirty = true;

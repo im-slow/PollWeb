@@ -2,14 +2,14 @@
     <#list question.QAnswer as q>
         <#if question.mandatory>
                 <div class="col-md-6 form-check mb-3">
-                    <input class="form-check-label pl-3" type="radio" id="radio${q?index}" name="radio${question.position}" value="${q}" required>
+                    <input class="form-check-label pl-3" type="radio" id="radio${q?index}" name="answer${question.position}" value="${q}" required>
                     <label class="form-check-label pl-3" for="radio${q?index}">
                         ${q}
                     </label>
                 </div>
         <#else>
             <div class="col-md-6 form-check mb-3">
-                <input class="form-check-label pl-3" type="radio" id="radio${q?index}" name="radio${question.position}" value="option${q?index}">
+                <input class="form-check-label pl-3" type="radio" id="radio${q?index}" name="answer${question.position}" value="${q}">
                 <label class="form-check-label pl-3" for="radio${q?index}">
                     ${q}
                 </label>

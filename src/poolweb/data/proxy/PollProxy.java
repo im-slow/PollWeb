@@ -72,8 +72,8 @@ public class PollProxy extends PollImpl {
     }
 
    @Override
-   public void setURL() {
-        super.setURL();
+   public void setURL(String url) {
+        super.setURL(url);
         this.dirty = true;
    }
 

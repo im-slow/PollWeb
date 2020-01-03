@@ -1,14 +1,21 @@
 package poolweb.controller;
 
+import poolweb.data.dao.PoolWebDataLayer;
+import poolweb.data.model.Answer;
+import poolweb.data.model.Question;
+import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
-import poolweb.framework.result.SplitSlashesFmkExt;
-import poolweb.framework.result.TemplateManagerException;
-import poolweb.framework.result.TemplateResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ListIterator;
+
+import static poolweb.util.ParserAnswer.parserAnswer;
 
 public class InsertAnswer extends PoolWebBaseController {
     @Override
@@ -24,47 +31,136 @@ public class InsertAnswer extends PoolWebBaseController {
         }
     }
 
-    private void action_answer(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void action_answer(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             if (request.getParameterMap() != null) {
-//                TreeSet<String> indexes = new TreeSet<>();
-//                Map<String, String[]> parmap = request.getParameterMap();
-//                for(Map.Entry<String, String[]> entry : parmap.entrySet()) {
-//                    indexes.add((entry.getKey().substring(entry.getKey().length() - 1)));
-//                }
-//                for(String idx: indexes) {
-//                    // -- Here take the parameters for create a single Question Obj -- //
-//                    Answer a = ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().createAnswer();
-//                    if (a != null) {
-//                        a.setAnswer(request.getParameter("questname" +idx));
-//                        ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().storeAnswer(a);
-//                        action_write(request, response);
-//                    }
-//                }
+                List<Question> qst = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(Integer.parseInt(request.getParameter("idpoll")));
+                List<Answer> answrs = new ArrayList<Answer>();
+                ListIterator<Question> listIter = qst.listIterator();
+                boolean isvalid = true;
+                while (listIter.hasNext() && isvalid) {
+                    Question q = listIter.next();
+                    int position = q.getPosition();
+                    Answer a = ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().createAnswer();
+                    if (q.getMandatory()) {
+                        String questanswer = request.getParameter("answer" + position);
+                        if (questanswer == null || questanswer.equals("")) {
+                            request.setAttribute("message", "Necessario rispondere alle domande obbligatorie");
+                            action_error(request, response);
+                            isvalid = false;
+                        }
+                    }
+                    switch (q.getQuestionType()) {
+                        case MULTIPLECHOISE:
+                            String[] values = request.getParameterValues("answer"+position);
+                            if (!q.getMandatory() && values == null) {
+                                a.setAnswer("");
+                                a.setQuestionID(q.getID());
+                                answrs.add(a);
+                            } else {
+                                if (!checkInputValues(values, q.getQAnswer())) {
+                                    request.setAttribute("message", "Errore dati in input");
+                                    action_error(request, response);
+                                    isvalid = false;
+                                } else {
+                                    int count = 0;
+                                    for (String s : request.getParameterValues("answer"+position)) {
+                                        count++;
+                                    }
+                                    if (count >= Integer.parseInt(q.getMinimum()) && count <= Integer.parseInt(q.getMaximum())) {
+                                        a.setQuestionID(q.getID());
+                                        a.setAnswer(parserAnswer(values));
+                                        answrs.add(a);
+                                    } else {
+                                        request.setAttribute("message", "Rispettare il numero minimo e massimo di risposte");
+                                        action_error(request, response);
+                                        isvalid = false;
+                                    }
+                                }
+                            }
+                            break;
+                        case DATE:
+                            //check min max date
+                            break;
+                        case SINGLECHOISE:
+                            String questanswer1 = request.getParameter("answer"+position);
+                            if (!q.getMandatory() && questanswer1 == null) {
+                                a.setAnswer("");
+                                a.setQuestionID(q.getID());
+                                answrs.add(a);
+                            } else {
+                                if (!Arrays.stream(q.getQAnswer()).anyMatch(questanswer1::equals)) {
+                                    request.setAttribute("message", "Errore dati in input");
+                                    action_error(request, response);
+                                    isvalid = false;
+                                } else {
+                                    a.setQuestionID(q.getID());
+                                    a.setAnswer(questanswer1);
+                                    answrs.add(a);
+                                }
+                            }
+                            break;
+                        default:
+                            String questanswer = request.getParameter("answer"+position);
+                            if (!q.getMandatory() && questanswer.equals("")) {
+                                a.setAnswer("");
+                                a.setQuestionID(q.getID());
+                                answrs.add(a);
+                            } else {
+                                if (questanswer.length() >= Integer.parseInt(q.getMinimum()) && questanswer.length() <= Integer.parseInt(q.getMaximum())) {
+                                    a.setAnswer(questanswer);
+                                    a.setQuestionID(q.getID());
+                                    answrs.add(a);
+                                } else {
+                                    request.setAttribute("message", "La risposta non rispetta i valori di minimo o massimo dei caratteri");
+                                    action_error(request, response);
+                                }
+                            }
+                            break;
+                    }
+                }
+                if (isvalid) {
+                    action_write(request, response, answrs);
+                    System.out.println("tuttok ok");
+                }
             } else {
-                request.setAttribute("message", "Cannot update article: insufficient parameters");
+                request.setAttribute("message", "Problema interno al sistema");
+                request.setAttribute("submessage", "Riprovare più tardi");
                 action_error(request, response);
-
             }
-        } catch (Exception ex) { //Data Excetion
-            request.setAttribute("message", "Cannot create Question");
+        } catch (NumberFormatException | DataException ex) {
+            ex.printStackTrace();
+            request.setAttribute("message", "Errore dati in input");
             action_error(request, response);
         }
     }
 
-    private void action_write(HttpServletRequest request, HttpServletResponse response) {
+    private boolean checkInputValues(String[] values, String[] quest) {
+        boolean isvalid = true;
+        for (String qst: values) {
+            if (!Arrays.stream(quest).anyMatch(qst::equals)) {
+                isvalid = false;
+            }
+        }
+        return isvalid;
+    }
+
+    private void action_write(HttpServletRequest request, HttpServletResponse response, List<Answer> answrs) {
         try {
-            TemplateResult res = new TemplateResult(getServletContext());
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            request.setAttribute("page_title", "Inserimento Riuscito");
-            request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-            res.activate("success.ftl", request, response);
-        } catch (TemplateManagerException e) {
+            for (Answer asw: answrs) {
+                ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().storeAnswer(asw);
+            }
+            response.sendRedirect("/inserimentoriuscito");
+        } catch (DataException ex) {
+            ex.printStackTrace();
+            request.setAttribute("message", "Errore interno");
+            request.setAttribute("submessage", "Problema durante l'inserimento");
+            action_error(request, response);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    //Necessario per gestire le return di errori
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
         if (request.getAttribute("exception") != null) {
             (new FailureResult(getServletContext())).activate((Exception) request.getAttribute("exception"), request, response);

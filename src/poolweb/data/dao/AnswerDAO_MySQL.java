@@ -1,10 +1,7 @@
 package poolweb.data.dao;
 
 import poolweb.data.model.Answer;
-import poolweb.data.model.Poll;
-import poolweb.data.model.Question;
 import poolweb.data.proxy.AnswerProxy;
-import poolweb.data.proxy.QuestionProxy;
 import poolweb.framework.data.DAO;
 import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
@@ -15,8 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import static poolweb.util.ParserAnswer.parserAnswer;
 
 public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
 
@@ -48,6 +43,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
             answerByID = connection.prepareStatement(SELECT_ANSWER_BY_ID);
             answerByQuestionID = connection.prepareStatement(SELECT_ANSWER_BY_QUESTION_ID);
             countAnswer = connection.prepareStatement(COUNT_ANSWER);
+            insertAnswer = connection.prepareStatement(INSERT_ANSWER, Statement.RETURN_GENERATED_KEYS);
         } catch (SQLException ex) {
             throw new DataException("Error initializing newspaper data layer", ex);
         }
@@ -170,7 +166,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
                 updateAnswer.setString(1, answer.getAnswer());
             } else {
                 insertAnswer.setString(1, answer.getAnswer());
-                insertAnswer.setInt(2, 3);
+                insertAnswer.setInt(2, answer.getQuestionID());
                 if (insertAnswer.executeUpdate() == 1) {
                     try (ResultSet rs = insertAnswer.getGeneratedKeys()) {
                         if (rs.next()) {
@@ -181,7 +177,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DataException("Unable to insert answer", e);
         }
     }
 

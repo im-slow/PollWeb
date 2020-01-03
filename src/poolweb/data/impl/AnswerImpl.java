@@ -6,14 +6,12 @@ public class AnswerImpl implements Answer{
 
     private int ID;
     private String answer;
-
-    public AnswerImpl(int ID, String answer){
-        this.ID = ID;
-        this.answer = answer;
-    }
+    private int questionID;
 
     public AnswerImpl() {
-
+        this.ID = 0;
+        this.answer = "";
+        this.questionID = 0;
     }
 
     public int getID(){
@@ -24,11 +22,21 @@ public class AnswerImpl implements Answer{
         return answer;
     }
 
+    @Override
+    public int getQuestionID() {
+        return questionID;
+    }
+
     public void setID(int ID){
         this.ID = ID;
     }
 
     public void setAnswer(String answer){
         this.answer = answer;
+    }
+
+    @Override
+    public void setQuestionID(int id) {
+        this.questionID = id;
     }
 }

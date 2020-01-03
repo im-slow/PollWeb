@@ -16,7 +16,7 @@
 
     <!-- External CSS -->
     <link rel="stylesheet" href="../style/vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../style/vendor/select2/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="../style/vendor/owlcarousel/owl.carousel.min.css">
     <link rel="stylesheet" href="../style/vendor/lightcase/lightcase.css">
 
@@ -29,7 +29,7 @@
     <link href="https://file.myfontastic.com/7vRKgqrN3iFEnLHuqYhYuL/icons.css" rel="stylesheet">
     <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../style/vendor/jquery3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.6.0/Sortable.js"></script>
 
@@ -169,7 +169,7 @@
 
   	<script src="../style/vendor/bootstrap/popper.min.js"></script>
   	<script src="../style/vendor/bootstrap/bootstrap.min.js"></script>
-  	<script src="../style/vendor/select2/select2.min.js "></script>
+<#--    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>-->
   	<script src="../style/vendor/owlcarousel/owl.carousel.min.js"></script>
   	<script src="../style/vendor/isotope/isotope.min.js"></script>
   	<script src="../style/vendor/lightcase/lightcase.js"></script>

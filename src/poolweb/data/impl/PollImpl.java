@@ -99,7 +99,7 @@ public class PollImpl implements Poll {
     }
 
     @Override
-    public void setURL() {
-        URL = RandomStringUtils.randomAlphabetic(5);
+    public void setURL(String url) {
+        this.URL = url;
     }
 }
