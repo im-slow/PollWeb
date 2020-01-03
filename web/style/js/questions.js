@@ -229,7 +229,7 @@ function newUser() {
         if (name) {
             const nome = name;
             const password = Math.random().toString(36).slice(2);
-            const role = "USER";
+            const role = 'USER';
             var url_string = window.location.href;
             var captured = /id=([^&]+)/.exec(url_string)[1]; // Value is in [1]
             const url = captured ? captured : 'null';

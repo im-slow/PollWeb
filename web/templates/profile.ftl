@@ -58,27 +58,22 @@
                     </div>
                 </div>
                 <#if role.name == 'ADMIN'>
-                <div class="d-flex justify-content-center pt-5 pb-5 border-top">
+                <div class="d-flex justify-content-center pt-5 border-top">
                     <h4>Crea un nuovo responsabile</h4>
                 </div>
-                <div class="">
-                    <form method="post" name="new_res" action="/profile">
+                    <div class="d-flex justify-content-center pt-2 pb-5">Premendo il bottone verrà aggiunto il responsabile al sistema, e riceverà un email contente le credenziali di accesso</div>
+                    <div class="container">
+                    <form method="post" name="new_res" action="/aggiungires">
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                <input type="text" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" class="form-control email-js" id="email" name="email" placeholder="name@example.com" required>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-red">Registra Responsabile</button>
+                            <input type="submit" class="btn btn-red a-click new-res-js">
                         </div>
-                    </form>
+                        </form>
                 </div>
                 </#if>
             </div>

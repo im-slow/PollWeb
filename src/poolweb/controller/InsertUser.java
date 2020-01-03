@@ -7,6 +7,7 @@ import poolweb.data.model.Poll;
 import poolweb.data.model.Role;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
+import poolweb.util.GenerateTxtMail;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +52,7 @@ public class InsertUser extends PoolWebBaseController {
                 ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().storeUser(u);
                 ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().storeInstance(i);
                 ((PoolWebDataLayer) request.getAttribute("datalayer")).getRoleDAO().storeUserRole(u);
+                GenerateTxtMail.newMail(u.getName(), u.getEmail(), u.getPassword(), u.getRole().getDescription(), p.getURL());
                 action_write(response, IDpoll);
             } else {
                 request.setAttribute("message", "Errore nell'aggiunta dell'utente");

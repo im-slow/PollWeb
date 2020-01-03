@@ -112,6 +112,11 @@
         <servlet-class>poolweb.controller.InsertUser</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>InsertRes</servlet-name>
+        <servlet-class>poolweb.controller.InsertRes</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -180,6 +185,11 @@
     <servlet-mapping>
         <servlet-name>GetContact</servlet-name>
         <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>InsertRes</servlet-name>
+        <url-pattern>/aggiungires</url-pattern>
     </servlet-mapping>
 
     <resource-ref>
