@@ -7,6 +7,7 @@ import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -80,9 +81,15 @@ public class InsertAnswer extends PoolWebBaseController {
                             break;
                         case DATE:
                             String questanswer2 = request.getParameter("answer"+position);
+                            System.out.println("String: " + questanswer2);
                             Date dateQuestanswer = new SimpleDateFormat("dd/MM/yyyy").parse(questanswer2);
-                            Date dateMin = new SimpleDateFormat("dd/MM/yyyy").parse(q.getMinimum());
-                            Date dateMax = new SimpleDateFormat("dd/MM/yyyy").parse(q.getMaximum());
+                            SimpleDateFormat finalFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            SimpleDateFormat startFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            String convertMin = finalFormat.format(startFormat.parse(q.getMaximum()));
+                            String convertMax = finalFormat.format(startFormat.parse(q.getMinimum()));
+                            Date dateMin = finalFormat.parse(convertMax);
+                            Date dateMax = finalFormat.parse(convertMin);
+                            System.out.println("min: "+ dateMin + " max: " + dateMax + " mia: " + dateQuestanswer);
                             if (!q.getMandatory() && questanswer2.equals("")) {
                                 a.setAnswer("");
                                 a.setQuestionID(q.getID());

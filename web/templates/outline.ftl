@@ -190,6 +190,7 @@
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <script>
         $('#datepicker').datepicker({
+            format: 'dd/mm/yyyy',
             uiLibrary: 'bootstrap4'
         });
     </script>
