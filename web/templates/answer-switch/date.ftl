@@ -1,6 +1,6 @@
 <div class="d-flex flex-row justify-content-around align-items-center align-text-center">
-        <p><b class="mr-2"># minimo caratteri: </b>${question.minimum}</p>
-        <p><b class="mr-2"># massimo caratteri: </b>${question.maximum}</p>
+        <p><b class="mr-2">data minima: </b>${question.minimum}</p>
+        <p><b class="mr-2">data massima: </b>${question.maximum}</p>
 </div>
 <div class="form-input">
     <#if question.mandatory>
