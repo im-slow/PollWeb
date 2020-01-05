@@ -248,7 +248,7 @@ function newUser() {
         }
     }).catch(err => {
         if (err) {
-            swal("GODDAMN!", "La richiesta AJAX non è andata a buon fine!", "error");
+            swal("ATTENZIONE!", "La richiesta AJAX non è andata a buon fine!", "error");
         } else {
             swal.stopLoading();
             swal.close();
