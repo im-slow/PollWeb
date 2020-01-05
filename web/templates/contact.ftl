@@ -1,4 +1,4 @@
-<div class="jumbotron d-flex align-items-center flex-row-reverse" style="background-image: url(../style/img/bg.jpg)">
+<div class="jumbotron d-flex align-items-center flex-row-reverse" style="background-image: url(../style/img/survey4.png)">
     <div class="d-flex flex-column align-items-center align-text-center pr-5 mr-5">
         <h1 class="display-2 mb-4">PollWeb</h1>
         <p>Creato da:

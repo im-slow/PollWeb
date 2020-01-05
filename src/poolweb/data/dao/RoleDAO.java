@@ -13,7 +13,7 @@ public interface RoleDAO {
 
     Role getRoleByID(int ID) throws DataException;
 
-    Role getRoleByUser(User user) throws DataException;
+    Role getRoleByUser(int ID) throws DataException;
 
     Role createRole(ResultSet rs) throws DataException;
 

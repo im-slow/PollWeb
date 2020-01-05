@@ -29,7 +29,7 @@ public class UserProxy extends UserImpl {
     public Role getRole() {
         if (super.getRole() == null && role_key > 0) {
             try {
-                super.setRole(((RoleDAO) datalayer.getDAO(Role.class)).getRoleByID(role_key));
+                super.setRole(((RoleDAO) datalayer.getDAO(Role.class)).getRoleByUser(super.getID()));
             } catch (DataException ex) {
                 Logger.getLogger(UserProxy.class.getName()).log(Level.SEVERE, null, ex);
             }
