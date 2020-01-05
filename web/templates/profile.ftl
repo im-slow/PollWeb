@@ -43,9 +43,7 @@
                             </div>
                             <!-- End of Blog Item -->
                         </#list>
-                        <#else>
-                            <p>Non sono presenti sondaggi nel database</p>
-                        </#if>
+                    </#if>
                     <div class="col-md-4 blog-item-wrapper d-flex flex-column" style="min-height: 502px;">
                         <div class="blog-item d-flex flex-column justify-content-center align-items-center flex-grow-1">
                             <a class="navbar-brand d-flex align-items-center" style="font-size: 50px !important;" href="/creasondaggio">

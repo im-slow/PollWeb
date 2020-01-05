@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
+import static poolweb.framework.security.SecurityLayer.HashingMaps;
 import static poolweb.framework.security.SecurityLayer.checkSession;
 
 public class InsertRes extends PoolWebBaseController {
@@ -44,7 +46,7 @@ public class InsertRes extends PoolWebBaseController {
             if (u != null && r != null) {
                 u.setEmail(request.getParameter("email"));
                 u.setName(StringUtils.substringBefore(request.getParameter("email"), "@"));
-                u.setPassword(RandomStringUtils.randomAscii(32));
+                u.setPassword(HashingMaps(RandomStringUtils.randomAscii(32)));
                 u.setRole(r);
                 ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().storeUser(u);
                 ((PoolWebDataLayer) request.getAttribute("datalayer")).getRoleDAO().storeUserRole(u);
@@ -54,7 +56,7 @@ public class InsertRes extends PoolWebBaseController {
                 request.setAttribute("message", "Errore nell'aggiunta dell'utente");
                 action_error(request, response);
             }
-        } catch (DataException e) {
+        } catch (DataException | NoSuchAlgorithmException e) {
             action_error(request, response);
         }
     }

@@ -84,9 +84,9 @@ public class RoleDAO_MySQL extends DAO implements RoleDAO{
         return null;
     }
 
-    public Role getRoleByUser(User user) throws DataException {
+    public Role getRoleByUser(int ID) throws DataException {
         try {
-            roleByUser.setInt(1, user.getID());
+            roleByUser.setInt(1, ID);
             try (ResultSet rs = roleByUser.executeQuery()) {
                 if (rs.next()) {
                     return createRole(rs);

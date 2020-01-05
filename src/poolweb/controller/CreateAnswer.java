@@ -84,10 +84,24 @@ public class CreateAnswer extends PoolWebBaseController {
                         }
                     } else {
                         if (poll.getPollstatus()) {
-                            request.setAttribute("page_title", "Rispondi");
-                            request.setAttribute("poll", poll);
-                            request.setAttribute("question", q);
-                            res.activate("new_answer.ftl", request, response);
+                            if (!poll.getOpenstatus()) {
+                                Instance ist = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByUser(user);
+                                if (ist.getPoll().getID() == poll.getID()) {
+                                    request.setAttribute("page_title", "Rispondi");
+                                    request.setAttribute("poll", poll);
+                                    request.setAttribute("question", q);
+                                    res.activate("new_answer.ftl", request, response);
+                                } else {
+                                    request.setAttribute("message", "Il sondaggio è privato");
+                                    request.setAttribute("submessage", "Non hai il permesso per rispondere");
+                                    action_error(request, response);
+                                }
+                            } else {
+                                request.setAttribute("page_title", "Rispondi");
+                                request.setAttribute("poll", poll);
+                                request.setAttribute("question", q);
+                                res.activate("new_answer.ftl", request, response);
+                            }
                         } else {
                             request.setAttribute("message", "Non hai il permesso per accedere a questa sezione");
                             action_error(request, response);

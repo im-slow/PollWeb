@@ -2,21 +2,22 @@ package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
 import poolweb.data.model.Poll;
-import poolweb.data.model.Role;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 import poolweb.framework.result.SplitSlashesFmkExt;
 import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.http.HttpSession;
-import static poolweb.framework.security.SecurityLayer.*;
+
+import static poolweb.framework.security.SecurityLayer.checkSession;
 
 public class Profile extends PoolWebBaseController {
     @Override
@@ -38,26 +39,32 @@ public class Profile extends PoolWebBaseController {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             User currentuser = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
+            System.out.println(currentuser.getRole().getName());
             request.setAttribute("page_title", "Profilo");
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             List<Poll> usersPoll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByUserID(currentuser.getID());
-            Role role = ((PoolWebDataLayer) request.getAttribute("datalayer")).getRoleDAO().getRoleByUser(currentuser);
             request.setAttribute("user", currentuser);
             // check errori
-            if (usersPoll != null) {
-                request.setAttribute("userPoll", usersPoll);
-            } else {
-                request.setAttribute("message", "Error during User loading");
+            if (currentuser.getRole().getName().equals("USER")) {
+                request.setAttribute("message", "Non sei autorizzato ad accedere a questa area");
+                request.setAttribute("submessage", "Contatta gli admin per diventare collaboratori");
                 action_error(request, response);
-            }
-            if (role !=null) {
-                request.setAttribute("role", role);
             } else {
-                request.setAttribute("message", "Error during Role loading");
-                action_error(request, response);
+                if (usersPoll != null) {
+                    request.setAttribute("userPoll", usersPoll);
+                } else {
+                    request.setAttribute("message", "Error during User loading");
+                    action_error(request, response);
+                }
+                if (currentuser.getRole() !=null) {
+                    request.setAttribute("role", currentuser.getRole());
+                } else {
+                    request.setAttribute("message", "Error during Role loading");
+                    action_error(request, response);
+                }
+                // tutto ok carica template
+                res.activate("profile.ftl", request, response);
             }
-            // tutto ok carica template
-            res.activate("profile.ftl", request, response);
         } catch (DataException | TemplateManagerException e) {
             e.printStackTrace();
         }
