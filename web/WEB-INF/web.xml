@@ -122,6 +122,11 @@
         <servlet-class>poolweb.controller.InsertAnswer</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>GetAnswer</servlet-name>
+        <servlet-class>poolweb.controller.GetAnswer</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -200,6 +205,11 @@
     <servlet-mapping>
         <servlet-name>Insertanswerresp</servlet-name>
         <url-pattern>/answer</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetAnswer</servlet-name>
+        <url-pattern>/downloadCSV</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

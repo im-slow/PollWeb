@@ -20,7 +20,7 @@ public interface AnswerDAO {
 
     Answer getAnswerByQuestionID(int ID) throws DataException;
 
-    List<Answer> getAllAnswerByQuestionID() throws DataException;
+    List<Answer> getAllAnswerByQuestionID(int ID) throws DataException;
 
     void storeAnswer(Answer a) throws DataException;
 

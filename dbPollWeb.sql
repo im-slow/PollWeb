@@ -6,7 +6,7 @@ use dbpollweb;
 create table roles(
 	ID integer unsigned not null primary key auto_increment,
     nome varchar(45) not null,
-    description varchar(255) not null
+    `description` varchar(255) not null
 );
 
 #utente
@@ -51,7 +51,7 @@ create table question(
 create table instance(
 	ID integer unsigned not null primary key auto_increment,
 	userStatus boolean not null,
-    submission timestamp,
+    submission date,
 	IDutente integer unsigned not null,
     IDpoll integer unsigned not null,
     constraint instance_utente foreign key (IDutente) references utente(ID) on update cascade on delete cascade,

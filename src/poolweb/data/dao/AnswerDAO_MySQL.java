@@ -129,11 +129,16 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
     }
 
     @Override
-    public List<Answer> getAllAnswerByQuestionID() throws DataException {
+    public List<Answer> getAllAnswerByQuestionID(int ID) throws DataException {
         List<Answer> result = new ArrayList<Answer>();
+        try {
+            answerByQuestionID.setInt(1, ID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         try (ResultSet rs = answerByQuestionID.executeQuery()) {
             while(rs.next()) {
-                result.add(getAnswerByQuestionID(rs.getInt("ID")));
+                result.add(createAnswer(rs));
             }
             return result;
         } catch (SQLException ex) {
