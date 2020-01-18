@@ -67,7 +67,7 @@ public class GetAnswer extends PoolWebBaseController {
                 }
                 if (!result.isEmpty()) {
                     // Genera CSV con le risposte al sondaggio
-                    GenerateCSV.newCSV(result, pl);
+                    GenerateCSV.newCSV(result, pl.getTitle());
                     action_write(request, response);
                 } else {
                     request.setAttribute("message", "Il CSV non è stato  esportato");

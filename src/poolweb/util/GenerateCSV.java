@@ -15,8 +15,8 @@ public class GenerateCSV {
 
     private GenerateCSV(){ }
 
-    public static void newCSV(List<List<String>> result, Poll pl) throws IOException {
-        File file = new File(pl.getTitle()+".csv");
+    public static void newCSV(List<List<String>> result, String pollTitle) throws IOException {
+        File file = new File(pollTitle+".csv");
         if(!file.exists()) {
             file.createNewFile();
         }
