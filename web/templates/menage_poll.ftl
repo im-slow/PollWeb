@@ -69,17 +69,20 @@
                 </div>
             </div>
         </#list>
-        <#if true>
-            <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-5 offset-md-2 col-md-8">
-                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-5 col-md-12 nopadding">
-                    <a class="btn btn-block btn-secondary btn-red" href="downloadCSV?id=${poll.ID}">Esporta Risposte</a>
+        <#if (poll.statePoll == 2)>
+            <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-4 offset-md-2 col-md-8">
+                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingleft">
+                    <a class="btn btn-block btn-secondary btn-orange" href="downloadCSV?id=${poll.ID}">Esporta Risposte</a>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingright">
+                    <a class="btn btn-block btn-secondary btn-red" href="showCSV?id=${poll.ID}">Mostra Risposte</a>
                 </div>
             </div>
         <#else>
             <#if poll.openstatus>
                 <div class="d-flex flex-row justify-content-between align-items-center title-wrap mb-3 mt-5 offset-md-2 col-md-8">
                     <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-5 col-md-12 nopadding">
-                        <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio?id=${poll.ID}">Chiudi Sondaggio</a>
+                        <a class="btn btn-block btn-secondary btn-red" href="chiudisondaggio?id=${poll.ID}">Chiudi Sondaggio</a>
                     </div>
                 </div>
             <#else>
@@ -88,7 +91,7 @@
                         <a id="add-user-js" href="javascript:void(0)" class="btn btn-secondary rounded-pill btn-orange a-click add-user-js" onclick="newUser();">Aggiungi utente al sondaggio</a>
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-stretch py-5 m-t-4 col-md-6 nopaddingright">
-                        <a class="btn btn-block btn-secondary btn-red" href="pubblicasondaggio?id=${poll.ID}">Chiudi Sondaggio</a>
+                        <a class="btn btn-block btn-secondary btn-red" href="chiudisondaggio?id=${poll.ID}">Chiudi Sondaggio</a>
                     </div>
                 </div>
             </#if>

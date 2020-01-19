@@ -47,7 +47,7 @@ public class InsertPoll extends PoolWebBaseController  {
                     p.setOpentext(request.getParameter("testoapertura"));
                     p.setClosetext(request.getParameter("testochiusura"));
                     p.setOpenStatus(Boolean.parseBoolean(request.getParameter("testochiusura"))); //aperto o chiuso
-                    p.setPollstatus(Boolean.parseBoolean(request.getParameter("statuspoll")));
+                    p.setStatePoll(Integer.parseInt(request.getParameter("statuspoll")));
                     p.setURL(Integer.toString(p.getID()));
                     p.setUser(user);
                     p.setURL(randomPollCode());

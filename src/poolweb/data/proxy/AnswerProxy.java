@@ -1,7 +1,13 @@
 package poolweb.data.proxy;
 
+import poolweb.data.dao.UserDAO;
 import poolweb.data.impl.AnswerImpl;
+import poolweb.data.model.User;
+import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AnswerProxy extends AnswerImpl {
     protected boolean dirty;

@@ -66,8 +66,8 @@ public class PollProxy extends PollImpl {
     }
 
     @Override
-    public void setPollstatus(boolean statusPool) {
-        super.setPollstatus(statusPool);
+    public void setStatePoll(int statePoll) {
+        super.setStatePoll(statePoll);
         this.dirty = true;
     }
 

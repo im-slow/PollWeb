@@ -22,7 +22,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final String UPDATE_POLL = "UPDATE poll SET title=?, openText=?, closeText=?, openPoll=?, statePoll=?, URLPoll=?)" +
             "WHERE ID=?";
-    private final String PUBLISH_POLL = "UPDATE poll SET statePoll=1 WHERE ID=?";
+    private final String PUBLISH_POLL = "UPDATE poll SET statePoll=? WHERE ID=?";
     private final String COUNT_POLL = "SELECT COUNT(id) FROM poll";
 
     private PreparedStatement allPoll;
@@ -148,7 +148,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
                 updatePoll.setString(2, poll.getOpentext());
                 updatePoll.setString(3, poll.getClosetext());
                 updatePoll.setBoolean(4, poll.getOpenstatus());
-                updatePoll.setBoolean(5, poll.getPollstatus());
+                updatePoll.setInt(5, poll.getStatePoll());
                 updatePoll.setString(6, poll.getURL());
                 updatePoll.setInt(7, poll.getUser().getID());
                 updatePoll.executeUpdate();
@@ -157,7 +157,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
                 insertPoll.setString(2, poll.getOpentext());
                 insertPoll.setString(3, poll.getClosetext());
                 insertPoll.setBoolean(4, poll.getOpenstatus());
-                insertPoll.setBoolean(5, poll.getPollstatus());
+                insertPoll.setInt(5, poll.getStatePoll());
                 insertPoll.setString(6, poll.getURL());
                 insertPoll.setInt(7, poll.getUser().getID());
                 if (insertPoll.executeUpdate() == 1) {
@@ -176,9 +176,10 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     }
 
     @Override
-    public void closeStatus(int ID) throws DataException {
+    public void closeStatus(int state, int ID) throws DataException {
         try {
-            publishPoll.setInt(1, ID);
+            publishPoll.setInt(1, state);
+            publishPoll.setInt(2, ID);
             publishPoll.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -194,7 +195,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
             a.setTitle(rs.getString("title"));
             a.setOpentext(rs.getString("openText"));
             a.setClosetext(rs.getString("closeText"));
-            a.setPollstatus(rs.getBoolean("statePoll"));
+            a.setStatePoll(rs.getInt("statePoll"));
             a.setOpenStatus(rs.getBoolean("openPoll"));
             a.setURL(rs.getString("URLPoll"));
             a.setAuthorKey(rs.getInt("IDuser"));

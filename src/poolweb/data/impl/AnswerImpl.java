@@ -14,10 +14,12 @@ public class AnswerImpl implements Answer{
         this.questionID = 0;
     }
 
+    @Override
     public int getID(){
         return ID;
     }
 
+    @Override
     public String getAnswer(){
         return answer;
     }
@@ -27,10 +29,12 @@ public class AnswerImpl implements Answer{
         return questionID;
     }
 
+    @Override
     public void setID(int ID){
         this.ID = ID;
     }
 
+    @Override
     public void setAnswer(String answer){
         this.answer = answer;
     }

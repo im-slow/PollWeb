@@ -1,6 +1,5 @@
 package poolweb.data.impl;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import poolweb.data.model.Poll;
 import poolweb.data.model.User;
 
@@ -11,13 +10,13 @@ public class PollImpl implements Poll {
     private String opentext;
     private String closetext;
     private boolean openstatus;
-    private boolean pollstatus;
+    private int statePoll;
     private String URL;
     private User user;
 
     public PollImpl() {
        ID = 0;
-       pollstatus = false;
+       statePoll = 0;
        openstatus = false;
        URL = "";
     }
@@ -74,13 +73,13 @@ public class PollImpl implements Poll {
     }
 
     @Override
-    public boolean getPollstatus() {
-        return pollstatus;
+    public int getStatePoll() {
+        return statePoll;
     }
 
     @Override
-    public void setPollstatus(boolean statusPool) {
-        pollstatus = statusPool;
+    public void setStatePoll(int statePoll) {
+            this.statePoll = statePoll;
     }
 
     @Override

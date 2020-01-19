@@ -40,7 +40,7 @@ public class CreateAnswer extends PoolWebBaseController {
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             Poll poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(parseInt(request.getParameter("id")));
-            if (poll != null && poll.getPollstatus()) {
+            if (poll != null && poll.getStatePoll() == 1) {
                 request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
                 request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
                 List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
@@ -71,26 +71,31 @@ public class CreateAnswer extends PoolWebBaseController {
                 if (poll != null) {
                     List<Question> q = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
                     if (user.getID() == poll.getUser().getID()) {
-                        if (poll.getPollstatus()) {
-                            request.setAttribute("page_title", "Gestisci Sondaggio");
-                            request.setAttribute("question", q);
-                            request.setAttribute("poll", poll);
-                            res.activate("menage_poll.ftl", request, response);
-                        } else {
+                        if (poll.getStatePoll() == 0) {
                             request.setAttribute("page_title", "Aggiungi Domande");
                             request.setAttribute("question", q);
                             request.setAttribute("pollID", request.getParameter("id"));
                             res.activate("new_questions.ftl", request, response);
+                        } else {
+                            request.setAttribute("page_title", "Gestisci Sondaggio");
+                            request.setAttribute("question", q);
+                            request.setAttribute("poll", poll);
+                            res.activate("menage_poll.ftl", request, response);
                         }
                     } else {
-                        if (poll.getPollstatus()) {
+                        if (poll.getStatePoll() == 1) {
                             if (!poll.getOpenstatus()) {
-                                Instance ist = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByUser(user);
-                                if (ist.getPoll().getID() == poll.getID()) {
-                                    request.setAttribute("page_title", "Rispondi");
-                                    request.setAttribute("poll", poll);
-                                    request.setAttribute("question", q);
-                                    res.activate("new_answer.ftl", request, response);
+                                Instance ist = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByOKey(user, poll);
+                                if (ist != null) {
+                                    if (ist.getUserStatus()) {
+                                        request.setAttribute("page_title", "Rispondi");
+                                        request.setAttribute("poll", poll);
+                                        request.setAttribute("question", q);
+                                        res.activate("new_answer.ftl", request, response);
+                                    } else {
+                                        request.setAttribute("message", "Hai già risposto a questo sondaggio!");
+                                        action_error(request, response);
+                                    }
                                 } else {
                                     request.setAttribute("message", "Il sondaggio è privato");
                                     request.setAttribute("submessage", "Non hai il permesso per rispondere");
@@ -118,6 +123,7 @@ public class CreateAnswer extends PoolWebBaseController {
             }
         } catch (DataException | TemplateManagerException e) {
             request.setAttribute("message", "C'e stato un problema nel recupero del sondaggio");
+            e.printStackTrace();
             action_error(request, response);
         }
     }

@@ -95,7 +95,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
                     return;
                 }
                 updateUser.setString(1, user.getName());
-                updateUser.setString(2,  user.getEmail());
+                updateUser.setString(2, user.getEmail());
                 updateUser.setString(3, user.getPassword());
                 updateUser.executeUpdate();
             } else {

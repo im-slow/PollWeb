@@ -14,9 +14,11 @@ public interface InstanceDAO {
 
     Instance getInstanceByID(int ID) throws DataException;
 
-    Instance getInstanceByUser(User user) throws DataException;
+    List<Instance> getInstanceByUser(User user) throws DataException;
 
-    Instance getInstanceByPoll(Poll poll) throws DataException;
+    List<Instance> getInstanceByPoll(Poll poll) throws DataException;
+
+    Instance getInstanceByOKey(User user, Poll poll) throws DataException;
 
     Instance createInstance(ResultSet rs) throws DataException;
 

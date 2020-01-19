@@ -1,8 +1,7 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
-import poolweb.data.model.Answer;
-import poolweb.data.model.Question;
+import poolweb.data.model.*;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 
@@ -10,11 +9,13 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static poolweb.framework.security.SecurityLayer.checkSession;
 import static poolweb.util.ParserAnswer.parserAnswer;
 
 public class InsertAnswer extends PoolWebBaseController {
@@ -35,6 +36,16 @@ public class InsertAnswer extends PoolWebBaseController {
         try {
             if (request.getParameterMap() != null) {
                 List<Question> qst = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(Integer.parseInt(request.getParameter("idpoll")));
+                HttpSession session = checkSession(request);
+                Instance check = null;
+                if (session != null &&  !qst.get(1).getPoll().getOpenstatus()) { // se l'utente è loggato e il sondaggio è chiuso
+                    User us = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) session.getAttribute("userid"));
+                    check = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByOKey(us,qst.get(1).getPoll());
+                    if(!check.getUserStatus()) {
+                        request.setAttribute("message", "Hai già risposto a questo sondaggio!");
+                        action_error(request, response);
+                    }
+                }
                 List<Answer> answrs = new ArrayList<Answer>();
                 ListIterator<Question> listIter = qst.listIterator();
                 boolean isvalid = true;
@@ -143,7 +154,7 @@ public class InsertAnswer extends PoolWebBaseController {
                     }
                 }
                 if (isvalid) {
-                    action_write(request, response, answrs);
+                    action_write(request, response, answrs, check);
                     System.out.println("tuttok ok");
                 }
             } else {
@@ -168,10 +179,14 @@ public class InsertAnswer extends PoolWebBaseController {
         return isvalid;
     }
 
-    private void action_write(HttpServletRequest request, HttpServletResponse response, List<Answer> answrs) {
+    private void action_write(HttpServletRequest request, HttpServletResponse response, List<Answer> answrs, Instance check) {
         try {
             for (Answer asw: answrs) {
                 ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().storeAnswer(asw);
+            }
+            if(check != null){ // se l'utente è stato caricato, il sondaggio è chiuso, quindi  segnala nell'istanza che l'utente non può più rispondere
+                check.setUserStatus(false); // l'utente ha risposto e non può più rispondere.
+                ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().storeInstance(check);
             }
             response.sendRedirect("/inserimentoriuscito");
         } catch (DataException ex) {

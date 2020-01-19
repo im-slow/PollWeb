@@ -22,7 +22,7 @@ public interface PollDAO {
 
     public void storePoll(Poll p) throws DataException;
 
-    public void closeStatus(int ID) throws DataException;
+    public void closeStatus(int state, int ID) throws DataException;
 
     int getCount() throws DataException;
 

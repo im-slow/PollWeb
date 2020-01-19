@@ -21,6 +21,7 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
     private final String SELECT_INSTANCE_BY_ID = "SELECT ID as IDINSTANCE FROM instance";
     private final String SELECT_INSTANCE_BY_USER = "SELECT instance.* from instance WHERE IDutente=?";
     private final String SELECT_INSTANCE_BY_POLL = "SELECT instance.* from instance WHERE IDpoll=?";
+    private final String SELECT_INSTANCE_BY_OK = "SELECT instance.* from instance WHERE IDuser=? AND IDpoll=?";
     private final String INSERT_INSTANCE = "INSERT INTO instance (userStatus, submission, IDutente, IDpoll) " +
             "VALUES (?, ?, ?, ?)";
     private final String UPDATE_INSTANCE = "UPDATE instance SET userStatus=?, submission=?, IDutente=?, IDpoll=?" +
@@ -30,6 +31,7 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
     private PreparedStatement instanceByID;
     private PreparedStatement instanceByUser;
     private PreparedStatement instanceByPoll;
+    private PreparedStatement instanceByOKey;
     private PreparedStatement insertInstance;
     private PreparedStatement updateInstance;
 
@@ -45,6 +47,7 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
             instanceByID = connection.prepareStatement(SELECT_INSTANCE_BY_ID);
             instanceByUser = connection.prepareStatement(SELECT_INSTANCE_BY_USER);
             instanceByPoll = connection.prepareStatement(SELECT_INSTANCE_BY_POLL);
+            instanceByOKey = connection.prepareStatement(SELECT_INSTANCE_BY_OK);
             insertInstance = connection.prepareStatement(INSERT_INSTANCE, Statement.RETURN_GENERATED_KEYS);
             updateInstance = connection.prepareStatement(UPDATE_INSTANCE);
         } catch (SQLException ex) {
@@ -83,25 +86,43 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
     }
 
     @Override
-    public Instance getInstanceByPoll(Poll poll) throws DataException {
+    public List<Instance> getInstanceByPoll(Poll poll) throws DataException {
+        List<Instance> result = new ArrayList<>();
         try {
             instanceByPoll.setInt(1, poll.getID());
             try (ResultSet rs = instanceByPoll.executeQuery()) {
-                if (rs.next()) {
-                    return createInstance(rs);
+                while (rs.next()) {
+                    result.add(createInstance(rs));
                 }
             }
         } catch (SQLException ex) {
             throw new DataException("Unable to load Instance by pollID", ex);
         }
-        return null;
+        return result;
     }
 
     @Override
-    public Instance getInstanceByUser(User user) throws DataException {
+    public List<Instance> getInstanceByUser(User user) throws DataException {
+        List<Instance> result = new ArrayList<>();
+            try {
+                instanceByUser.setInt(1, user.getID());
+                try (ResultSet rs = instanceByUser.executeQuery()) {
+                while (rs.next()) {
+                    result.add(createInstance(rs));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataException("Unable to load Instance by userID", ex);
+        }
+        return result;
+    }
+
+    @Override
+    public Instance getInstanceByOKey(User user, Poll poll) throws DataException {
         try {
-            instanceByUser.setInt(1, user.getID());
-            try (ResultSet rs = instanceByUser.executeQuery()) {
+            instanceByOKey.setInt(1, user.getID());
+            instanceByOKey.setInt(2, poll.getID());
+            try (ResultSet rs = instanceByOKey.executeQuery()) {
                 if (rs.next()) {
                     return createInstance(rs);
                 }
@@ -111,7 +132,6 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
         }
         return null;
     }
-
 
     @Override
     public List<Instance> getAllInstance() throws DataException {

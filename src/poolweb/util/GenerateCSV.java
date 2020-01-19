@@ -34,4 +34,12 @@ public class GenerateCSV {
         csvWriter.close();
     }
 
+    public static String newCSVString(List<List<String>> result) throws IOException {
+        String csvWriter="Domanda,Risposta\n";
+        for (List<String> rowData : result) {
+            csvWriter += String.join(",", rowData)+"\n";
+        }
+        return csvWriter;
+    }
+
 }

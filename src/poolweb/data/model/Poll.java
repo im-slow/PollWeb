@@ -22,9 +22,9 @@ public interface Poll {
 
     public void setOpenStatus(boolean status);
 
-    public boolean getPollstatus();
+    public int getStatePoll();
 
-    public void setPollstatus(boolean statusPool);
+    public void setStatePoll(int statePoll);
 
     public User getUser();
 

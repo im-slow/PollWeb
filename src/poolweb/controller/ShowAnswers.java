@@ -1,6 +1,7 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
+import poolweb.data.model.Answer;
 import poolweb.data.model.Poll;
 import poolweb.data.model.Question;
 import poolweb.data.model.User;
@@ -16,12 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static poolweb.framework.security.SecurityLayer.checkSession;
 
-@WebServlet(name = "PublicPoll")
-public class PublicPoll extends PoolWebBaseController {
+@WebServlet(name = "ShowAnswers")
+public class ShowAnswers extends PoolWebBaseController {
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
@@ -43,21 +46,27 @@ public class PublicPoll extends PoolWebBaseController {
         try {
             User us = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) s.getAttribute("userid"));
             Poll pl = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(Integer.parseInt(request.getParameter("id")));
-            if (us != null && pl != null && us.getID() == pl.getUser().getID()) {
-                List<Question> qs = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(pl.getID());
-                if (!qs.isEmpty()) {
-                    ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().closeStatus(1 ,pl.getID());
-                    action_write(request, response);
-                } else {
-                    request.setAttribute("message", "Il sondaggio non può essere pubblicato");
-                    request.setAttribute("submessage", "Inserire almeno una domanda");
-                    action_error(request, response);
+            List<Question> qst = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(Integer.parseInt(request.getParameter("id")));
+            List<Answer> a = new ArrayList<>();
+            for (Question q: qst) {
+                List<Answer> answerQ = ((PoolWebDataLayer) request.getAttribute("datalayer")).getAnswerDAO().getAllAnswerByQuestionID(q.getID());
+                for(Answer ans: answerQ){
+                    a.add(ans);
                 }
+            }
+            if (us != null && pl != null && qst != null && a != null && us.getID() == pl.getUser().getID()) {
+                request.setAttribute("poll", pl);
+                request.setAttribute("question", qst);
+                request.setAttribute("answer", a);
+                request.setAttribute("page_title", "Risposte Sondaggio"); //Titolo da iniettare nel template con freeMarker
+                TemplateResult res = new TemplateResult(getServletContext());
+                request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+                res.activate("show_answers.html.ftl", request, response);
             } else {
-                request.setAttribute("message", "Non sei autorizzato a modificare questo poll");
+                request.setAttribute("message", "Non sei autorizzato a visualizzare le risposte di questo sondaggio");
             }
         } catch (DataException e) {
-            request.setAttribute("message", "Errore modifica stato del sondaggio");
+            request.setAttribute("message", "Errore visualizzazione risposte del sondaggio");
             action_error(request, response);
             e.printStackTrace();
         } catch (TemplateManagerException e) {
@@ -73,16 +82,6 @@ public class PublicPoll extends PoolWebBaseController {
         } else {
             (new FailureResult(getServletContext())).activate((String) request.getAttribute("message"), request, response);
         }
-    }
-
-    //Necessario per gestire le return di errori
-    private void action_write(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException {
-
-        request.setAttribute("page_title", "Sondaggio Pubblicato");
-        TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-        request.setAttribute("message", "Il sondaggio è stato pubblicato con successo");
-        res.activate("success.ftl", request, response);
     }
 
 }

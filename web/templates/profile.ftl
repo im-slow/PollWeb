@@ -22,8 +22,10 @@
                                     </div>
                                     <div class="blog-text">
                                         <div class="blog-tag">
-                                            <#if (pollDB.pollstatus)>
+                                            <#if (pollDB.statePoll == 1)>
                                                 <a href="/rispondisondaggio?id=${pollDB.ID}"><h6><small>IN CORSO</small></h6></a>
+                                            <#elseif (pollDB.statePoll == 0)>
+                                                <a href="/rispondisondaggio?id=${pollDB.ID}"><h6><small>IN FASE DI CREAZIONE</small></h6></a>
                                             <#else>
                                                 <a href="/rispondisondaggio?id=${pollDB.ID}"><h6><small>CHIUSO</small></h6></a>
                                             </#if>

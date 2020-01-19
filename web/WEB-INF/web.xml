@@ -88,6 +88,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>ClosePoll</servlet-name>
+        <servlet-class>poolweb.controller.ClosePoll</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>InsertPoll</servlet-name>
         <servlet-class>poolweb.controller.InsertPoll</servlet-class>
     </servlet>
@@ -125,6 +130,11 @@
     <servlet>
         <servlet-name>GetAnswer</servlet-name>
         <servlet-class>poolweb.controller.GetAnswer</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ShowAnswers</servlet-name>
+        <servlet-class>poolweb.controller.ShowAnswers</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -180,6 +190,16 @@
     <servlet-mapping>
         <servlet-name>PublicPoll</servlet-name>
         <url-pattern>/pubblicasondaggio</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ClosePoll</servlet-name>
+        <url-pattern>/chiudisondaggio</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ShowAnswers</servlet-name>
+        <url-pattern>/showCSV</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
