@@ -38,11 +38,24 @@ public class InsertAnswer extends PoolWebBaseController {
                 List<Question> qst = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(Integer.parseInt(request.getParameter("idpoll")));
                 HttpSession session = checkSession(request);
                 Instance check = null;
-                if (session != null &&  !qst.get(1).getPoll().getOpenstatus()) { // se l'utente è loggato e il sondaggio è chiuso
-                    User us = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) session.getAttribute("userid"));
-                    check = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByOKey(us,qst.get(1).getPoll());
-                    if(!check.getUserStatus()) {
-                        request.setAttribute("message", "Hai già risposto a questo sondaggio!");
+                if (!qst.get(1).getPoll().getOpenstatus()) { // se il sondaggio è chiuso
+                    if (session != null) { // è in sessione?
+                        try { // se non esiste istanza o il sondaggio a cui è associata è diversa
+                            User us = ((PoolWebDataLayer) request.getAttribute("datalayer")).getUserDAO().getUser((int) session.getAttribute("userid"));
+                            check = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByOKey(us, qst.get(1).getPoll()); // se non trova l'utente e il sondaggio associati all'istanza va in eccezione
+                        } catch (DataException e) {
+                                check = null;
+                                request.setAttribute("message", "Questo sondaggio è privato, non puoi rispondere!");
+                                request.setAttribute("submessage", "Contatta il responsabile: "+qst.get(1).getPoll().getUser().getEmail());
+                                action_error(request, response);
+                        }
+                        if (!(check.getUserStatus())) { // se userStatus è false, l'utente ha già risposto
+                            request.setAttribute("message", "Hai già risposto a questo sondaggio!");
+                            action_error(request, response);
+                        }
+                    } else {
+                        request.setAttribute("message", "Questo sondaggio è privato, non puoi rispondere!");
+                        request.setAttribute("submessage", "Effettua il login o contatta il responsabile per averne l'accesso: "+qst.get(1).getPoll().getUser().getEmail());
                         action_error(request, response);
                     }
                 }
@@ -66,7 +79,7 @@ public class InsertAnswer extends PoolWebBaseController {
                             String[] values = request.getParameterValues("answer"+position);
                             if (!q.getMandatory() && values == null) {
                                 a.setAnswer("");
-                                a.setQuestionID(q.getID());
+                                a.setQuestion(q);
                                 answrs.add(a);
                             } else {
                                 if (!checkInputValues(values, q.getQAnswer())) {
@@ -79,7 +92,7 @@ public class InsertAnswer extends PoolWebBaseController {
                                         count++;
                                     }
                                     if (count >= Integer.parseInt(q.getMinimum()) && count <= Integer.parseInt(q.getMaximum())) {
-                                        a.setQuestionID(q.getID());
+                                        a.setQuestion(q);
                                         a.setAnswer(parserAnswer(values));
                                         answrs.add(a);
                                     } else {
@@ -103,12 +116,12 @@ public class InsertAnswer extends PoolWebBaseController {
                             System.out.println("min: "+ dateMin + " max: " + dateMax + " mia: " + dateQuestanswer);
                             if (!q.getMandatory() && questanswer2.equals("")) {
                                 a.setAnswer("");
-                                a.setQuestionID(q.getID());
+                                a.setQuestion(q);
                                 answrs.add(a);
                             } else {
-                                if (dateQuestanswer.before(dateMax) && dateQuestanswer.after(dateMin)) {
+                                if (dateQuestanswer.before(dateMax) && dateQuestanswer.after(dateMin) || dateQuestanswer.equals(dateMax) || dateQuestanswer.equals(dateMin)) {
                                     a.setAnswer(questanswer2);
-                                    a.setQuestionID(q.getID());
+                                    a.setQuestion(q);
                                     answrs.add(a);
                                 } else {
                                     request.setAttribute("message", "La data non è inclusa tra minimo e/o massimo");
@@ -120,7 +133,7 @@ public class InsertAnswer extends PoolWebBaseController {
                             String questanswer1 = request.getParameter("answer"+position);
                             if (!q.getMandatory() && questanswer1 == null) {
                                 a.setAnswer("");
-                                a.setQuestionID(q.getID());
+                                a.setQuestion(q);
                                 answrs.add(a);
                             } else {
                                 if (!Arrays.stream(q.getQAnswer()).anyMatch(questanswer1::equals)) {
@@ -128,7 +141,7 @@ public class InsertAnswer extends PoolWebBaseController {
                                     action_error(request, response);
                                     isvalid = false;
                                 } else {
-                                    a.setQuestionID(q.getID());
+                                    a.setQuestion(q);
                                     a.setAnswer(questanswer1);
                                     answrs.add(a);
                                 }
@@ -138,12 +151,12 @@ public class InsertAnswer extends PoolWebBaseController {
                             String questanswer = request.getParameter("answer"+position);
                             if (!q.getMandatory() && questanswer.equals("")) {
                                 a.setAnswer("");
-                                a.setQuestionID(q.getID());
+                                a.setQuestion(q);
                                 answrs.add(a);
                             } else {
                                 if (questanswer.length() >= Integer.parseInt(q.getMinimum()) && questanswer.length() <= Integer.parseInt(q.getMaximum())) {
                                     a.setAnswer(questanswer);
-                                    a.setQuestionID(q.getID());
+                                    a.setQuestion(q);
                                     answrs.add(a);
                                 } else {
                                     request.setAttribute("message", "La risposta non rispetta i valori di minimo o massimo dei caratteri");

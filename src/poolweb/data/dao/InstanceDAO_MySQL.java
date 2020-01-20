@@ -86,7 +86,7 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
     }
 
     @Override
-    public List<Instance> getInstanceByPoll(Poll poll) throws DataException {
+    public List<Instance> getInstancesByPoll(Poll poll) throws DataException {
         List<Instance> result = new ArrayList<>();
         try {
             instanceByPoll.setInt(1, poll.getID());
@@ -102,7 +102,7 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
     }
 
     @Override
-    public List<Instance> getInstanceByUser(User user) throws DataException {
+    public List<Instance> getInstancesByUser(User user) throws DataException {
         List<Instance> result = new ArrayList<>();
             try {
                 instanceByUser.setInt(1, user.getID());
@@ -128,7 +128,37 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
                 }
             }
         } catch (SQLException ex) {
+            throw new DataException("Unable to load Instance by userID or pollID", ex);
+        }
+        return null;
+    }
+
+    @Override
+    public Instance getInstanceByUser(User user) throws DataException {
+        try {
+            instanceByUser.setInt(1, user.getID());
+            try (ResultSet rs = instanceByOKey.executeQuery()) {
+                if (rs.next()) {
+                    return createInstance(rs);
+                }
+            }
+        } catch (SQLException ex) {
             throw new DataException("Unable to load Instance by userID", ex);
+        }
+        return null;
+    }
+
+    @Override
+    public Instance getInstanceByPoll(Poll poll) throws DataException {
+        try {
+            instanceByOKey.setInt(2, poll.getID());
+            try (ResultSet rs = instanceByOKey.executeQuery()) {
+                if (rs.next()) {
+                    return createInstance(rs);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataException("Unable to load Instance by pollID", ex);
         }
         return null;
     }

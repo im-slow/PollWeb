@@ -171,7 +171,7 @@ public class AnswerDAO_MySQL extends DAO implements AnswerDAO {
                 updateAnswer.setString(1, answer.getAnswer());
             } else {
                 insertAnswer.setString(1, answer.getAnswer());
-                insertAnswer.setInt(2, answer.getQuestionID());
+                insertAnswer.setInt(2, answer.getQuestion().getID());
                 if (insertAnswer.executeUpdate() == 1) {
                     try (ResultSet rs = insertAnswer.getGeneratedKeys()) {
                         if (rs.next()) {

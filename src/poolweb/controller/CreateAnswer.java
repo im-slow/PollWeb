@@ -41,12 +41,18 @@ public class CreateAnswer extends PoolWebBaseController {
             request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
             Poll poll = ((PoolWebDataLayer) request.getAttribute("datalayer")).getPollDAO().getPollByID(parseInt(request.getParameter("id")));
             if (poll != null && poll.getStatePoll() == 1) {
-                request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
-                request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
-                List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
-                request.setAttribute("question", question);
-                request.setAttribute("poll", poll);
-                res.activate("new_answer.ftl", request, response);
+                if(!poll.getOpenstatus()) { // se il sondaggio è chiuso
+                    request.setAttribute("message", "Questo sondaggio è privato, non puoi rispondere!");
+                    request.setAttribute("submessage", "Effettua il login o contatta il responsabile: "+poll.getUser().getEmail());
+                    action_error(request, response);
+                } else {
+                    request.setAttribute("page_title", "Rispondi al Sondaggio"); //Titolo da iniettare nel template con freeMarker
+                    request.setAttribute("strip_slashes", new SplitSlashesFmkExt());
+                    List<Question> question = ((PoolWebDataLayer) request.getAttribute("datalayer")).getQuestionDAO().getQuestionByPollID(poll.getID());
+                    request.setAttribute("question", question);
+                    request.setAttribute("poll", poll);
+                    res.activate("new_answer.ftl", request, response);
+                }
             } else {
                 request.setAttribute("message", "Errore caricamento del sondaggio");
                 request.setAttribute("submessage", "Riprova più tardi");
@@ -85,20 +91,26 @@ public class CreateAnswer extends PoolWebBaseController {
                     } else {
                         if (poll.getStatePoll() == 1) {
                             if (!poll.getOpenstatus()) {
-                                Instance ist = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByOKey(user, poll);
-                                if (ist != null) {
-                                    if (ist.getUserStatus()) {
-                                        request.setAttribute("page_title", "Rispondi");
-                                        request.setAttribute("poll", poll);
-                                        request.setAttribute("question", q);
-                                        res.activate("new_answer.ftl", request, response);
+                                try { // va in eccezione se non trova un instanza che associa l'utente al sondaggio
+                                    Instance ist = ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().getInstanceByOKey(user, poll);
+                                    if (ist != null) {
+                                        if (ist.getUserStatus()) {
+                                            request.setAttribute("page_title", "Rispondi");
+                                            request.setAttribute("poll", poll);
+                                            request.setAttribute("question", q);
+                                            res.activate("new_answer.ftl", request, response);
+                                        } else {
+                                            request.setAttribute("message", "Hai già risposto a questo sondaggio!");
+                                            action_error(request, response);
+                                        }
                                     } else {
-                                        request.setAttribute("message", "Hai già risposto a questo sondaggio!");
+                                        request.setAttribute("message", "Il sondaggio è privato");
+                                        request.setAttribute("submessage", "Non hai il permesso per rispondere");
                                         action_error(request, response);
                                     }
-                                } else {
-                                    request.setAttribute("message", "Il sondaggio è privato");
-                                    request.setAttribute("submessage", "Non hai il permesso per rispondere");
+                                } catch (DataException e){
+                                    request.setAttribute("message", "Questo sondaggio è privato, non puoi rispondere!");
+                                    request.setAttribute("submessage", "Contatta il responsabile: " + poll.getUser().getEmail());
                                     action_error(request, response);
                                 }
                             } else {

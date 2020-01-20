@@ -12,6 +12,7 @@ import poolweb.framework.result.TemplateManagerException;
 import poolweb.framework.result.TemplateResult;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,9 +55,8 @@ public class ShowAnswers extends PoolWebBaseController {
                     a.add(ans);
                 }
             }
-            if (us != null && pl != null && qst != null && a != null && us.getID() == pl.getUser().getID()) {
+            if (us != null && pl != null && us.getID() == pl.getUser().getID()) {
                 request.setAttribute("poll", pl);
-                request.setAttribute("question", qst);
                 request.setAttribute("answer", a);
                 request.setAttribute("page_title", "Risposte Sondaggio"); //Titolo da iniettare nel template con freeMarker
                 TemplateResult res = new TemplateResult(getServletContext());

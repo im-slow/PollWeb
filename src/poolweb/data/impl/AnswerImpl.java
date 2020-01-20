@@ -1,17 +1,18 @@
 package poolweb.data.impl;
 
 import poolweb.data.model.Answer;
+import poolweb.data.model.Question;
 
 public class AnswerImpl implements Answer{
 
     private int ID;
     private String answer;
-    private int questionID;
+    private Question question;
 
     public AnswerImpl() {
         this.ID = 0;
         this.answer = "";
-        this.questionID = 0;
+        this.question = null;
     }
 
     @Override
@@ -25,9 +26,7 @@ public class AnswerImpl implements Answer{
     }
 
     @Override
-    public int getQuestionID() {
-        return questionID;
-    }
+    public Question getQuestion() { return question; }
 
     @Override
     public void setID(int ID){
@@ -40,7 +39,5 @@ public class AnswerImpl implements Answer{
     }
 
     @Override
-    public void setQuestionID(int id) {
-        this.questionID = id;
-    }
+    public void setQuestion(Question question) { this.question = question; }
 }

@@ -21,37 +21,20 @@
                                     Risposta
                                 </th>
                             </tr>
-                            <#if (question?size > 0)>
-                            <#list question as q>
-                                <#if (answer?size > 0)>
-                                    <#list answer as a>
-                                        <#if (true)>
-                                        <tr>
-                                            <th>
-                                                ${q.position}
-                                            </th>
-                                            <td>
-                                                ${q.questionText}
-                                            </td>
-                                            <td>
-                                                ${a.answer}
-                                            </td>
-                                        </tr>
-                                        </#if>
-                                    </#list>
-                                <#else>
-                            <tr>
-                                <th>
-                                    ${q.position}
-                                </th>
-                                <td>
-                                    ${q.questionText}
-                                </td>
-                                <td>
-                                    Non sono presenti risposte
-                                </td>
-                                </#if>
-                            </#list>
+                            <#if (answer?size > 0)>
+                                <#list answer as a>
+                                    <tr>
+                                        <th>
+                                            ${a.question.position}
+                                        </th>
+                                        <td>
+                                            ${a.question.questionText}
+                                        </td>
+                                        <td>
+                                            ${a.answer}
+                                        </td>
+                                    </tr>
+                                </#list>
                             <#else>
                                 <h3>Non sono presenti domande</h3>
                             </#if>

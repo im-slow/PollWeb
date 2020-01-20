@@ -1,7 +1,9 @@
 package poolweb.data.proxy;
 
+import poolweb.data.dao.QuestionDAO;
 import poolweb.data.dao.UserDAO;
 import poolweb.data.impl.AnswerImpl;
+import poolweb.data.model.Question;
 import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
@@ -22,14 +24,20 @@ public class AnswerProxy extends AnswerImpl {
     }
 
     @Override
-    public void setID(int ID) {
-        super.setID(ID);
-        this.dirty = true;
+    public Question getQuestion() {
+        if (super.getQuestion() == null && question_key > 0) {
+            try {
+                super.setQuestion(((QuestionDAO) dataLayer.getDAO(Question.class)).getQuestionByID(question_key));
+            } catch (DataException ex) {
+                Logger.getLogger(QuestionProxy.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return super.getQuestion();
     }
 
     @Override
-    public void setQuestionID(int id) {
-        super.setQuestionID(id);
+    public void setID(int ID) {
+        super.setID(ID);
         this.dirty = true;
     }
 
@@ -41,6 +49,7 @@ public class AnswerProxy extends AnswerImpl {
 
     public void setQuestionKey(int question_key){
         this.question_key = question_key;
+        super.setQuestion(null);
     }
 
     public void setDirty(boolean dirty) {

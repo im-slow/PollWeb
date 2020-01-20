@@ -6,12 +6,12 @@ public interface Answer {
 
     public String getAnswer();
 
-    public int getQuestionID();
+    public Question getQuestion();
 
     public void setID(int id);
 
     public void setAnswer(String answer);
 
-    public void setQuestionID(int id);
+    public void setQuestion(Question q);
 
 }
