@@ -1,12 +1,14 @@
 package poolweb.controller;
 
 import poolweb.data.dao.PoolWebDataLayer;
-import poolweb.data.model.*;
+import poolweb.data.model.Answer;
+import poolweb.data.model.Instance;
+import poolweb.data.model.Question;
+import poolweb.data.model.User;
 import poolweb.framework.data.DataException;
 import poolweb.framework.result.FailureResult;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -199,6 +201,7 @@ public class InsertAnswer extends PoolWebBaseController {
             }
             if(check != null){ // se l'utente è stato caricato, il sondaggio è chiuso, quindi  segnala nell'istanza che l'utente non può più rispondere
                 check.setUserStatus(false); // l'utente ha risposto e non può più rispondere.
+                check.setSubmission(new Date());
                 ((PoolWebDataLayer) request.getAttribute("datalayer")).getInstanceDAO().storeInstance(check);
             }
             response.sendRedirect("/inserimentoriuscito");

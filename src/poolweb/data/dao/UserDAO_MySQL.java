@@ -23,7 +23,7 @@ public class UserDAO_MySQL extends DAO implements UserDAO {
     private final String COUNT_ALL_USER = "SELECT COUNT(id) FROM utente";
     private final String INSERT_USER = "INSERT INTO utente (nome, email, pwd) " +
             "VALUES (?, ?, ?)";
-    private final String UPDATE_USER = "UPDATE instance SET nome=?, email=?, pwd=?" +
+    private final String UPDATE_USER = "UPDATE utente SET nome=?, email=?, pwd=?" +
             "WHERE ID=?";
 
     private PreparedStatement allUser;

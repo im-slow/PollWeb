@@ -1,17 +1,17 @@
 package poolweb.data.dao;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import poolweb.data.model.Instance;
 import poolweb.data.model.Poll;
-import poolweb.data.model.Question;
 import poolweb.data.model.User;
 import poolweb.data.proxy.InstanceProxy;
-import poolweb.data.proxy.PollProxy;
 import poolweb.framework.data.DAO;
 import poolweb.framework.data.DataException;
 import poolweb.framework.data.DataLayer;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +21,10 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
     private final String SELECT_INSTANCE_BY_ID = "SELECT ID as IDINSTANCE FROM instance";
     private final String SELECT_INSTANCE_BY_USER = "SELECT instance.* from instance WHERE IDutente=?";
     private final String SELECT_INSTANCE_BY_POLL = "SELECT instance.* from instance WHERE IDpoll=?";
-    private final String SELECT_INSTANCE_BY_OK = "SELECT instance.* from instance WHERE IDuser=? AND IDpoll=?";
+    private final String SELECT_INSTANCE_BY_OK = "SELECT instance.* from instance WHERE IDutente=? AND IDpoll=?";
     private final String INSERT_INSTANCE = "INSERT INTO instance (userStatus, submission, IDutente, IDpoll) " +
             "VALUES (?, ?, ?, ?)";
-    private final String UPDATE_INSTANCE = "UPDATE instance SET userStatus=?, submission=?, IDutente=?, IDpoll=?" +
+    private final String UPDATE_INSTANCE = "UPDATE instance SET userStatus=?, submission=?, IDutente=?, IDpoll=? " +
             "WHERE ID=?";
 
     private PreparedStatement allInstance;
@@ -203,13 +203,14 @@ public class InstanceDAO_MySQL extends DAO implements InstanceDAO{
         int id = instance.getID();
         try {
             if (instance.getID() > 0) {
-                if (instance instanceof InstanceProxy && ((InstanceProxy) instance).isDirty()) {
+                if (instance instanceof InstanceProxy && !((InstanceProxy) instance).isDirty()) {
                     return;
                 }
                 updateInstance.setBoolean(1, instance.getUserStatus());
                 updateInstance.setDate(2,  new java.sql.Date(instance.getSubmission().getTime()));
                 updateInstance.setInt(3, instance.getUser().getID());
                 updateInstance.setInt(4, instance.getPoll().getID());
+                updateInstance.setInt(5, instance.getID());
                 updateInstance.executeUpdate();
             } else {
                 insertInstance.setBoolean(1, instance.getUserStatus());

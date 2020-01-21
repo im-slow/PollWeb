@@ -61,7 +61,7 @@ public class InstanceProxy extends InstanceImpl {
     @Override
     public void setUserStatus(boolean userStatus){
         super.setUserStatus(userStatus);
-        this.dirty = true;
+//        this.dirty = true;
     }
 
     @Override

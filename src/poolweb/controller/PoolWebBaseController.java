@@ -27,6 +27,7 @@ public abstract class PoolWebBaseController extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             processRequest(request, response);
         } catch (Exception ex) {
+            ex.printStackTrace();
             request.setAttribute("message", "Errore interno");
             request.setAttribute("submessage", "Riprova più tardi");
             action_error(request, response);
