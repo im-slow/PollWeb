@@ -17,7 +17,7 @@ public class PollDAO_MySQL extends DAO implements PollDAO {
     private final String SELECT_ALL_POLLID = "SELECT ID as IDPOLL FROM poll WHERE statePoll = 1 AND openPoll=1";
     private final String SELECT_POPOULAR_POLLID = "SELECT ID as IDPOLL FROM poll WHERE statePoll=1 AND openPoll=1 LIMIT 3";
     private final String SELECT_POLL_BY_ID = "SELECT * FROM poll WHERE ID = ?";
-    private final String SELECT_POLL_BY_USER_ID = "SELECT * FROM poll WHERE IDuser = ? LIMIT 5";
+    private final String SELECT_POLL_BY_USER_ID = "SELECT * FROM poll WHERE IDuser = ?";
     private final String INSERT_POLL = "INSERT INTO poll (title, openText, closeText, openPoll, statePoll, URLPoll, IDuser)" +
             "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final String UPDATE_POLL = "UPDATE poll SET title=?, openText=?, closeText=?, openPoll=?, statePoll=?, URLPoll=?)" +

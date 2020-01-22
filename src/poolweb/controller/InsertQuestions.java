@@ -56,7 +56,11 @@ public class InsertQuestions extends PoolWebBaseController{
                                 q.setQAnswer(request.getParameterValues("domanda"+idx));
                             }
                             if (request.getParameter("isobbligo"+idx) != null) {
-                                q.setMandatory(true);
+                                if (request.getParameter("isobbligo"+idx).equals("on")) {
+                                    q.setMandatory(true);
+                                } else {
+                                    q.setMandatory(false);
+                                }
                             }
                             q.setCode(randomQuestCode());
                             q.setPoll(poll);
